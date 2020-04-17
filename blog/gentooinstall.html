@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-04-17 Fri 13:57 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>我的 Gentoo Linux 安装手册 2.0</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="keke" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.cacheClassElem = elem.className;
+         elem.cacheClassTarget = target.className;
+         target.className = "code-highlighted";
+         elem.className   = "code-highlighted";
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(elem.cacheClassElem)
+         elem.className = elem.cacheClassElem;
+       if(elem.cacheClassTarget)
+         target.className = elem.cacheClassTarget;
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">我的 Gentoo Linux 安装手册 2.0</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org302149d">1. 更新说明</a></li>
+<li><a href="#org1fae2b7">2. 使用sysresccd 作为 livecd</a></li>
+<li><a href="#orga719ede">3. 分区方案</a></li>
+<li><a href="#org1ac93c3">4. zfs 初始化</a></li>
+<li><a href="#org53ecb1a">5. 下载并解压到根目录stage3文件</a></li>
+<li><a href="#org910cf23">6. 配置make.conf&amp;gentoo.conf,手动clone gentoo mirror repos</a></li>
+<li><a href="#org22e2ea4">7. 复制相关文件并chroot</a></li>
+<li><a href="#org5cfbb03">8. 选择Profile并更新系统</a></li>
+<li><a href="#org7755eee">9. 配置时区和地区</a></li>
+<li><a href="#orgf18df3e">10. fstab</a></li>
+<li><a href="#orgab5f74a">11. zfs 相关包的配置和use</a></li>
+<li><a href="#orgb1d1297">12. 下载配置&lt;内核,genkernel,zfs&gt;,编译内核</a></li>
+<li><a href="#org36e7e0f">13. 修改root 密码，创建用户</a></li>
+<li><a href="#org2127164">14. 准备结束</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org302149d" class="outline-2">
+<h2 id="org302149d"><span class="section-number-2">1</span> 更新说明</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+2.0:
+</p>
+
+<p>
+去除genfstab,mbr
+</p>
+
+<p>
+内核由二进制改为gentoo-sources并由genkernel进行配置,ext4改为zfs,ubuntu livecd 改为 sysresccd,portage同步方式改为git
+</p>
+
+<p>
+1.0:
+</p>
+
+<p>
+将一直用的配置整理出来
+</p>
+</div>
+</div>
+<div id="outline-container-org1fae2b7" class="outline-2">
+<h2 id="org1fae2b7"><span class="section-number-2">2</span> 使用sysresccd 作为 livecd</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+<a href="https://xyinn.org/gentoo/livecd/">https://xyinn.org/gentoo/livecd/</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orga719ede" class="outline-2">
+<h2 id="orga719ede"><span class="section-number-2">3</span> 分区方案</h2>
+<div class="outline-text-2" id="text-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">partition</td>
+<td class="org-left">type</td>
+<td class="org-left">size</td>
+<td class="org-left">mountpoint</td>
+<td class="org-left">formttype</td>
+</tr>
+
+<tr>
+<td class="org-left">/dev/sdx1</td>
+<td class="org-left">EFI System</td>
+<td class="org-left">~100Mb</td>
+<td class="org-left">/boot/efi</td>
+<td class="org-left">mkfs.fat -F32</td>
+</tr>
+
+<tr>
+<td class="org-left">/dev/sdx2</td>
+<td class="org-left">Solaris root</td>
+<td class="org-left">full</td>
+<td class="org-left">none</td>
+<td class="org-left">none</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org1ac93c3" class="outline-2">
+<h2 id="org1ac93c3"><span class="section-number-2">4</span> zfs 初始化</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-bash">#将/dev/sda2创建为zfs存储池
+zpool create -f -o ashift=12 -o cachefile=/tmp/zpool.cache -O normalization=formD -O compression=lz4 -m none -R /mnt/gentoo kpool /dev/disk/by-id/ata-硬盘名字-2
+#查看池状态
+zpool status
+#创建数据集
+zfs create -o mountpoint=none -o canmount=off kpool/gentoo
+zfs create -o mountpoint=/ kpool/gentoo/system
+zfs create -o mountpoint=/boot kpool/gentoo/boot
+zfs create -o mountpoint=/home kpool/home
+#设置boot数据集可引导
+zpool set bootfs=kpool/gentoo/boot kpool 
+#验证
+zfs list -t all
+zpool get bootfs kpool
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org53ecb1a" class="outline-2">
+<h2 id="org53ecb1a"><span class="section-number-2">5</span> 下载并解压到根目录stage3文件</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+<a href="https://mirrors.tuna.tsinghua.edu.cn/gentoo/">https://mirrors.tuna.tsinghua.edu.cn/gentoo/</a>
+</p>
+
+<p>
+进入镜像站的/gentoo/releases/amd64/autobuilds/目录，选择想要的stage3类型比如nomultilib(stage3-amd64-nomultilib-20200212T214502Z.tar.xz)
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">cd /mnt/gentoo
+wget https://mirrors.tuna.tsinghua.edu.cn/gentoo/releases/amd64/autobuilds/current-stage3-amd64-nomultilib/stage3-amd64-nomultilib-20200212T214502Z.tar.xz
+tar vxpf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org910cf23" class="outline-2">
+<h2 id="org910cf23"><span class="section-number-2">6</span> 配置make.conf&amp;gentoo.conf,手动clone gentoo mirror repos</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+<b>my ryzen pc</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"># GCC
+CFLAGS="-march=znver1 -O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+CHOST="x86_64-pc-linux-gnu"
+CPU_FLAGS_X86="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt sse sse2 sse3 sse4_1 sse4_2 sse4a ssse3"
+MAKEOPTS="-j13"
+
+# USE
+USE="-bindist pulseaudio"
+
+# Portage
+GENTOO_MIRRORS="https://mirrors.tuna.tsinghua.edu.cn/gentoo/"
+EMERGE_DEFAULT_OPTS="--ask --verbose=y --keep-going --with-bdeps=y --load-average"
+# FEATURES="${FEATURES} -userpriv -usersandbox -sandbox"
+ACCEPT_KEYWORDS="~amd64"
+ACCEPT_LICENSE="*"
+
+# Language
+L10N="en-US zh-CN en zh"
+LINGUAS="en_US zh_CN en zh"
+
+# Else
+VIDEO_CARDS="amdgpu radeonsi"
+GRUB_PLATFORMS="efi-64"
+</pre>
+</div>
+<p>
+<b>my thinkpad x220 laptop</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"># GCC
+CFLAGS="-march=sandybridge -O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+CHOST="x86_64-pc-linux-gnu"
+CPU_FLAGS_X86="aes avx mmx mmxext popcnt sse sse2 sse3 sse4_1 sse4_2 ssse3"
+MAKEOPTS="-j5"
+
+# USE
+USE="-bindist pulseaudio"
+
+# Portage
+GENTOO_MIRRORS="https://mirrors.tuna.tsinghua.edu.cn/gentoo/"
+EMERGE_DEFAULT_OPTS="--ask --verbose=y --keep-going --with-bdeps=y --load-average"
+# FEATURES="${FEATURES} -userpriv -usersandbox -sandbox"
+ACCEPT_KEYWORDS="~amd64"
+ACCEPT_LICENSE="*"
+
+# Language
+L10N="en-US zh-CN en zh"
+LINGUAS="en_US zh_CN en zh"
+
+# Else
+VIDEO_CARDS="intel i965"
+GRUB_PLATFORMS="efi-64"
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-sh">mkdir /mnt/gentoo/etc/portage/repos.conf
+nano /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-conf">[DEFAULT]
+main-repo = gentoo
+
+[gentoo]
+location = /var/db/repos/gentoo
+sync-type = git
+sync-uri = https://github.com/gentoo-mirror/gentoo
+auto-sync = yes
+</pre>
+</div>
+<p>
+手动clone gentoo mirror repos
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">git clone https://github.com/gentoo-mirror/gentoo /mnt/gentoo/var/db/repos/gentoo
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org22e2ea4" class="outline-2">
+<h2 id="org22e2ea4"><span class="section-number-2">7</span> 复制相关文件并chroot</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+复制dns:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+</pre>
+</div>
+<p>
+挂载文件系统：
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">mount -t proc none proc 
+mount --rbind /sys sys 
+mount --rbind /dev dev 
+</pre>
+</div>
+<p>
+复制zpool.cache
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">mkdir -p /mnt/gentoo/etc/zfs 
+cp /tmp/zpool.cache /mnt/gentoo/etc/zfs/zpool.cache
+</pre>
+</div>
+<p>
+进入chroot:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">chroot /mnt/gentoo /bin/bash
+source /etc/profile
+export PS1="(chroot) ${PS1}"
+</pre>
+</div>
+<p>
+挂载efi分区：
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">mount /dev/sdx1 /boot/efi
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5cfbb03" class="outline-2">
+<h2 id="org5cfbb03"><span class="section-number-2">8</span> 选择Profile并更新系统</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+安装基础程序:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">emerge -av git eix gentoolkit
+</pre>
+</div>
+<p>
+选择profile:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">eselect profile list
+eselect profile set x
+</pre>
+</div>
+<p>
+更新系统:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">eix-sync
+emerge -avuDN @world
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7755eee" class="outline-2">
+<h2 id="org7755eee"><span class="section-number-2">9</span> 配置时区和地区</h2>
+<div class="outline-text-2" id="text-9">
+<div class="org-src-container">
+<pre class="src src-bash">echo "Asia/Shanghai" &gt; /etc/timezone
+emerge --config sys-libs/timezone-data
+
+echo "en_US.UTF-8 UTF-8
+zh_CN.UTF-8 UTF-8" &gt;&gt; /etc/locale.gen
+
+locale-gen
+
+eselect locale list
+
+eselect locale set X
+
+#修改主机名
+echo hostname=\"Test\" &gt; /etc/conf.d/hostname
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf18df3e" class="outline-2">
+<h2 id="orgf18df3e"><span class="section-number-2">10</span> fstab</h2>
+<div class="outline-text-2" id="text-10">
+<div class="org-src-container">
+<pre class="src src-bash">nano /etc/fstab
+/dev/sda1               /boot/efi       vfat            noauto        1 2
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgab5f74a" class="outline-2">
+<h2 id="orgab5f74a"><span class="section-number-2">11</span> zfs 相关包的配置和use</h2>
+<div class="outline-text-2" id="text-11">
+<div class="org-src-container">
+<pre class="src src-bash">#zfs
+echo "sys-fs/zfs-kmod **" &gt;&gt; /etc/portage/package.accept_keywords
+echo "sys-fs/zfs **" &gt;&gt; /etc/portage/package.accept_keywords
+#util-linux
+echo "&gt;=sys-apps/util-linux-2.30.2 static-libs" &gt; /etc/portage/package.use/util-linux 
+#grub
+echo "sys-boot/grub libzfs" &gt; /etc/portage/package.use/grub 
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb1d1297" class="outline-2">
+<h2 id="orgb1d1297"><span class="section-number-2">12</span> 下载配置&lt;内核,genkernel,zfs&gt;,编译内核</h2>
+<div class="outline-text-2" id="text-12">
+<div class="org-src-container">
+<pre class="src src-bash">emerge -av gentoo-sources genkernel
+</pre>
+</div>
+<p>
+先运行以下genkernel以得到一个.config文件，这个文件在安装ZFS的时候会检查
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">genkernel kernel --no-mountboot  
+</pre>
+</div>
+<p>
+安装zfs&amp;grub
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">emerge -av zfs grub dhcpcd sudo
+</pre>
+</div>
+<p>
+编译内核:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">touch /boot/grub/grub.cfg
+genkernel all --makeopts=-j4 --no-mountboot --zfs --bootloader=grub2 --callback="emerge @module-rebuild"
+genkernel initramfs 
+</pre>
+</div>
+<p>
+安装引导:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">grub-install --target=x86_64-efi --efi-directory=/boot/efi
+grub-mkconfig -o /boot/grub/grub.cfg 
+</pre>
+</div>
+<p>
+启动zfs 服务:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">rc-update add zfs-import boot
+rc-update add zfs-mount boot
+rc-update add zfs-share default
+rc-update add zfs-zed default
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org36e7e0f" class="outline-2">
+<h2 id="org36e7e0f"><span class="section-number-2">13</span> 修改root 密码，创建用户</h2>
+<div class="outline-text-2" id="text-13">
+<div class="org-src-container">
+<pre class="src src-bash">passwd
+useradd -m -G users,wheel,portage,usb,video xx
+passwd xx
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2127164" class="outline-2">
+<h2 id="org2127164"><span class="section-number-2">14</span> 准备结束</h2>
+<div class="outline-text-2" id="text-14">
+<div class="org-src-container">
+<pre class="src src-bash">sed -i 's/\# \%wheel ALL=(ALL) ALL/\%wheel ALL=(ALL) ALL/g' /etc/sudoers
+umount /dev/sdx1
+exit
+umount -lR {dev,proc,sys} 
+zpool export kpool
+reboot
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2020-04-17 Fri 00:00</p>
+<p class="author">Author: keke</p>
+<p class="date">Created: 2020-04-17 Fri 13:57</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3.6)</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

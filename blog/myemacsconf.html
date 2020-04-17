@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-04-17 Fri 13:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>我的Emacs配置</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="keke" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.cacheClassElem = elem.className;
+         elem.cacheClassTarget = target.className;
+         target.className = "code-highlighted";
+         elem.className   = "code-highlighted";
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(elem.cacheClassElem)
+         elem.className = elem.cacheClassElem;
+       if(elem.cacheClassTarget)
+         target.className = elem.cacheClassTarget;
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">我的Emacs配置</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgccbc010">1. Preview</a></li>
+<li><a href="#org5f70ca9">2. Is A?</a></li>
+<li><a href="#orgea37ee4">3. 初始化 straight.el 插件管理</a></li>
+<li><a href="#orgfde53b9">4. 预下载基础包</a></li>
+<li><a href="#orgc9c945a">5. 载入启动界面</a></li>
+<li><a href="#org100609e">6. 主程序的一些设置</a>
+<ul>
+<li><a href="#orgb71f27b">6.1. UI</a></li>
+<li><a href="#org1edb578">6.2. 透明度</a></li>
+<li><a href="#orgf69f481">6.3. 默认功能设置</a></li>
+<li><a href="#org093959b">6.4. 字体</a>
+<ul>
+<li><a href="#orgf335f79">6.4.1. doom-modeline</a></li>
+<li><a href="#orgf1d417b">6.4.2. doom-themes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org67bc187">7. Org-mode</a></li>
+<li><a href="#org133adc1">8. 包的配置</a>
+<ul>
+<li><a href="#orge6da0c7">8.1. ox-hugo</a></li>
+<li><a href="#org7e655e9">8.2. yasnippet</a></li>
+<li><a href="#org71977cf">8.3. IVY all</a></li>
+<li><a href="#org0518716">8.4. xah-math-input</a></li>
+<li><a href="#org91f7984">8.5. magit</a></li>
+<li><a href="#orgbfed387">8.6. rime</a></li>
+<li><a href="#orgb72c482">8.7. nox</a></li>
+<li><a href="#orgc8ed98b">8.8. company</a></li>
+</ul>
+</li>
+<li><a href="#orgb721c4d">9. 键位配置</a></li>
+<li><a href="#org16f4b48">10. 一些好用的函数</a>
+<ul>
+<li><a href="#org9849307">10.1. keke-run-current-file</a></li>
+<li><a href="#org116745a">10.2. keke-html-open-in-chrome-browser</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgccbc010" class="outline-2">
+<h2 id="orgccbc010"><span class="section-number-2">1</span> Preview</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<img src="https://s1.ax1x.com/2020/03/29/GVOav9.png" alt="GVOav9.png" />
+<img src="https://s1.ax1x.com/2020/03/29/GVON34.png" alt="GVON34.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-org5f70ca9" class="outline-2">
+<h2 id="org5f70ca9"><span class="section-number-2">2</span> Is A?</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defconst *is-a-mac* (eq system-type 'darwin))
+(defconst *is-a-linux* (eq system-type 'gnu/linux))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgea37ee4" class="outline-2">
+<h2 id="orgea37ee4"><span class="section-number-2">3</span> 初始化 straight.el 插件管理</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+	(url-retrieve-synchronously
+	 "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+	 'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfde53b9" class="outline-2">
+<h2 id="orgfde53b9"><span class="section-number-2">4</span> 预下载基础包</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(add-to-list 'load-path "~/.emacs.d/el/")
+(straight-use-package 'use-package)
+(straight-use-package 'posframe)
+(straight-use-package 'company)
+(straight-use-package 'vterm)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc9c945a" class="outline-2">
+<h2 id="orgc9c945a"><span class="section-number-2">5</span> 载入启动界面</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(straight-use-package 'dashboard)
+(use-package dashboard
+  :config
+  (dashboard-setup-startup-hook)
+  (setq dashboard-banner-logo-title ";;; Happy Hacking Keke , Emacs Love You ~")
+;;  (setq dashboard-startup-banner "~/.emacs.d/logo.png")
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-items '((recents  . 5)
+			(agenda . 5)))
+  (setq dashboard-set-file-icons t))
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org100609e" class="outline-2">
+<h2 id="org100609e"><span class="section-number-2">6</span> 主程序的一些设置</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-orgb71f27b" class="outline-3">
+<h3 id="orgb71f27b"><span class="section-number-3">6.1</span> UI</h3>
+<div class="outline-text-3" id="text-6-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"> (menu-bar-mode -1)
+ (tool-bar-mode -1)
+ (scroll-bar-mode -1)
+ (global-linum-mode 1)
+;; (setq inhibit-startup-message t)
+ (global-hl-line-mode t)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1edb578" class="outline-3">
+<h3 id="org1edb578"><span class="section-number-3">6.2</span> 透明度</h3>
+<div class="outline-text-3" id="text-6-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(add-to-list 'default-frame-alist'(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist'(ns-appearance . dark))
+(add-to-list 'default-frame-alist'(alpha . (80 . 75)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf69f481" class="outline-3">
+<h3 id="orgf69f481"><span class="section-number-3">6.3</span> 默认功能设置</h3>
+<div class="outline-text-3" id="text-6-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">;; 自动加载外部修改过的文件
+(global-auto-revert-mode 1)
+;; 关闭自己生产的保存文件
+(setq auto-save-default nil)
+;; 关闭自己生产的备份文件
+(setq make-backup-files nil)
+;; 选中某个区域继续编辑可以替换掉该区域
+(delete-selection-mode 1)
+;; 设置h 文件默认为c++文件
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org093959b" class="outline-3">
+<h3 id="org093959b"><span class="section-number-3">6.4</span> 字体</h3>
+<div class="outline-text-3" id="text-6-4">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(when *is-a-mac*
+(set-frame-font "Operator Mono 16"))
+(when *is-a-linux*
+  (set-frame-font "Operator Mono Light 10"))
+</pre>
+</div>
+</div>
+<div id="outline-container-orgf335f79" class="outline-4">
+<h4 id="orgf335f79"><span class="section-number-4">6.4.1</span> doom-modeline</h4>
+<div class="outline-text-4" id="text-6-4-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(straight-use-package 'doom-modeline)
+(use-package doom-modeline
+  :init (doom-modeline-mode 1))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf1d417b" class="outline-4">
+<h4 id="orgf1d417b"><span class="section-number-4">6.4.2</span> doom-themes</h4>
+<div class="outline-text-4" id="text-6-4-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(straight-use-package 'doom-themes)
+(use-package doom-themes
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+	doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-monokai-classic t)
+
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+  (doom-themes-treemacs-config)
+
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org67bc187" class="outline-2">
+<h2 id="org67bc187"><span class="section-number-2">7</span> Org-mode</h2>
+<div class="outline-text-2" id="text-7">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org133adc1" class="outline-2">
+<h2 id="org133adc1"><span class="section-number-2">8</span> 包的配置</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-orge6da0c7" class="outline-3">
+<h3 id="orge6da0c7"><span class="section-number-3">8.1</span> ox-hugo</h3>
+<div class="outline-text-3" id="text-8-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(straight-use-package 'ox-hugo)
+(use-package ox-hugo
+  :after ox)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7e655e9" class="outline-3">
+<h3 id="org7e655e9"><span class="section-number-3">8.2</span> yasnippet</h3>
+<div class="outline-text-3" id="text-8-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(straight-use-package 'yasnippet)
+(straight-use-package 'yasnippet-snippets)
+(use-package yasnippet
+  :commands
+  (yas-reload-all)
+  :init
+  (add-hook 'prog-mode-hook #'yas-minor-mode))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org71977cf" class="outline-3">
+<h3 id="org71977cf"><span class="section-number-3">8.3</span> IVY all</h3>
+<div class="outline-text-3" id="text-8-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(straight-use-package 'ivy)
+(straight-use-package 'counsel)
+(straight-use-package 'swiper)
+(straight-use-package 'all-the-icons-ivy-rich)
+(use-package ivy
+  :init
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t))
+(use-package all-the-icons-ivy-rich
+  :init (all-the-icons-ivy-rich-mode 1))
+(use-package ivy-rich
+  :init (ivy-rich-mode 1))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0518716" class="outline-3">
+<h3 id="org0518716"><span class="section-number-3">8.4</span> xah-math-input</h3>
+<div class="outline-text-3" id="text-8-4">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(straight-use-package 'xah-math-input)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org91f7984" class="outline-3">
+<h3 id="org91f7984"><span class="section-number-3">8.5</span> magit</h3>
+<div class="outline-text-3" id="text-8-5">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(straight-use-package 'magit)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbfed387" class="outline-3">
+<h3 id="orgbfed387"><span class="section-number-3">8.6</span> rime</h3>
+<div class="outline-text-3" id="text-8-6">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(use-package rime
+	     :straight (rime :type git
+			     :host github
+			     :repo "DogLooksGood/emacs-rime"
+			     :files ("*.el" "Makefile" "lib.c"))
+	     :custom
+	     (rime-show-candidate 'posframe)
+	     (default-input-method "rime"))
+(when *is-a-mac*
+  (use-package rime
+	       :custom
+	       (rime-librime-root "~/.emacs.d/librime/dist")))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb72c482" class="outline-3">
+<h3 id="orgb72c482"><span class="section-number-3">8.7</span> nox</h3>
+<div class="outline-text-3" id="text-8-7">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(require 'nox)
+
+(dolist (hook (list
+	       'js-mode-hook
+	       'rust-mode-hook
+	       'python-mode-hook
+	       'ruby-mode-hook
+	       'java-mode-hook
+	       'sh-mode-hook
+	       'php-mode-hook
+	       'c-mode-common-hook
+	       'c-mode-hook
+	       'c++-mode-hook
+	       'haskell-mode-hook
+	       ))
+  (add-hook hook '(lambda () (nox-ensure))))
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc8ed98b" class="outline-3">
+<h3 id="orgc8ed98b"><span class="section-number-3">8.8</span> company</h3>
+<div class="outline-text-3" id="text-8-8">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(add-hook 'after-init-hook 'global-company-mode)
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb721c4d" class="outline-2">
+<h2 id="orgb721c4d"><span class="section-number-2">9</span> 键位配置</h2>
+<div class="outline-text-2" id="text-9">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(global-set-key (kbd "C-c p") 'keke-run-current-file)
+;;IVY
+(global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
+(global-set-key (kbd "&lt;f6&gt;") 'ivy-resume)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "&lt;f1&gt; f") 'counsel-describe-function)
+(global-set-key (kbd "&lt;f1&gt; v") 'counsel-describe-variable)
+(global-set-key (kbd "&lt;f1&gt; l") 'counsel-find-library)
+(global-set-key (kbd "&lt;f2&gt; i") 'counsel-info-lookup-symbol)
+(global-set-key (kbd "&lt;f2&gt; u") 'counsel-unicode-char)
+(global-set-key (kbd "C-c g") 'counsel-git)
+(global-set-key (kbd "C-c j") 'counsel-git-grep)
+(global-set-key (kbd "C-c k") 'counsel-ag)
+(global-set-key (kbd "C-x l") 'counsel-locate)
+(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org16f4b48" class="outline-2">
+<h2 id="org16f4b48"><span class="section-number-2">10</span> 一些好用的函数</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-org9849307" class="outline-3">
+<h3 id="org9849307"><span class="section-number-3">10.1</span> keke-run-current-file</h3>
+<div class="outline-text-3" id="text-10-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defvar keke-run-current-file-before-hook nil "Hook for `keke-run-current-file'. Before the file is run.")
+(defvar keke-run-current-file-after-hook nil "Hook for `keke-run-current-file'. After the file is run.")
+(defun keke-run-current-file ()
+  (interactive)
+  (let (
+	($outputb "*keke-run output*")
+	(resize-mini-windows nil)
+	($suffix-map
+	 `(
+	   ("ts" . "node")
+	   ("html" . "firefox-bin")
+	   ))
+	   $fname
+	   $fSuffix
+	   $prog-name
+	   $cmd-str)
+	 (when (not (buffer-file-name)) (save-buffer))
+	 (when (buffer-modified-p) (save-buffer))
+	 (setq $fname (buffer-file-name))
+	 (setq $fSuffix (file-name-extension $fname))
+	 (setq $prog-name (cdr (assoc $fSuffix $suffix-map)))
+	 (setq $cmd-str (concat $prog-name " \""   $fname "\" &amp;"))
+	 (run-hooks 'keke-run-current-file-before-hook)
+	 (if $prog-name
+	     (progn
+	       (message "Running")
+	       (shell-command $cmd-str $outputb ))
+	   (error "No recognized program file suffix for this file."))))
+(run-hooks 'keke-run-current-file-after-hook)
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org116745a" class="outline-3">
+<h3 id="org116745a"><span class="section-number-3">10.2</span> keke-html-open-in-chrome-browser</h3>
+<div class="outline-text-3" id="text-10-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defun keke-html-open-in-chrome-browser ()
+  "Open the current file or `dired' marked files in Google Chrome browser.
+Work in Windows, macOS, linux.
+URL `http://ergoemacs.org/emacs/emacs_dired_open_file_in_ext_apps.html'
+Version 2019-11-10"
+  (interactive)
+  (let* (
+	 ($file-list
+	  (if (string-equal major-mode "dired-mode")
+	      (dired-get-marked-files)
+	    (list (buffer-file-name))))
+	 ($do-it-p (if (&lt;= (length $file-list) 5)
+		       t
+		     (y-or-n-p "Open more than 5 files? "))))
+    (when $do-it-p
+      (cond
+       ((string-equal system-type "darwin")
+	(mapc
+	 (lambda ($fpath)
+	   (shell-command
+	    (format "open -a /Applications/Google\\ Chrome.app \"%s\"" $fpath)))
+	 $file-list))
+       ((string-equal system-type "windows-nt")
+	;; "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" 2019-11-09
+	(let ((process-connection-type nil))
+	  (mapc
+	   (lambda ($fpath)
+	     (start-process "" nil "powershell" "start-process" "chrome" $fpath ))
+	   $file-list)))
+       ((string-equal system-type "gnu/linux")
+	(mapc
+	 (lambda ($fpath)
+	   (shell-command (format "qutebrowser \"%s\"" $fpath)))
+	 $file-list))))))
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2020-04-17 Fri 00:00</p>
+<p class="author">Author: keke</p>
+<p class="date">Created: 2020-04-17 Fri 13:58</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3.6)</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
