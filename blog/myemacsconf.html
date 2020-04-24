@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-20 Mon 17:39 -->
+<!-- 2020-04-24 Fri 14:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>我的Emacs配置</title>
@@ -194,28 +194,50 @@
   /*]]>*/-->
 </style>
 <script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
 <!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.cacheClassElem = elem.className;
-         elem.cacheClassTarget = target.className;
-         target.className = "code-highlighted";
-         elem.className   = "code-highlighted";
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(elem.cacheClassElem)
-         elem.className = elem.cacheClassElem;
-       if(elem.cacheClassTarget)
-         target.className = elem.cacheClassTarget;
-     }
-    /*]]>*///-->
-// @license-end
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
 </script>
 </head>
 <body>
@@ -225,49 +247,47 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7fbb260">1. Preview</a></li>
-<li><a href="#org330b8d2">2. Is A?</a></li>
-<li><a href="#org0c66cdd">3. 初始化 straight.el 插件管理</a></li>
-<li><a href="#org69d3536">4. 预下载基础包</a></li>
-<li><a href="#orgebedbf1">5. 载入启动界面</a></li>
-<li><a href="#org4f28245">6. 主程序的一些设置</a>
+<li><a href="#org38b0e5e">1. Preview</a></li>
+<li><a href="#org317a058">2. Is A?</a></li>
+<li><a href="#orgcc7b022">3. 初始化 straight.el 插件管理</a></li>
+<li><a href="#org4b122b3">4. 预下载基础包</a></li>
+<li><a href="#orga967fa7">5. 载入启动界面</a></li>
+<li><a href="#orgaa8c7fb">6. 主程序的一些设置</a>
 <ul>
-<li><a href="#orge8ebc62">6.1. UI</a></li>
-<li><a href="#org7d77c3b">6.2. 透明度</a></li>
-<li><a href="#org5aa9ece">6.3. 默认功能设置</a></li>
-<li><a href="#org254ee4e">6.4. 字体</a>
+<li><a href="#org4a891b6">6.1. UI</a></li>
+<li><a href="#org74e31d1">6.2. 透明度</a></li>
+<li><a href="#org1c9403a">6.3. 默认功能设置</a></li>
+<li><a href="#org4523f0d">6.4. 字体</a>
 <ul>
-<li><a href="#org6e56c68">6.4.1. doom-modeline</a></li>
-<li><a href="#orgdb64a0a">6.4.2. doom-themes</a></li>
+<li><a href="#orgc7a0513">6.4.1. doom-modeline</a></li>
+<li><a href="#orgc601784">6.4.2. doom-themes</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org5bfcc03">7. Org-mode</a></li>
-<li><a href="#orgb00d793">8. 包的配置</a>
+<li><a href="#orge4da7cd">7. Org-mode</a></li>
+<li><a href="#orga6415db">8. 包的配置</a>
 <ul>
-<li><a href="#orgaa5cf14">8.1. ox-hugo</a></li>
-<li><a href="#org009378b">8.2. yasnippet</a></li>
-<li><a href="#org649b21d">8.3. IVY all</a></li>
-<li><a href="#org3d1fdc4">8.4. xah-math-input</a></li>
-<li><a href="#org2dd7b22">8.5. magit</a></li>
-<li><a href="#org17f5172">8.6. rime</a></li>
-<li><a href="#org609e45f">8.7. nox</a></li>
-<li><a href="#orge2996d9">8.8. company</a></li>
+<li><a href="#org13de777">8.1. yasnippet</a></li>
+<li><a href="#orgeaaeb01">8.2. IVY all</a></li>
+<li><a href="#org73969e3">8.3. magit</a></li>
+<li><a href="#orgaec3c5f">8.4. rime</a></li>
+<li><a href="#org88d256d">8.5. nox</a></li>
+<li><a href="#orgaf218cd">8.6. company</a></li>
 </ul>
 </li>
-<li><a href="#orga07980a">9. 键位配置</a></li>
-<li><a href="#org468ae95">10. 一些好用的函数</a>
+<li><a href="#org8d526c7">9. 键位配置</a></li>
+<li><a href="#orgdcb7c73">10. 一些好用的函数</a>
 <ul>
-<li><a href="#org914f634">10.1. keke-run-current-file</a></li>
-<li><a href="#orga62c77e">10.2. keke-html-open-in-chrome-browser</a></li>
+<li><a href="#orgd1bbcf3">10.1. keke-run-current-file</a></li>
+<li><a href="#orgfeb98a3">10.2. keke-html-open-in-chrome-browser</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7fbb260" class="outline-2">
-<h2 id="org7fbb260"><span class="section-number-2">1</span> Preview</h2>
+<div id="outline-container-org38b0e5e" class="outline-2">
+<h2 id="org38b0e5e"><span class="section-number-2">1</span> Preview</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <img src="https://s1.ax1x.com/2020/03/29/GVOav9.png" alt="GVOav9.png" />
@@ -275,8 +295,8 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org330b8d2" class="outline-2">
-<h2 id="org330b8d2"><span class="section-number-2">2</span> Is A?</h2>
+<div id="outline-container-org317a058" class="outline-2">
+<h2 id="org317a058"><span class="section-number-2">2</span> Is A?</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(defconst *is-a-mac* (eq system-type 'darwin))
@@ -285,8 +305,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org0c66cdd" class="outline-2">
-<h2 id="org0c66cdd"><span class="section-number-2">3</span> 初始化 straight.el 插件管理</h2>
+<div id="outline-container-orgcc7b022" class="outline-2">
+<h2 id="orgcc7b022"><span class="section-number-2">3</span> 初始化 straight.el 插件管理</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(defvar bootstrap-version)
@@ -305,8 +325,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org69d3536" class="outline-2">
-<h2 id="org69d3536"><span class="section-number-2">4</span> 预下载基础包</h2>
+<div id="outline-container-org4b122b3" class="outline-2">
+<h2 id="org4b122b3"><span class="section-number-2">4</span> 预下载基础包</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(add-to-list 'load-path "~/.emacs.d/el/")
@@ -318,8 +338,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgebedbf1" class="outline-2">
-<h2 id="orgebedbf1"><span class="section-number-2">5</span> 载入启动界面</h2>
+<div id="outline-container-orga967fa7" class="outline-2">
+<h2 id="orga967fa7"><span class="section-number-2">5</span> 载入启动界面</h2>
 <div class="outline-text-2" id="text-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'dashboard)
@@ -337,12 +357,12 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org4f28245" class="outline-2">
-<h2 id="org4f28245"><span class="section-number-2">6</span> 主程序的一些设置</h2>
+<div id="outline-container-orgaa8c7fb" class="outline-2">
+<h2 id="orgaa8c7fb"><span class="section-number-2">6</span> 主程序的一些设置</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orge8ebc62" class="outline-3">
-<h3 id="orge8ebc62"><span class="section-number-3">6.1</span> UI</h3>
+<div id="outline-container-org4a891b6" class="outline-3">
+<h3 id="org4a891b6"><span class="section-number-3">6.1</span> UI</h3>
 <div class="outline-text-3" id="text-6-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"> (menu-bar-mode -1)
@@ -355,8 +375,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org7d77c3b" class="outline-3">
-<h3 id="org7d77c3b"><span class="section-number-3">6.2</span> 透明度</h3>
+<div id="outline-container-org74e31d1" class="outline-3">
+<h3 id="org74e31d1"><span class="section-number-3">6.2</span> 透明度</h3>
 <div class="outline-text-3" id="text-6-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(add-to-list 'default-frame-alist'(ns-transparent-titlebar . t))
@@ -366,8 +386,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org5aa9ece" class="outline-3">
-<h3 id="org5aa9ece"><span class="section-number-3">6.3</span> 默认功能设置</h3>
+<div id="outline-container-org1c9403a" class="outline-3">
+<h3 id="org1c9403a"><span class="section-number-3">6.3</span> 默认功能设置</h3>
 <div class="outline-text-3" id="text-6-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">;; 自动加载外部修改过的文件
@@ -384,31 +404,24 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org254ee4e" class="outline-3">
-<h3 id="org254ee4e"><span class="section-number-3">6.4</span> 字体</h3>
+<div id="outline-container-org4523f0d" class="outline-3">
+<h3 id="org4523f0d"><span class="section-number-3">6.4</span> 字体</h3>
 <div class="outline-text-3" id="text-6-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(when *is-a-mac*
 (set-frame-font "Operator Mono 16"))
 (when *is-a-linux*
   (set-frame-font "Operator Mono Light 10"))
-(when *is-a-linux*
-  (if (version&lt; "27.0" emacs-version)
-      (set-fontset-font
-       "fontset-default" 'unicode "Noto Color Emoji" nil 'prepend)
-    (set-fontset-font
-     t 'symbol (font-spec :family "Noto Color Emoji") nil 'prepend)))
-(when *is-a-mac*
-  (if (version&lt; "27.0" emacs-version)
-      (set-fontset-font
-       "fontset-default" 'unicode "Apple Color Emoji" nil 'prepend)
-    (set-fontset-font
-     t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend)))
+(if (version&lt; "27.0" emacs-version)
+	   (set-fontset-font
+	    "fontset-default" 'unicode "Noto Color Emoji" nil 'prepend)
+	 (set-fontset-font
+	  t 'symbol (font-spec :family "Noto Color Emoji") nil 'prepend))
 </pre>
 </div>
 </div>
-<div id="outline-container-org6e56c68" class="outline-4">
-<h4 id="org6e56c68"><span class="section-number-4">6.4.1</span> doom-modeline</h4>
+<div id="outline-container-orgc7a0513" class="outline-4">
+<h4 id="orgc7a0513"><span class="section-number-4">6.4.1</span> doom-modeline</h4>
 <div class="outline-text-4" id="text-6-4-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'doom-modeline)
@@ -418,8 +431,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgdb64a0a" class="outline-4">
-<h4 id="orgdb64a0a"><span class="section-number-4">6.4.2</span> doom-themes</h4>
+<div id="outline-container-orgc601784" class="outline-4">
+<h4 id="orgc601784"><span class="section-number-4">6.4.2</span> doom-themes</h4>
 <div class="outline-text-4" id="text-6-4-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'doom-themes)
@@ -447,8 +460,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org5bfcc03" class="outline-2">
-<h2 id="org5bfcc03"><span class="section-number-2">7</span> Org-mode</h2>
+<div id="outline-container-orge4da7cd" class="outline-2">
+<h2 id="orge4da7cd"><span class="section-number-2">7</span> Org-mode</h2>
 <div class="outline-text-2" id="text-7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
@@ -456,24 +469,13 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgb00d793" class="outline-2">
-<h2 id="orgb00d793"><span class="section-number-2">8</span> 包的配置</h2>
+<div id="outline-container-orga6415db" class="outline-2">
+<h2 id="orga6415db"><span class="section-number-2">8</span> 包的配置</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-orgaa5cf14" class="outline-3">
-<h3 id="orgaa5cf14"><span class="section-number-3">8.1</span> ox-hugo</h3>
+<div id="outline-container-org13de777" class="outline-3">
+<h3 id="org13de777"><span class="section-number-3">8.1</span> yasnippet</h3>
 <div class="outline-text-3" id="text-8-1">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(straight-use-package 'ox-hugo)
-(use-package ox-hugo
-  :after ox)
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org009378b" class="outline-3">
-<h3 id="org009378b"><span class="section-number-3">8.2</span> yasnippet</h3>
-<div class="outline-text-3" id="text-8-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'yasnippet)
 (straight-use-package 'yasnippet-snippets)
@@ -486,9 +488,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org649b21d" class="outline-3">
-<h3 id="org649b21d"><span class="section-number-3">8.3</span> IVY all</h3>
-<div class="outline-text-3" id="text-8-3">
+<div id="outline-container-orgeaaeb01" class="outline-3">
+<h3 id="orgeaaeb01"><span class="section-number-3">8.2</span> IVY all</h3>
+<div class="outline-text-3" id="text-8-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'ivy)
 (straight-use-package 'counsel)
@@ -507,27 +509,18 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org3d1fdc4" class="outline-3">
-<h3 id="org3d1fdc4"><span class="section-number-3">8.4</span> xah-math-input</h3>
-<div class="outline-text-3" id="text-8-4">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(straight-use-package 'xah-math-input)
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org2dd7b22" class="outline-3">
-<h3 id="org2dd7b22"><span class="section-number-3">8.5</span> magit</h3>
-<div class="outline-text-3" id="text-8-5">
+<div id="outline-container-org73969e3" class="outline-3">
+<h3 id="org73969e3"><span class="section-number-3">8.3</span> magit</h3>
+<div class="outline-text-3" id="text-8-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'magit)
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org17f5172" class="outline-3">
-<h3 id="org17f5172"><span class="section-number-3">8.6</span> rime</h3>
-<div class="outline-text-3" id="text-8-6">
+<div id="outline-container-orgaec3c5f" class="outline-3">
+<h3 id="orgaec3c5f"><span class="section-number-3">8.4</span> rime</h3>
+<div class="outline-text-3" id="text-8-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(use-package rime
 	     :straight (rime :type git
@@ -545,9 +538,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org609e45f" class="outline-3">
-<h3 id="org609e45f"><span class="section-number-3">8.7</span> nox</h3>
-<div class="outline-text-3" id="text-8-7">
+<div id="outline-container-org88d256d" class="outline-3">
+<h3 id="org88d256d"><span class="section-number-3">8.5</span> nox</h3>
+<div class="outline-text-3" id="text-8-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(require 'nox)
 
@@ -570,9 +563,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orge2996d9" class="outline-3">
-<h3 id="orge2996d9"><span class="section-number-3">8.8</span> company</h3>
-<div class="outline-text-3" id="text-8-8">
+<div id="outline-container-orgaf218cd" class="outline-3">
+<h3 id="orgaf218cd"><span class="section-number-3">8.6</span> company</h3>
+<div class="outline-text-3" id="text-8-6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(add-hook 'after-init-hook 'global-company-mode)
 </pre>
@@ -580,8 +573,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orga07980a" class="outline-2">
-<h2 id="orga07980a"><span class="section-number-2">9</span> 键位配置</h2>
+<div id="outline-container-org8d526c7" class="outline-2">
+<h2 id="org8d526c7"><span class="section-number-2">9</span> 键位配置</h2>
 <div class="outline-text-2" id="text-9">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(global-set-key (kbd "C-c p") 'keke-run-current-file)
@@ -606,12 +599,12 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org468ae95" class="outline-2">
-<h2 id="org468ae95"><span class="section-number-2">10</span> 一些好用的函数</h2>
+<div id="outline-container-orgdcb7c73" class="outline-2">
+<h2 id="orgdcb7c73"><span class="section-number-2">10</span> 一些好用的函数</h2>
 <div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-org914f634" class="outline-3">
-<h3 id="org914f634"><span class="section-number-3">10.1</span> keke-run-current-file</h3>
+<div id="outline-container-orgd1bbcf3" class="outline-3">
+<h3 id="orgd1bbcf3"><span class="section-number-3">10.1</span> keke-run-current-file</h3>
 <div class="outline-text-3" id="text-10-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(defvar keke-run-current-file-before-hook nil "Hook for `keke-run-current-file'. Before the file is run.")
@@ -648,8 +641,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orga62c77e" class="outline-3">
-<h3 id="orga62c77e"><span class="section-number-3">10.2</span> keke-html-open-in-chrome-browser</h3>
+<div id="outline-container-orgfeb98a3" class="outline-3">
+<h3 id="orgfeb98a3"><span class="section-number-3">10.2</span> keke-html-open-in-chrome-browser</h3>
 <div class="outline-text-3" id="text-10-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(defun keke-html-open-in-chrome-browser ()
@@ -697,9 +690,9 @@ Version 2019-11-10"
 <div id="postamble" class="status">
 <p class="date">Date: 2020-04-17 Fri 00:00</p>
 <p class="author">Author: keke</p>
-<p class="date">Created: 2020-04-20 Mon 17:39</p>
-<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.6)</p>
-<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2020-04-24 Fri 14:51</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>
