@@ -8,5 +8,5 @@
   [[https://s1.ax1x.com/2020/04/25/JyV4gK.jpg]]
 * 准备依赖 🍜
   #+begin_src bash
-    sudo apt install libpci-dev libusb-1.0 m4 bison flex gnat
+    sudo apt install libpci-dev libusb-1.0 m4 bison flex gnat libncurses-dev
   #+end_src
