@@ -5,6 +5,8 @@
 #+export_file_name: ~/keke-cute.github.io/blog/coreboot.html
 #+options: creator:t author:t
 * 连接CH341A和烧录夹 🔗
-  [[https://s1.ax1x.com/2020/04/25/Jyiyxe.jpg]]
-* 准备依赖
-  
+  [[https://s1.ax1x.com/2020/04/25/JyV4gK.jpg]]
+* 准备依赖 🍜
+  #+begin_src bash
+    sudo apt install libpci-dev libusb-1.0 m4 bison flex gnat
+  #+end_src
