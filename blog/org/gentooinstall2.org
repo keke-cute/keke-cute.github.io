@@ -1,0 +1,9 @@
+#+title: Gentoo Install(LUKS,BTRFS)
+#+author: keke
+#+email: liushike1997@gmail.com
+#+date: <2020-04-30 Thu>
+#+export_file_name: ~/keke-cute.github.io/blog/gentooinstall2.html
+#+options: creator:t author:t
+
+* Livecd
+[[http://www.system-rescue-cd.org/]]
