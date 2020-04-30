@@ -6,4 +6,8 @@
 #+options: creator:t author:t
 
 * Livecd
-[[http://www.system-rescue-cd.org/]]
+  [[http://www.system-rescue-cd.org/]]
+* 
+  #+BEGIN_SRC bash
+    lsblk
+  #+END_SRC
