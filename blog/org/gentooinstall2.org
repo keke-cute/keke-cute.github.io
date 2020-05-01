@@ -31,3 +31,15 @@
   #+begin_src bash
     ❯ cryptsetup luksHeaderBackup /dev/sda1 --header-backup-file /path/to/you/want/luks-header.img
   #+end_src
+* 打开加密过的分区并格式化为btrfs文件系统 📃
+  #+begin_src bash
+    ❯ cryptsetup luksOpen /dev/sda1 root
+    Enter passphrase for /dev/sda1: ...
+  #+end_src
+  格式化并挂载
+  #+begin_src bash
+    ❯ mkfs.btrfs /dev/mapper/root
+      mkdir /mnt/gentoo
+      mount /dev/mapper/root /mnt/gentoo
+      cd /mnt/gentoo
+  #+end_src
