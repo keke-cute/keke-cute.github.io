@@ -4,13 +4,17 @@
 #+date: <2020-04-30 Thu>
 #+export_file_name: ~/keke-cute.github.io/blog/gentooinstall2.html
 #+options: creator:t author:t
-* Livecd
+* Livecd 💿
   [[http://www.system-rescue-cd.org/]]
-* 
+* 分区 💾
   #+BEGIN_SRC bash
     ❯ lsblk
     NAME     MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT
     sda        8:0    0  477G  0 disk
     └─sda1     8:1    0  477G  0 part
       └─root 254:0    0  477G  0 crypt /
+    ❯ fdisk /dev/sda1
+    o 建立新的dos分区表
+    n 建立新的分区
+    w 写入分区表
   #+END_SRC

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-01 Fri 11:05 -->
+<!-- 2020-05-01 Fri 11:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gentoo Install(LUKS,BTRFS)</title>
@@ -225,21 +225,21 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc16d649">1. Livecd</a></li>
-<li><a href="#org48e9fcf">2. </a></li>
+<li><a href="#org9858e97">1. Livecd 💿</a></li>
+<li><a href="#org58f3783">2. 分区 💾</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc16d649" class="outline-2">
-<h2 id="orgc16d649"><span class="section-number-2">1</span> Livecd</h2>
+<div id="outline-container-org9858e97" class="outline-2">
+<h2 id="org9858e97"><span class="section-number-2">1</span> Livecd 💿</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <a href="http://www.system-rescue-cd.org/">http://www.system-rescue-cd.org/</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org48e9fcf" class="outline-2">
-<h2 id="org48e9fcf"><span class="section-number-2">2</span> </h2>
+<div id="outline-container-org58f3783" class="outline-2">
+<h2 id="org58f3783"><span class="section-number-2">2</span> 分区 💾</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-bash">❯ lsblk
@@ -247,6 +247,10 @@ NAME     MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT
 sda        8:0    0  477G  0 disk
 └─sda1     8:1    0  477G  0 part
   └─root 254:0    0  477G  0 crypt /
+❯ fdisk /dev/sda1
+o 建立新的dos分区表
+n 建立新的分区
+w 写入分区表
 </pre>
 </div>
 </div>
@@ -255,7 +259,7 @@ sda        8:0    0  477G  0 disk
 <div id="postamble" class="status">
 <p class="date">Date: 2020-04-30 Thu 00:00</p>
 <p class="author">Author: keke</p>
-<p class="date">Created: 2020-05-01 Fri 11:05</p>
+<p class="date">Created: 2020-05-01 Fri 11:14</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.6)</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
