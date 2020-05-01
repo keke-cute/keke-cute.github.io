@@ -18,3 +18,16 @@
     n 建立新的分区
     w 写入分区表
   #+END_SRC
+* 使用luks加密该分区 🔐
+  #+begin_src bash
+    ❯ cryptsetup -s 512 luksFormat /dev/sda1
+    This will overwrite data on /dev/sda1 irrevocably.
+
+    Are you sure? (Type uppercase yes): YES
+    Enter LUKS passphrase: ...
+    Verify passphrase: ...
+  #+end_src
+  备份luks标头文件，忘记密码的时候可以恢复📃
+  #+begin_src bash
+    ❯ cryptsetup luksHeaderBackup /dev/sda1 --header-backup-file /path/to/you/want/luks-header.img
+  #+end_src

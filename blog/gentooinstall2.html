@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-01 Fri 11:14 -->
+<!-- 2020-05-01 Fri 13:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gentoo Install(LUKS,BTRFS)</title>
@@ -225,21 +225,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9858e97">1. Livecd 💿</a></li>
-<li><a href="#org58f3783">2. 分区 💾</a></li>
+<li><a href="#org3c54415">1. Livecd 💿</a></li>
+<li><a href="#org6bec951">2. 分区 💾</a></li>
+<li><a href="#org2584f28">3. 使用luks加密该分区 🔐</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9858e97" class="outline-2">
-<h2 id="org9858e97"><span class="section-number-2">1</span> Livecd 💿</h2>
+<div id="outline-container-org3c54415" class="outline-2">
+<h2 id="org3c54415"><span class="section-number-2">1</span> Livecd 💿</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <a href="http://www.system-rescue-cd.org/">http://www.system-rescue-cd.org/</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org58f3783" class="outline-2">
-<h2 id="org58f3783"><span class="section-number-2">2</span> 分区 💾</h2>
+<div id="outline-container-org6bec951" class="outline-2">
+<h2 id="org6bec951"><span class="section-number-2">2</span> 分区 💾</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-bash">❯ lsblk
@@ -255,11 +256,32 @@ w 写入分区表
 </div>
 </div>
 </div>
+<div id="outline-container-org2584f28" class="outline-2">
+<h2 id="org2584f28"><span class="section-number-2">3</span> 使用luks加密该分区 🔐</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-bash">❯ cryptsetup -s 512 luksFormat /dev/sda1
+This will overwrite data on /dev/sda1 irrevocably.
+
+Are you sure? (Type uppercase yes): YES
+Enter LUKS passphrase: ...
+Verify passphrase: ...
+</pre>
+</div>
+<p>
+备份luks标头文件，忘记密码的时候可以恢复📃
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">❯ cryptsetup luksHeaderBackup /dev/sda1 --header-backup-file /path/to/you/want/luks-header.img
+</pre>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2020-04-30 Thu 00:00</p>
 <p class="author">Author: keke</p>
-<p class="date">Created: 2020-05-01 Fri 11:14</p>
+<p class="date">Created: 2020-05-01 Fri 13:53</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.6)</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
