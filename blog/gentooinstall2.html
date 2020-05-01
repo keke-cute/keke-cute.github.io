@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-01 Fri 13:59 -->
+<!-- 2020-05-01 Fri 14:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gentoo Install(LUKS,BTRFS)</title>
@@ -225,23 +225,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd90c261">1. Livecd 💿</a></li>
-<li><a href="#org9a230e6">2. 分区 💾</a></li>
-<li><a href="#org697c84b">3. 使用luks加密该分区 🔐</a></li>
-<li><a href="#org4fd336f">4. 打开加密过的分区并格式化为btrfs文件系统 📃</a></li>
+<li><a href="#org4d0fa5f">1. Livecd 💿</a></li>
+<li><a href="#orgd129002">2. 分区 💾</a></li>
+<li><a href="#orgff8f9fc">3. 使用luks加密该分区 🔐</a></li>
+<li><a href="#orgb2d14c2">4. 打开加密过的分区并格式化为btrfs文件系统 📃</a></li>
+<li><a href="#org2a18f0a">5. 基本系统安装 🔌</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd90c261" class="outline-2">
-<h2 id="orgd90c261"><span class="section-number-2">1</span> Livecd 💿</h2>
+<div id="outline-container-org4d0fa5f" class="outline-2">
+<h2 id="org4d0fa5f"><span class="section-number-2">1</span> Livecd 💿</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <a href="http://www.system-rescue-cd.org/">http://www.system-rescue-cd.org/</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org9a230e6" class="outline-2">
-<h2 id="org9a230e6"><span class="section-number-2">2</span> 分区 💾</h2>
+<div id="outline-container-orgd129002" class="outline-2">
+<h2 id="orgd129002"><span class="section-number-2">2</span> 分区 💾</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-bash">❯ lsblk
@@ -257,8 +258,8 @@ w 写入分区表
 </div>
 </div>
 </div>
-<div id="outline-container-org697c84b" class="outline-2">
-<h2 id="org697c84b"><span class="section-number-2">3</span> 使用luks加密该分区 🔐</h2>
+<div id="outline-container-orgff8f9fc" class="outline-2">
+<h2 id="orgff8f9fc"><span class="section-number-2">3</span> 使用luks加密该分区 🔐</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-bash">❯ cryptsetup -s 512 luksFormat /dev/sda1
@@ -278,8 +279,8 @@ Verify passphrase: ...
 </div>
 </div>
 </div>
-<div id="outline-container-org4fd336f" class="outline-2">
-<h2 id="org4fd336f"><span class="section-number-2">4</span> 打开加密过的分区并格式化为btrfs文件系统 📃</h2>
+<div id="outline-container-orgb2d14c2" class="outline-2">
+<h2 id="orgb2d14c2"><span class="section-number-2">4</span> 打开加密过的分区并格式化为btrfs文件系统 📃</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 <pre class="src src-bash">❯ cryptsetup luksOpen /dev/sda1 root
@@ -293,7 +294,95 @@ Enter passphrase for /dev/sda1: ...
 <pre class="src src-bash">❯ mkfs.btrfs /dev/mapper/root
   mkdir /mnt/gentoo
   mount /dev/mapper/root /mnt/gentoo
-  cd /mnt/gentoo
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2a18f0a" class="outline-2">
+<h2 id="org2a18f0a"><span class="section-number-2">5</span> 基本系统安装 🔌</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+下载并解压到根目录stage3文件
+</p>
+
+<p>
+<a href="https://mirrors.tuna.tsinghua.edu.cn/gentoo/">https://mirrors.tuna.tsinghua.edu.cn/gentoo/</a>
+</p>
+
+<p>
+进入镜像站的/gentoo/releases/amd64/autobuilds/目录，选择想要的stage3类型比如nomultilib(stage3-amd64-nomultilib-20200212T214502Z.tar.xz)
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">❯ cd /mnt/gentoo
+  wget https://mirrors.tuna.tsinghua.edu.cn/gentoo/releases/amd64/autobuilds/current-stage3-amd64-nomultilib/stage3-amd64-nomultilib-20200212T214502Z.tar.xz
+  tar vxpf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
+</pre>
+</div>
+<p>
+配置make.conf&amp;gentoo.conf,手动clone gentoo mirror repos
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">❯ nano /mnt/gentoo/etc/portage/make.conf
+</pre>
+</div>
+<p>
+my thinkpad x220 laptop:
+</p>
+<div class="org-src-container">
+<pre class="src src-conf"># GCC
+CFLAGS="-march=sandybridge -O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+CHOST="x86_64-pc-linux-gnu"
+CPU_FLAGS_X86="aes avx mmx mmxext popcnt sse sse2 sse3 sse4_1 sse4_2 ssse3"
+MAKEOPTS="-j5"
+
+# USE
+USE="-bindist pulseaudio gtk"
+
+# Portage
+GENTOO_MIRRORS="https://mirrors.tuna.tsinghua.edu.cn/gentoo/"
+EMERGE_DEFAULT_OPTS="--ask --verbose=y --keep-going --with-bdeps=y --load-average"
+# FEATURES="${FEATURES} -userpriv -usersandbox -sandbox"
+ACCEPT_KEYWORDS="~amd64"
+ACCEPT_LICENSE="*"
+
+# Language
+L10N="en-US zh-CN en zh"
+LINGUAS="en_US zh_CN en zh"
+
+# Else
+VIDEO_CARDS="intel i965"
+GRUB_PLATFORMS="pc coreboot"
+</pre>
+</div>
+<p>
+my ryzen pc:
+</p>
+<div class="org-src-container">
+<pre class="src src-conf"># GCC
+CFLAGS="-march=znver1 -O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+CHOST="x86_64-pc-linux-gnu"
+CPU_FLAGS_X86="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt sse sse2 sse3 sse4_1 sse4_2 sse4a ssse3"
+MAKEOPTS="-j13"
+
+# USE
+USE="-bindist pulseaudio gtk"
+
+# Portage
+GENTOO_MIRRORS="https://mirrors.tuna.tsinghua.edu.cn/gentoo/"
+EMERGE_DEFAULT_OPTS="--ask --verbose=y --keep-going --with-bdeps=y --load-average"
+# FEATURES="${FEATURES} -userpriv -usersandbox -sandbox"
+ACCEPT_KEYWORDS="~amd64"
+ACCEPT_LICENSE="*"
+
+# Language
+L10N="en-US zh-CN en zh"
+LINGUAS="en_US zh_CN en zh"
+
+# Else
+VIDEO_CARDS="amdgpu radeonsi"
+GRUB_PLATFORMS="pc"
 </pre>
 </div>
 </div>
@@ -302,7 +391,7 @@ Enter passphrase for /dev/sda1: ...
 <div id="postamble" class="status">
 <p class="date">Date: 2020-04-30 Thu 00:00</p>
 <p class="author">Author: keke</p>
-<p class="date">Created: 2020-05-01 Fri 13:59</p>
+<p class="date">Created: 2020-05-01 Fri 14:15</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.6)</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
