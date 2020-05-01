@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-01 Fri 14:15 -->
+<!-- 2020-05-01 Fri 14:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gentoo Install(LUKS,BTRFS)</title>
@@ -225,24 +225,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4d0fa5f">1. Livecd 💿</a></li>
-<li><a href="#orgd129002">2. 分区 💾</a></li>
-<li><a href="#orgff8f9fc">3. 使用luks加密该分区 🔐</a></li>
-<li><a href="#orgb2d14c2">4. 打开加密过的分区并格式化为btrfs文件系统 📃</a></li>
-<li><a href="#org2a18f0a">5. 基本系统安装 🔌</a></li>
+<li><a href="#orgad1b7ec">1. Livecd 💿</a></li>
+<li><a href="#orgf152ad4">2. 分区 💾</a></li>
+<li><a href="#orge040948">3. 使用luks加密该分区 🔐</a></li>
+<li><a href="#org07717f3">4. 打开加密过的分区并格式化为btrfs文件系统 📃</a></li>
+<li><a href="#org92f798b">5. 基本系统安装 🔌</a></li>
+<li><a href="#org440d64d">6. 配置时区和地区 🌍</a></li>
+<li><a href="#org5b26a8a">7. FSTAB 🪀</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4d0fa5f" class="outline-2">
-<h2 id="org4d0fa5f"><span class="section-number-2">1</span> Livecd 💿</h2>
+<div id="outline-container-orgad1b7ec" class="outline-2">
+<h2 id="orgad1b7ec"><span class="section-number-2">1</span> Livecd 💿</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <a href="http://www.system-rescue-cd.org/">http://www.system-rescue-cd.org/</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orgd129002" class="outline-2">
-<h2 id="orgd129002"><span class="section-number-2">2</span> 分区 💾</h2>
+<div id="outline-container-orgf152ad4" class="outline-2">
+<h2 id="orgf152ad4"><span class="section-number-2">2</span> 分区 💾</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-bash">❯ lsblk
@@ -258,8 +260,8 @@ w 写入分区表
 </div>
 </div>
 </div>
-<div id="outline-container-orgff8f9fc" class="outline-2">
-<h2 id="orgff8f9fc"><span class="section-number-2">3</span> 使用luks加密该分区 🔐</h2>
+<div id="outline-container-orge040948" class="outline-2">
+<h2 id="orge040948"><span class="section-number-2">3</span> 使用luks加密该分区 🔐</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-bash">❯ cryptsetup -s 512 luksFormat /dev/sda1
@@ -279,8 +281,8 @@ Verify passphrase: ...
 </div>
 </div>
 </div>
-<div id="outline-container-orgb2d14c2" class="outline-2">
-<h2 id="orgb2d14c2"><span class="section-number-2">4</span> 打开加密过的分区并格式化为btrfs文件系统 📃</h2>
+<div id="outline-container-org07717f3" class="outline-2">
+<h2 id="org07717f3"><span class="section-number-2">4</span> 打开加密过的分区并格式化为btrfs文件系统 📃</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 <pre class="src src-bash">❯ cryptsetup luksOpen /dev/sda1 root
@@ -298,8 +300,8 @@ Enter passphrase for /dev/sda1: ...
 </div>
 </div>
 </div>
-<div id="outline-container-org2a18f0a" class="outline-2">
-<h2 id="org2a18f0a"><span class="section-number-2">5</span> 基本系统安装 🔌</h2>
+<div id="outline-container-org92f798b" class="outline-2">
+<h2 id="org92f798b"><span class="section-number-2">5</span> 基本系统安装 🔌</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 下载并解压到根目录stage3文件
@@ -385,13 +387,113 @@ VIDEO_CARDS="amdgpu radeonsi"
 GRUB_PLATFORMS="pc"
 </pre>
 </div>
+<p>
+配置repos:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">❯ mkdir /mnt/gentoo/etc/portage/repos.conf
+  nano /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-conf">[DEFAULT]
+main-repo = gentoo
+
+[gentoo]
+location = /var/db/repos/gentoo
+sync-type = git
+sync-uri = https://github.com/gentoo-mirror/gentoo
+auto-sync = yes
+</pre>
+</div>
+<p>
+手动clone gentoo mirror repos:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">❯ git clone --depths=1 https://github.com/gentoo-mirror/gentoo /mnt/gentoo/var/db/repos/gentoo
+</pre>
+</div>
+
+<p>
+复制相关文件并chroot:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"># DNS
+❯ cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+# MOUNT
+❯
+  mount -t proc none proc 
+  mount --rbind /sys sys 
+  mount --rbind /dev dev
+# CHROOT
+❯
+  chroot /mnt/gentoo /bin/bash
+  source /etc/profile
+  export PS1="(chroot) ${PS1}"  
+</pre>
+</div>
+<p>
+安装基础程序:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">❯ emerge -av dev-vcs/git eix
+</pre>
+</div>
+<p>
+选择profile:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">❯ eselect profile list
+  eselect profile set x
+</pre>
+</div>
+<p>
+更新系统:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">❯ eix-sync(可选)
+❯ emerge -avuDN @world
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org440d64d" class="outline-2">
+<h2 id="org440d64d"><span class="section-number-2">6</span> 配置时区和地区 🌍</h2>
+<div class="outline-text-2" id="text-6">
+<div class="org-src-container">
+<pre class="src src-bash">❯
+  echo "Asia/Shanghai" &gt; /etc/timezone
+  emerge --config sys-libs/timezone-data
+
+  echo "en_US.UTF-8 UTF-8
+  zh_CN.UTF-8 UTF-8" &gt;&gt; /etc/locale.gen
+
+  locale-gen
+
+  eselect locale list
+
+  eselect locale set X
+
+  #修改主机名
+  echo hostname=\"Thinkpad\" &gt; /etc/conf.d/hostname
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5b26a8a" class="outline-2">
+<h2 id="org5b26a8a"><span class="section-number-2">7</span> FSTAB 🪀</h2>
+<div class="outline-text-2" id="text-7">
+<div class="org-src-container">
+<pre class="src src-bash">
+</pre>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2020-04-30 Thu 00:00</p>
 <p class="author">Author: keke</p>
-<p class="date">Created: 2020-05-01 Fri 14:15</p>
+<p class="date">Created: 2020-05-01 Fri 14:31</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.6)</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

@@ -111,3 +111,74 @@
     VIDEO_CARDS="amdgpu radeonsi"
     GRUB_PLATFORMS="pc"
   #+end_src
+  配置repos:
+  #+begin_src bash
+    ❯ mkdir /mnt/gentoo/etc/portage/repos.conf
+      nano /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+  #+end_src
+  #+begin_src conf
+    [DEFAULT]
+    main-repo = gentoo
+
+    [gentoo]
+    location = /var/db/repos/gentoo
+    sync-type = git
+    sync-uri = https://github.com/gentoo-mirror/gentoo
+    auto-sync = yes
+  #+end_src
+  手动clone gentoo mirror repos:
+  #+begin_src bash
+    ❯ git clone --depths=1 https://github.com/gentoo-mirror/gentoo /mnt/gentoo/var/db/repos/gentoo
+  #+end_src
+
+  复制相关文件并chroot:
+  #+begin_src bash
+    # DNS
+    ❯ cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+    # MOUNT
+    ❯
+      mount -t proc none proc 
+      mount --rbind /sys sys 
+      mount --rbind /dev dev
+    # CHROOT
+    ❯
+      chroot /mnt/gentoo /bin/bash
+      source /etc/profile
+      export PS1="(chroot) ${PS1}"  
+  #+end_src
+  安装基础程序:
+  #+begin_src bash
+    ❯ emerge -av dev-vcs/git eix
+  #+end_src
+  选择profile:
+  #+begin_src bash
+    ❯ eselect profile list
+      eselect profile set x
+  #+end_src
+  更新系统:
+  #+begin_src bash
+    ❯ eix-sync(可选)
+    ❯ emerge -avuDN @world
+  #+end_src
+* 配置时区和地区 🌍
+  #+begin_src bash
+    ❯
+      echo "Asia/Shanghai" > /etc/timezone
+      emerge --config sys-libs/timezone-data
+
+      echo "en_US.UTF-8 UTF-8
+      zh_CN.UTF-8 UTF-8" >> /etc/locale.gen
+
+      locale-gen
+
+      eselect locale list
+
+      eselect locale set X
+
+      #修改主机名
+      echo hostname=\"Thinkpad\" > /etc/conf.d/hostname
+  #+end_src
+* FSTAB 🪀
+  #+begin_src bash
+  
+  #+end_src
