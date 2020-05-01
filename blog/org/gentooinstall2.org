@@ -8,5 +8,9 @@
   [[http://www.system-rescue-cd.org/]]
 * 
   #+BEGIN_SRC bash
-    lsblk
+    ❯ lsblk
+    NAME     MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT
+    sda        8:0    0  477G  0 disk
+    └─sda1     8:1    0  477G  0 part
+      └─root 254:0    0  477G  0 crypt /
   #+END_SRC
