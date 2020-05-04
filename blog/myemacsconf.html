@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-24 Fri 14:51 -->
+<!-- 2020-05-04 Mon 20:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>我的Emacs配置</title>
@@ -161,19 +161,6 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
-  .equation-container {
-    display: table;
-    text-align: center;
-    width: 100%;
-  }
-  .equation {
-    vertical-align: middle;
-  }
-  .equation-label {
-    display: table-cell;
-    text-align: right;
-    vertical-align: middle;
-  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -198,7 +185,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -247,47 +234,47 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org38b0e5e">1. Preview</a></li>
-<li><a href="#org317a058">2. Is A?</a></li>
-<li><a href="#orgcc7b022">3. 初始化 straight.el 插件管理</a></li>
-<li><a href="#org4b122b3">4. 预下载基础包</a></li>
-<li><a href="#orga967fa7">5. 载入启动界面</a></li>
-<li><a href="#orgaa8c7fb">6. 主程序的一些设置</a>
+<li><a href="#org7a67346">1. Preview</a></li>
+<li><a href="#orgb719e13">2. Is A?</a></li>
+<li><a href="#orgb5d9d0e">3. 初始化 straight.el 插件管理</a></li>
+<li><a href="#orgb035cdb">4. 预下载基础包</a></li>
+<li><a href="#org7438835">5. 载入启动界面</a></li>
+<li><a href="#orgab87fac">6. 主程序的一些设置</a>
 <ul>
-<li><a href="#org4a891b6">6.1. UI</a></li>
-<li><a href="#org74e31d1">6.2. 透明度</a></li>
-<li><a href="#org1c9403a">6.3. 默认功能设置</a></li>
-<li><a href="#org4523f0d">6.4. 字体</a>
+<li><a href="#org9a6e94b">6.1. UI</a></li>
+<li><a href="#orgca0bf20">6.2. 透明度</a></li>
+<li><a href="#orge1323e8">6.3. 默认功能设置</a></li>
+<li><a href="#org03af3e5">6.4. 字体</a>
 <ul>
-<li><a href="#orgc7a0513">6.4.1. doom-modeline</a></li>
-<li><a href="#orgc601784">6.4.2. doom-themes</a></li>
+<li><a href="#org7b8f2c6">6.4.1. doom-modeline</a></li>
+<li><a href="#orgcbebb23">6.4.2. doom-themes</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orge4da7cd">7. Org-mode</a></li>
-<li><a href="#orga6415db">8. 包的配置</a>
+<li><a href="#org90452b1">7. Org-mode</a></li>
+<li><a href="#orgc0b668d">8. 包的配置</a>
 <ul>
-<li><a href="#org13de777">8.1. yasnippet</a></li>
-<li><a href="#orgeaaeb01">8.2. IVY all</a></li>
-<li><a href="#org73969e3">8.3. magit</a></li>
-<li><a href="#orgaec3c5f">8.4. rime</a></li>
-<li><a href="#org88d256d">8.5. nox</a></li>
-<li><a href="#orgaf218cd">8.6. company</a></li>
+<li><a href="#orga49c9b6">8.1. yasnippet</a></li>
+<li><a href="#orga15fdab">8.2. IVY all</a></li>
+<li><a href="#org77d5928">8.3. magit</a></li>
+<li><a href="#org7d05c2e">8.4. rime</a></li>
+<li><a href="#org3b30e3d">8.5. nox</a></li>
+<li><a href="#org432f076">8.6. company</a></li>
 </ul>
 </li>
-<li><a href="#org8d526c7">9. 键位配置</a></li>
-<li><a href="#orgdcb7c73">10. 一些好用的函数</a>
+<li><a href="#org8e4bf51">9. 键位配置</a></li>
+<li><a href="#orgb3f8072">10. 一些好用的函数</a>
 <ul>
-<li><a href="#orgd1bbcf3">10.1. keke-run-current-file</a></li>
-<li><a href="#orgfeb98a3">10.2. keke-html-open-in-chrome-browser</a></li>
+<li><a href="#orgda4cc5a">10.1. keke-run-current-file</a></li>
+<li><a href="#orgfb22e76">10.2. keke-html-open-in-chrome-browser</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org38b0e5e" class="outline-2">
-<h2 id="org38b0e5e"><span class="section-number-2">1</span> Preview</h2>
+<div id="outline-container-org7a67346" class="outline-2">
+<h2 id="org7a67346"><span class="section-number-2">1</span> Preview</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <img src="https://s1.ax1x.com/2020/03/29/GVOav9.png" alt="GVOav9.png" />
@@ -295,29 +282,29 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-org317a058" class="outline-2">
-<h2 id="org317a058"><span class="section-number-2">2</span> Is A?</h2>
+<div id="outline-container-orgb719e13" class="outline-2">
+<h2 id="orgb719e13"><span class="section-number-2">2</span> Is A?</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(defconst *is-a-mac* (eq system-type 'darwin))
-(defconst *is-a-linux* (eq system-type 'gnu/linux))
+<pre class="src src-emacs-lisp">(<span style="color: #F92660;">defconst</span> <span style="color: #F8F8F2;">*is-a-mac*</span> (eq system-type 'darwin))
+(<span style="color: #F92660;">defconst</span> <span style="color: #F8F8F2;">*is-a-linux*</span> (eq system-type 'gnu/linux))
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgcc7b022" class="outline-2">
-<h2 id="orgcc7b022"><span class="section-number-2">3</span> 初始化 straight.el 插件管理</h2>
+<div id="outline-container-orgb5d9d0e" class="outline-2">
+<h2 id="orgb5d9d0e"><span class="section-number-2">3</span> 初始化 straight.el 插件管理</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(defvar bootstrap-version)
-(let ((bootstrap-file
-       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+<pre class="src src-emacs-lisp">(<span style="color: #F92660;">defvar</span> <span style="color: #F8F8F2;">bootstrap-version</span>)
+(<span style="color: #F92660;">let</span> ((bootstrap-file
+       (expand-file-name <span style="color: #E6DB74;">"straight/repos/straight.el/bootstrap.el"</span> user-emacs-directory))
       (bootstrap-version 5))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-	(url-retrieve-synchronously
-	 "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-	 'silent 'inhibit-cookies)
+  (<span style="color: #F92660;">unless</span> (file-exists-p bootstrap-file)
+    (<span style="color: #F92660;">with-current-buffer</span>
+        (url-retrieve-synchronously
+         <span style="color: #E6DB74;">"https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"</span>
+         'silent 'inhibit-cookies)
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
@@ -325,58 +312,59 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org4b122b3" class="outline-2">
-<h2 id="org4b122b3"><span class="section-number-2">4</span> 预下载基础包</h2>
+<div id="outline-container-orgb035cdb" class="outline-2">
+<h2 id="orgb035cdb"><span class="section-number-2">4</span> 预下载基础包</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(add-to-list 'load-path "~/.emacs.d/el/")
+<pre class="src src-emacs-lisp">(add-to-list 'load-path <span style="color: #E6DB74;">"~/.emacs.d/el/"</span>)
 (straight-use-package 'use-package)
 (straight-use-package 'posframe)
 (straight-use-package 'company)
 (straight-use-package 'vterm)
+(straight-use-package 'htmlize)
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orga967fa7" class="outline-2">
-<h2 id="orga967fa7"><span class="section-number-2">5</span> 载入启动界面</h2>
+<div id="outline-container-org7438835" class="outline-2">
+<h2 id="org7438835"><span class="section-number-2">5</span> 载入启动界面</h2>
 <div class="outline-text-2" id="text-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'dashboard)
-(use-package dashboard
-  :config
+(<span style="color: #F92660;">use-package</span> <span style="color: #9C91E4;">dashboard</span>
+  <span style="color: #FD971F;">:config</span>
   (dashboard-setup-startup-hook)
-  (setq dashboard-banner-logo-title ";;; Happy Hacking Keke , Emacs Love You ~")
-;;  (setq dashboard-startup-banner "~/.emacs.d/logo.png")
-  (setq dashboard-set-heading-icons t)
-  (setq dashboard-items '((recents  . 5)
-			(agenda . 5)))
-  (setq dashboard-set-file-icons t))
+  (<span style="color: #F92660;">setq</span> dashboard-banner-logo-title <span style="color: #E6DB74;">";;; Happy Hacking Keke , Emacs Love You ~"</span>)
+<span style="color: #555556; font-style: italic;">;;  </span><span style="color: #555556; font-style: italic;">(setq dashboard-startup-banner "~/.emacs.d/logo.png")</span>
+  (<span style="color: #F92660;">setq</span> dashboard-set-heading-icons t)
+  (<span style="color: #F92660;">setq</span> dashboard-items '((recents  . 5)
+                        (agenda . 5)))
+  (<span style="color: #F92660;">setq</span> dashboard-set-file-icons t))
 
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgaa8c7fb" class="outline-2">
-<h2 id="orgaa8c7fb"><span class="section-number-2">6</span> 主程序的一些设置</h2>
+<div id="outline-container-orgab87fac" class="outline-2">
+<h2 id="orgab87fac"><span class="section-number-2">6</span> 主程序的一些设置</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org4a891b6" class="outline-3">
-<h3 id="org4a891b6"><span class="section-number-3">6.1</span> UI</h3>
+<div id="outline-container-org9a6e94b" class="outline-3">
+<h3 id="org9a6e94b"><span class="section-number-3">6.1</span> UI</h3>
 <div class="outline-text-3" id="text-6-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"> (menu-bar-mode -1)
  (tool-bar-mode -1)
  (scroll-bar-mode -1)
  (global-linum-mode 1)
-;; (setq inhibit-startup-message t)
+<span style="color: #555556; font-style: italic;">;; </span><span style="color: #555556; font-style: italic;">(setq inhibit-startup-message t)</span>
  (global-hl-line-mode t)
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org74e31d1" class="outline-3">
-<h3 id="org74e31d1"><span class="section-number-3">6.2</span> 透明度</h3>
+<div id="outline-container-orgca0bf20" class="outline-3">
+<h3 id="orgca0bf20"><span class="section-number-3">6.2</span> 透明度</h3>
 <div class="outline-text-3" id="text-6-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(add-to-list 'default-frame-alist'(ns-transparent-titlebar . t))
@@ -386,73 +374,73 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org1c9403a" class="outline-3">
-<h3 id="org1c9403a"><span class="section-number-3">6.3</span> 默认功能设置</h3>
+<div id="outline-container-orge1323e8" class="outline-3">
+<h3 id="orge1323e8"><span class="section-number-3">6.3</span> 默认功能设置</h3>
 <div class="outline-text-3" id="text-6-3">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">;; 自动加载外部修改过的文件
+<pre class="src src-emacs-lisp"><span style="color: #555556; font-style: italic;">;; </span><span style="color: #555556; font-style: italic;">&#33258;&#21160;&#21152;&#36733;&#22806;&#37096;&#20462;&#25913;&#36807;&#30340;&#25991;&#20214;</span>
 (global-auto-revert-mode 1)
-;; 关闭自己生产的保存文件
-(setq auto-save-default nil)
-;; 关闭自己生产的备份文件
-(setq make-backup-files nil)
-;; 选中某个区域继续编辑可以替换掉该区域
+<span style="color: #555556; font-style: italic;">;; </span><span style="color: #555556; font-style: italic;">&#20851;&#38381;&#33258;&#24049;&#29983;&#20135;&#30340;&#20445;&#23384;&#25991;&#20214;</span>
+(<span style="color: #F92660;">setq</span> auto-save-default nil)
+<span style="color: #555556; font-style: italic;">;; </span><span style="color: #555556; font-style: italic;">&#20851;&#38381;&#33258;&#24049;&#29983;&#20135;&#30340;&#22791;&#20221;&#25991;&#20214;</span>
+(<span style="color: #F92660;">setq</span> make-backup-files nil)
+<span style="color: #555556; font-style: italic;">;; </span><span style="color: #555556; font-style: italic;">&#36873;&#20013;&#26576;&#20010;&#21306;&#22495;&#32487;&#32493;&#32534;&#36753;&#21487;&#20197;&#26367;&#25442;&#25481;&#35813;&#21306;&#22495;</span>
 (delete-selection-mode 1)
-;; 设置h 文件默认为c++文件
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+<span style="color: #555556; font-style: italic;">;; </span><span style="color: #555556; font-style: italic;">&#35774;&#32622;h &#25991;&#20214;&#40664;&#35748;&#20026;c++&#25991;&#20214;</span>
+(add-to-list 'auto-mode-alist '(<span style="color: #E6DB74;">"\\.h\\'"</span> . c++-mode))
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org4523f0d" class="outline-3">
-<h3 id="org4523f0d"><span class="section-number-3">6.4</span> 字体</h3>
+<div id="outline-container-org03af3e5" class="outline-3">
+<h3 id="org03af3e5"><span class="section-number-3">6.4</span> 字体</h3>
 <div class="outline-text-3" id="text-6-4">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(when *is-a-mac*
-(set-frame-font "Operator Mono 16"))
-(when *is-a-linux*
-  (set-frame-font "Operator Mono Light 10"))
-(if (version&lt; "27.0" emacs-version)
-	   (set-fontset-font
-	    "fontset-default" 'unicode "Noto Color Emoji" nil 'prepend)
-	 (set-fontset-font
-	  t 'symbol (font-spec :family "Noto Color Emoji") nil 'prepend))
+<pre class="src src-emacs-lisp">(<span style="color: #F92660;">when</span> *is-a-mac*
+(set-frame-font <span style="color: #E6DB74;">"Operator Mono 16"</span>))
+(<span style="color: #F92660;">when</span> *is-a-linux*
+  (set-frame-font <span style="color: #E6DB74;">"Operator Mono Light 10"</span>))
+(<span style="color: #F92660;">if</span> (version&lt; <span style="color: #E6DB74;">"27.0"</span> emacs-version)
+           (set-fontset-font
+            <span style="color: #E6DB74;">"fontset-default"</span> 'unicode <span style="color: #E6DB74;">"Noto Color Emoji"</span> nil 'prepend)
+         (set-fontset-font
+          t 'symbol (font-spec <span style="color: #FD971F;">:family</span> <span style="color: #E6DB74;">"Noto Color Emoji"</span>) nil 'prepend))
 </pre>
 </div>
 </div>
-<div id="outline-container-orgc7a0513" class="outline-4">
-<h4 id="orgc7a0513"><span class="section-number-4">6.4.1</span> doom-modeline</h4>
+<div id="outline-container-org7b8f2c6" class="outline-4">
+<h4 id="org7b8f2c6"><span class="section-number-4">6.4.1</span> doom-modeline</h4>
 <div class="outline-text-4" id="text-6-4-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'doom-modeline)
-(use-package doom-modeline
-  :init (doom-modeline-mode 1))
+(<span style="color: #F92660;">use-package</span> <span style="color: #9C91E4;">doom-modeline</span>
+  <span style="color: #FD971F;">:init</span> (doom-modeline-mode 1))
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc601784" class="outline-4">
-<h4 id="orgc601784"><span class="section-number-4">6.4.2</span> doom-themes</h4>
+<div id="outline-container-orgcbebb23" class="outline-4">
+<h4 id="orgcbebb23"><span class="section-number-4">6.4.2</span> doom-themes</h4>
 <div class="outline-text-4" id="text-6-4-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'doom-themes)
-(use-package doom-themes
-  :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-	doom-themes-enable-italic t) ; if nil, italics is universally disabled
+(<span style="color: #F92660;">use-package</span> <span style="color: #9C91E4;">doom-themes</span>
+  <span style="color: #FD971F;">:config</span>
+  <span style="color: #555556; font-style: italic;">;; </span><span style="color: #555556; font-style: italic;">Global settings (defaults)</span>
+  (<span style="color: #F92660;">setq</span> doom-themes-enable-bold t    <span style="color: #555556; font-style: italic;">; </span><span style="color: #555556; font-style: italic;">if nil, bold is universally disabled</span>
+        doom-themes-enable-italic t) <span style="color: #555556; font-style: italic;">; </span><span style="color: #555556; font-style: italic;">if nil, italics is universally disabled</span>
   (load-theme 'doom-monokai-classic t)
 
-  ;; Enable flashing mode-line on errors
+  <span style="color: #555556; font-style: italic;">;; </span><span style="color: #555556; font-style: italic;">Enable flashing mode-line on errors</span>
   (doom-themes-visual-bell-config)
 
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  <span style="color: #555556; font-style: italic;">;; </span><span style="color: #555556; font-style: italic;">Enable custom neotree theme (all-the-icons must be installed!)</span>
   (doom-themes-neotree-config)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+  <span style="color: #555556; font-style: italic;">;; </span><span style="color: #555556; font-style: italic;">or for treemacs users</span>
+  (<span style="color: #F92660;">setq</span> doom-themes-treemacs-theme <span style="color: #E6DB74;">"doom-colors"</span>) <span style="color: #555556; font-style: italic;">; </span><span style="color: #555556; font-style: italic;">use the colorful treemacs theme</span>
   (doom-themes-treemacs-config)
 
-  ;; Corrects (and improves) org-mode's native fontification.
+  <span style="color: #555556; font-style: italic;">;; </span><span style="color: #555556; font-style: italic;">Corrects (and improves) org-mode's native fontification.</span>
   (doom-themes-org-config))
 </pre>
 </div>
@@ -460,57 +448,57 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orge4da7cd" class="outline-2">
-<h2 id="orge4da7cd"><span class="section-number-2">7</span> Org-mode</h2>
+<div id="outline-container-org90452b1" class="outline-2">
+<h2 id="org90452b1"><span class="section-number-2">7</span> Org-mode</h2>
 <div class="outline-text-2" id="text-7">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
+<pre class="src src-emacs-lisp">(add-hook 'org-mode-hook (<span style="color: #F92660;">lambda</span> () (<span style="color: #F92660;">setq</span> truncate-lines nil)))
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orga6415db" class="outline-2">
-<h2 id="orga6415db"><span class="section-number-2">8</span> 包的配置</h2>
+<div id="outline-container-orgc0b668d" class="outline-2">
+<h2 id="orgc0b668d"><span class="section-number-2">8</span> 包的配置</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-org13de777" class="outline-3">
-<h3 id="org13de777"><span class="section-number-3">8.1</span> yasnippet</h3>
+<div id="outline-container-orga49c9b6" class="outline-3">
+<h3 id="orga49c9b6"><span class="section-number-3">8.1</span> yasnippet</h3>
 <div class="outline-text-3" id="text-8-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'yasnippet)
 (straight-use-package 'yasnippet-snippets)
-(use-package yasnippet
-  :commands
+(<span style="color: #F92660;">use-package</span> <span style="color: #9C91E4;">yasnippet</span>
+  <span style="color: #FD971F;">:commands</span>
   (yas-reload-all)
-  :init
+  <span style="color: #FD971F;">:init</span>
   (add-hook 'prog-mode-hook #'yas-minor-mode))
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgeaaeb01" class="outline-3">
-<h3 id="orgeaaeb01"><span class="section-number-3">8.2</span> IVY all</h3>
+<div id="outline-container-orga15fdab" class="outline-3">
+<h3 id="orga15fdab"><span class="section-number-3">8.2</span> IVY all</h3>
 <div class="outline-text-3" id="text-8-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'ivy)
 (straight-use-package 'counsel)
 (straight-use-package 'swiper)
 (straight-use-package 'all-the-icons-ivy-rich)
-(use-package ivy
-  :init
+(<span style="color: #F92660;">use-package</span> <span style="color: #9C91E4;">ivy</span>
+  <span style="color: #FD971F;">:init</span>
   (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t))
-(use-package all-the-icons-ivy-rich
-  :init (all-the-icons-ivy-rich-mode 1))
-(use-package ivy-rich
-  :init (ivy-rich-mode 1))
+  (<span style="color: #F92660;">setq</span> ivy-use-virtual-buffers t)
+  (<span style="color: #F92660;">setq</span> enable-recursive-minibuffers t))
+(<span style="color: #F92660;">use-package</span> <span style="color: #9C91E4;">all-the-icons-ivy-rich</span>
+  <span style="color: #FD971F;">:init</span> (all-the-icons-ivy-rich-mode 1))
+(<span style="color: #F92660;">use-package</span> <span style="color: #9C91E4;">ivy-rich</span>
+  <span style="color: #FD971F;">:init</span> (ivy-rich-mode 1))
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org73969e3" class="outline-3">
-<h3 id="org73969e3"><span class="section-number-3">8.3</span> magit</h3>
+<div id="outline-container-org77d5928" class="outline-3">
+<h3 id="org77d5928"><span class="section-number-3">8.3</span> magit</h3>
 <div class="outline-text-3" id="text-8-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'magit)
@@ -518,53 +506,53 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgaec3c5f" class="outline-3">
-<h3 id="orgaec3c5f"><span class="section-number-3">8.4</span> rime</h3>
+<div id="outline-container-org7d05c2e" class="outline-3">
+<h3 id="org7d05c2e"><span class="section-number-3">8.4</span> rime</h3>
 <div class="outline-text-3" id="text-8-4">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(use-package rime
-	     :straight (rime :type git
-			     :host github
-			     :repo "DogLooksGood/emacs-rime"
-			     :files ("*.el" "Makefile" "lib.c"))
-	     :custom
-	     (rime-show-candidate 'posframe)
-	     (default-input-method "rime"))
-(when *is-a-mac*
-  (use-package rime
-	       :custom
-	       (rime-librime-root "~/.emacs.d/librime/dist")))
+<pre class="src src-emacs-lisp">(<span style="color: #F92660;">use-package</span> <span style="color: #9C91E4;">rime</span>
+             <span style="color: #FD971F;">:straight</span> (rime <span style="color: #FD971F;">:type</span> git
+                             <span style="color: #FD971F;">:host</span> github
+                             <span style="color: #FD971F;">:repo</span> <span style="color: #E6DB74;">"DogLooksGood/emacs-rime"</span>
+                             <span style="color: #FD971F;">:files</span> (<span style="color: #E6DB74;">"*.el"</span> <span style="color: #E6DB74;">"Makefile"</span> <span style="color: #E6DB74;">"lib.c"</span>))
+             <span style="color: #FD971F;">:custom</span>
+             (rime-show-candidate 'posframe)
+             (default-input-method <span style="color: #E6DB74;">"rime"</span>))
+(<span style="color: #F92660;">when</span> *is-a-mac*
+  (<span style="color: #F92660;">use-package</span> <span style="color: #9C91E4;">rime</span>
+               <span style="color: #FD971F;">:custom</span>
+               (rime-librime-root <span style="color: #E6DB74;">"~/.emacs.d/librime/dist"</span>)))
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org88d256d" class="outline-3">
-<h3 id="org88d256d"><span class="section-number-3">8.5</span> nox</h3>
+<div id="outline-container-org3b30e3d" class="outline-3">
+<h3 id="org3b30e3d"><span class="section-number-3">8.5</span> nox</h3>
 <div class="outline-text-3" id="text-8-5">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(require 'nox)
+<pre class="src src-emacs-lisp">(<span style="color: #F92660;">require</span> '<span style="color: #9C91E4;">nox</span>)
 
-(dolist (hook (list
-	       'js-mode-hook
-	       'rust-mode-hook
-	       'python-mode-hook
-	       'ruby-mode-hook
-	       'java-mode-hook
-	       'sh-mode-hook
-	       'php-mode-hook
-	       'c-mode-common-hook
-	       'c-mode-hook
-	       'c++-mode-hook
-	       'haskell-mode-hook
-	       ))
+(<span style="color: #F92660;">dolist</span> (hook (list
+               'js-mode-hook
+               'rust-mode-hook
+               'python-mode-hook
+               'ruby-mode-hook
+               'java-mode-hook
+               'sh-mode-hook
+               'php-mode-hook
+               'c-mode-common-hook
+               'c-mode-hook
+               'c++-mode-hook
+               'haskell-mode-hook
+               ))
   (add-hook hook '(lambda () (nox-ensure))))
 
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgaf218cd" class="outline-3">
-<h3 id="orgaf218cd"><span class="section-number-3">8.6</span> company</h3>
+<div id="outline-container-org432f076" class="outline-3">
+<h3 id="org432f076"><span class="section-number-3">8.6</span> company</h3>
 <div class="outline-text-3" id="text-8-6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(add-hook 'after-init-hook 'global-company-mode)
@@ -573,112 +561,112 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org8d526c7" class="outline-2">
-<h2 id="org8d526c7"><span class="section-number-2">9</span> 键位配置</h2>
+<div id="outline-container-org8e4bf51" class="outline-2">
+<h2 id="org8e4bf51"><span class="section-number-2">9</span> 键位配置</h2>
 <div class="outline-text-2" id="text-9">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(global-set-key (kbd "C-c p") 'keke-run-current-file)
-;;IVY
-(global-set-key "\C-s" 'swiper)
-(global-set-key (kbd "C-c C-r") 'ivy-resume)
-(global-set-key (kbd "&lt;f6&gt;") 'ivy-resume)
-(global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "&lt;f1&gt; f") 'counsel-describe-function)
-(global-set-key (kbd "&lt;f1&gt; v") 'counsel-describe-variable)
-(global-set-key (kbd "&lt;f1&gt; l") 'counsel-find-library)
-(global-set-key (kbd "&lt;f2&gt; i") 'counsel-info-lookup-symbol)
-(global-set-key (kbd "&lt;f2&gt; u") 'counsel-unicode-char)
-(global-set-key (kbd "C-c g") 'counsel-git)
-(global-set-key (kbd "C-c j") 'counsel-git-grep)
-(global-set-key (kbd "C-c k") 'counsel-ag)
-(global-set-key (kbd "C-x l") 'counsel-locate)
-(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="color: #E6DB74;">"C-c p"</span>) 'keke-run-current-file)
+<span style="color: #555556; font-style: italic;">;;</span><span style="color: #555556; font-style: italic;">IVY</span>
+(global-set-key <span style="color: #E6DB74;">"\C-s"</span> 'swiper)
+(global-set-key (kbd <span style="color: #E6DB74;">"C-c C-r"</span>) 'ivy-resume)
+(global-set-key (kbd <span style="color: #E6DB74;">"&lt;f6&gt;"</span>) 'ivy-resume)
+(global-set-key (kbd <span style="color: #E6DB74;">"M-x"</span>) 'counsel-M-x)
+(global-set-key (kbd <span style="color: #E6DB74;">"C-x C-f"</span>) 'counsel-find-file)
+(global-set-key (kbd <span style="color: #E6DB74;">"&lt;f1&gt; f"</span>) 'counsel-describe-function)
+(global-set-key (kbd <span style="color: #E6DB74;">"&lt;f1&gt; v"</span>) 'counsel-describe-variable)
+(global-set-key (kbd <span style="color: #E6DB74;">"&lt;f1&gt; l"</span>) 'counsel-find-library)
+(global-set-key (kbd <span style="color: #E6DB74;">"&lt;f2&gt; i"</span>) 'counsel-info-lookup-symbol)
+(global-set-key (kbd <span style="color: #E6DB74;">"&lt;f2&gt; u"</span>) 'counsel-unicode-char)
+(global-set-key (kbd <span style="color: #E6DB74;">"C-c g"</span>) 'counsel-git)
+(global-set-key (kbd <span style="color: #E6DB74;">"C-c j"</span>) 'counsel-git-grep)
+(global-set-key (kbd <span style="color: #E6DB74;">"C-c k"</span>) 'counsel-ag)
+(global-set-key (kbd <span style="color: #E6DB74;">"C-x l"</span>) 'counsel-locate)
+(global-set-key (kbd <span style="color: #E6DB74;">"C-S-o"</span>) 'counsel-rhythmbox)
+(define-key minibuffer-local-map (kbd <span style="color: #E6DB74;">"C-r"</span>) 'counsel-minibuffer-history)
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgdcb7c73" class="outline-2">
-<h2 id="orgdcb7c73"><span class="section-number-2">10</span> 一些好用的函数</h2>
+<div id="outline-container-orgb3f8072" class="outline-2">
+<h2 id="orgb3f8072"><span class="section-number-2">10</span> 一些好用的函数</h2>
 <div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-orgd1bbcf3" class="outline-3">
-<h3 id="orgd1bbcf3"><span class="section-number-3">10.1</span> keke-run-current-file</h3>
+<div id="outline-container-orgda4cc5a" class="outline-3">
+<h3 id="orgda4cc5a"><span class="section-number-3">10.1</span> keke-run-current-file</h3>
 <div class="outline-text-3" id="text-10-1">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(defvar keke-run-current-file-before-hook nil "Hook for `keke-run-current-file'. Before the file is run.")
-(defvar keke-run-current-file-after-hook nil "Hook for `keke-run-current-file'. After the file is run.")
-(defun keke-run-current-file ()
-  (interactive)
-  (let (
-	($outputb "*keke-run output*")
-	(resize-mini-windows nil)
-	($suffix-map
-	 `(
-	   ("ts" . "node")
-	   ("html" . "firefox-bin")
-	   ))
-	   $fname
-	   $fSuffix
-	   $prog-name
-	   $cmd-str)
-	 (when (not (buffer-file-name)) (save-buffer))
-	 (when (buffer-modified-p) (save-buffer))
-	 (setq $fname (buffer-file-name))
-	 (setq $fSuffix (file-name-extension $fname))
-	 (setq $prog-name (cdr (assoc $fSuffix $suffix-map)))
-	 (setq $cmd-str (concat $prog-name " \""   $fname "\" &amp;"))
-	 (run-hooks 'keke-run-current-file-before-hook)
-	 (if $prog-name
-	     (progn
-	       (message "Running")
-	       (shell-command $cmd-str $outputb ))
-	   (error "No recognized program file suffix for this file."))))
+<pre class="src src-emacs-lisp">(<span style="color: #F92660;">defvar</span> <span style="color: #F8F8F2;">keke-run-current-file-before-hook</span> nil <span style="color: #7f7f80; font-style: italic;">"Hook for `</span><span style="color: #9C91E4; font-style: italic;">keke-run-current-file</span><span style="color: #7f7f80; font-style: italic;">'. Before the file is run."</span>)
+(<span style="color: #F92660;">defvar</span> <span style="color: #F8F8F2;">keke-run-current-file-after-hook</span> nil <span style="color: #7f7f80; font-style: italic;">"Hook for `</span><span style="color: #9C91E4; font-style: italic;">keke-run-current-file</span><span style="color: #7f7f80; font-style: italic;">'. After the file is run."</span>)
+(<span style="color: #F92660;">defun</span> <span style="color: #A6E22E;">keke-run-current-file</span> ()
+  (<span style="color: #F92660;">interactive</span>)
+  (<span style="color: #F92660;">let</span> (
+        ($outputb <span style="color: #E6DB74;">"*keke-run output*"</span>)
+        (resize-mini-windows nil)
+        ($suffix-map
+         `(
+           (<span style="color: #E6DB74;">"ts"</span> . <span style="color: #E6DB74;">"node"</span>)
+           (<span style="color: #E6DB74;">"html"</span> . <span style="color: #E6DB74;">"firefox-bin"</span>)
+           ))
+           $fname
+           $fSuffix
+           $prog-name
+           $cmd-str)
+         (<span style="color: #F92660;">when</span> (not (buffer-file-name)) (save-buffer))
+         (<span style="color: #F92660;">when</span> (buffer-modified-p) (save-buffer))
+         (<span style="color: #F92660;">setq</span> $fname (buffer-file-name))
+         (<span style="color: #F92660;">setq</span> $fSuffix (file-name-extension $fname))
+         (<span style="color: #F92660;">setq</span> $prog-name (cdr (assoc $fSuffix $suffix-map)))
+         (<span style="color: #F92660;">setq</span> $cmd-str (concat $prog-name <span style="color: #E6DB74;">" \""</span>   $fname <span style="color: #E6DB74;">"\" &amp;"</span>))
+         (run-hooks 'keke-run-current-file-before-hook)
+         (<span style="color: #F92660;">if</span> $prog-name
+             (<span style="color: #F92660;">progn</span>
+               (message <span style="color: #E6DB74;">"Running"</span>)
+               (shell-command $cmd-str $outputb ))
+           (<span style="color: #E6DB74;">error</span> <span style="color: #E6DB74;">"No recognized program file suffix for this file."</span>))))
 (run-hooks 'keke-run-current-file-after-hook)
 
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfeb98a3" class="outline-3">
-<h3 id="orgfeb98a3"><span class="section-number-3">10.2</span> keke-html-open-in-chrome-browser</h3>
+<div id="outline-container-orgfb22e76" class="outline-3">
+<h3 id="orgfb22e76"><span class="section-number-3">10.2</span> keke-html-open-in-chrome-browser</h3>
 <div class="outline-text-3" id="text-10-2">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(defun keke-html-open-in-chrome-browser ()
-  "Open the current file or `dired' marked files in Google Chrome browser.
-Work in Windows, macOS, linux.
-URL `http://ergoemacs.org/emacs/emacs_dired_open_file_in_ext_apps.html'
-Version 2019-11-10"
-  (interactive)
-  (let* (
-	 ($file-list
-	  (if (string-equal major-mode "dired-mode")
-	      (dired-get-marked-files)
-	    (list (buffer-file-name))))
-	 ($do-it-p (if (&lt;= (length $file-list) 5)
-		       t
-		     (y-or-n-p "Open more than 5 files? "))))
-    (when $do-it-p
-      (cond
-       ((string-equal system-type "darwin")
-	(mapc
-	 (lambda ($fpath)
-	   (shell-command
-	    (format "open -a /Applications/Google\\ Chrome.app \"%s\"" $fpath)))
-	 $file-list))
-       ((string-equal system-type "windows-nt")
-	;; "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" 2019-11-09
-	(let ((process-connection-type nil))
-	  (mapc
-	   (lambda ($fpath)
-	     (start-process "" nil "powershell" "start-process" "chrome" $fpath ))
-	   $file-list)))
-       ((string-equal system-type "gnu/linux")
-	(mapc
-	 (lambda ($fpath)
-	   (shell-command (format "qutebrowser \"%s\"" $fpath)))
-	 $file-list))))))
+<pre class="src src-emacs-lisp">(<span style="color: #F92660;">defun</span> <span style="color: #A6E22E;">keke-html-open-in-chrome-browser</span> ()
+  <span style="color: #7f7f80; font-style: italic;">"Open the current file or `</span><span style="color: #9C91E4; font-style: italic;">dired</span><span style="color: #7f7f80; font-style: italic;">' marked files in Google Chrome browser.</span>
+<span style="color: #7f7f80; font-style: italic;">Work in Windows, macOS, linux.</span>
+<span style="color: #7f7f80; font-style: italic;">URL `</span><span style="color: #9C91E4; font-style: italic;">http://ergoemacs.org/emacs/emacs_dired_open_file_in_ext_apps.html</span><span style="color: #7f7f80; font-style: italic;">'</span>
+<span style="color: #7f7f80; font-style: italic;">Version 2019-11-10"</span>
+  (<span style="color: #F92660;">interactive</span>)
+  (<span style="color: #F92660;">let*</span> (
+         ($file-list
+          (<span style="color: #F92660;">if</span> (string-equal major-mode <span style="color: #E6DB74;">"dired-mode"</span>)
+              (dired-get-marked-files)
+            (list (buffer-file-name))))
+         ($do-it-p (<span style="color: #F92660;">if</span> (&lt;= (length $file-list) 5)
+                       t
+                     (y-or-n-p <span style="color: #E6DB74;">"Open more than 5 files? "</span>))))
+    (<span style="color: #F92660;">when</span> $do-it-p
+      (<span style="color: #F92660;">cond</span>
+       ((string-equal system-type <span style="color: #E6DB74;">"darwin"</span>)
+        (mapc
+         (<span style="color: #F92660;">lambda</span> ($fpath)
+           (shell-command
+            (format <span style="color: #E6DB74;">"open -a /Applications/Google\\ Chrome.app \"%s\""</span> $fpath)))
+         $file-list))
+       ((string-equal system-type <span style="color: #E6DB74;">"windows-nt"</span>)
+        <span style="color: #555556; font-style: italic;">;; </span><span style="color: #555556; font-style: italic;">"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" 2019-11-09</span>
+        (<span style="color: #F92660;">let</span> ((process-connection-type nil))
+          (mapc
+           (<span style="color: #F92660;">lambda</span> ($fpath)
+             (start-process <span style="color: #E6DB74;">""</span> nil <span style="color: #E6DB74;">"powershell"</span> <span style="color: #E6DB74;">"start-process"</span> <span style="color: #E6DB74;">"chrome"</span> $fpath ))
+           $file-list)))
+       ((string-equal system-type <span style="color: #E6DB74;">"gnu/linux"</span>)
+        (mapc
+         (<span style="color: #F92660;">lambda</span> ($fpath)
+           (shell-command (format <span style="color: #E6DB74;">"qutebrowser \"%s\""</span> $fpath)))
+         $file-list))))))
 
 
 </pre>
@@ -690,8 +678,8 @@ Version 2019-11-10"
 <div id="postamble" class="status">
 <p class="date">Date: 2020-04-17 Fri 00:00</p>
 <p class="author">Author: keke</p>
-<p class="date">Created: 2020-04-24 Fri 14:51</p>
-<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
+<p class="date">Created: 2020-05-04 Mon 20:20</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.1.9)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

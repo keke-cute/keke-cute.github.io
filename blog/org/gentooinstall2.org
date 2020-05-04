@@ -20,7 +20,7 @@
   #+END_SRC
 * 使用luks加密该分区 🔐
   #+begin_src bash
-    ❯ cryptsetup -s 512 luksFormat /dev/sda1
+    ❯ cryptsetup -s 512 --type luks1 luksFormat /dev/sda1
     This will overwrite data on /dev/sda1 irrevocably.
 
     Are you sure? (Type uppercase yes): YES
@@ -180,5 +180,75 @@
   #+end_src
 * FSTAB 🪀
   #+begin_src bash
-  
+    ❯ blkid /dev/mapper/root
+    /dev/mapper/root: UUID="xx" UUID_SUB="xx" BLOCK_SIZE="4096" TYPE="btrfs"
+    ❯ nano /etc/fstab
+    UUID="/dev/mapper/root的UUID"             /               btrfs           defaults0 1
   #+end_src
+* 内核编译和引导
+  下载内核和genkernel
+  #+BEGIN_SRC bash
+    ❯ emerge -av gentoo-sources genkernel 
+    ❯ genkernel --luks --lvm --btrfs --bootloader=grub2 all
+    ❯ genkernel --luks --lvm --btrfs initramfs
+  #+END_SRC
+  USE:
+  #+BEGIN_SRC bash
+    ❯
+      echo "sys-fs/cryptsetup static" > /etc/portage/package.use/cryptsetup
+      echo "sys-boot/grub device-mapper" > /etc/portage/package.use/grub
+  #+END_SRC
+  安装grub和cryptsetup
+  #+BEGIN_SRC bash
+    ❯ emerge -av grub cryptsetup
+  #+END_SRC
+  GRUB配置:
+  #+BEGIN_SRC bash
+    ❯ nano /etc/default/grub
+  #+END_SRC
+  #+BEGIN_SRC conf
+    GRUB_DISTRIBUTOR="Gentoo"
+    GRUB_ENABLE_CRYPTODISK=y
+    GRUB_CMDLINE_LINUX="dobtrfs crypt_root=UUID=?????? root=/dev/mapper/root"
+    #此处的UUID为/dev/sda1设备的而不是mapper的
+  #+END_SRC
+  dmcrtpt配置:
+  #+BEGIN_SRC bash
+    ❯ nano /etc/conf.d/dmcrypt
+  #+END_SRC
+  #+BEGIN_SRC conf
+    target=root
+    source='/dev/sda1'
+  #+END_SRC
+  dmcrypt添加到boot级别:
+  #+BEGIN_SRC bash
+    ❯ rc-update add dmcrypt boot
+  #+END_SRC
+  安装引导:
+  #+BEGIN_SRC bash
+    ❯ grub-install --target=i386-pc /dev/sda
+    ❯ grub-mkconfig -o /boot/grub/grub.cfg
+    # 记得检查一下grub.cfg有无luks
+  #+END_SRC
+* 最后配置，准备结束
+  安装sudo，dhcpcd
+  #+BEGIN_SRC bash
+    ❯ emerge -av sudo dhcpcd
+  #+END_SRC
+  修改root 密码，创建用户
+  #+BEGIN_SRC bash
+    ❯ 
+      passwd
+      useradd -m -G users,wheel,portage,usb,video xx
+      passwd xx
+  #+END_SRC
+  结束
+  #+BEGIN_SRC bash
+    ❯ 
+      sed -i 's/\# \%wheel ALL=(ALL) ALL/\%wheel ALL=(ALL) ALL/g' /etc/sudoers
+      exit
+      umount -lR {dev,proc,sys} 
+      cryptsetup luksClose /dev/sda1
+      reboot
+  #+END_SRC
+  Happy Enjoy!
