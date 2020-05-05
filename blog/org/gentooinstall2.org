@@ -4,6 +4,7 @@
 #+date: <2020-04-30 Thu>
 #+export_file_name: ~/keke-cute.github.io/blog/gentooinstall2.html
 #+options: creator:t author:t
+#+HTML_HEAD: <link rel="stylesheet" href="blog/css/m-dark.css" />
 * Livecd 💿
   [[http://www.system-rescue-cd.org/]]
 * 分区 💾

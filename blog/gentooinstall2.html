@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-04 Mon 20:20 -->
+<!-- 2020-05-05 Tue 11:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gentoo Install(LUKS,BTRFS)</title>
@@ -180,6 +180,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
+<link rel="stylesheet" href="blog/css/m-dark.css" />
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -234,28 +235,28 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9c1317e">1. Livecd 💿</a></li>
-<li><a href="#org713ae6e">2. 分区 💾</a></li>
-<li><a href="#orgaf8d799">3. 使用luks加密该分区 🔐</a></li>
-<li><a href="#org66777f5">4. 打开加密过的分区并格式化为btrfs文件系统 📃</a></li>
-<li><a href="#org2842505">5. 基本系统安装 🔌</a></li>
-<li><a href="#org70fe5cc">6. 配置时区和地区 🌍</a></li>
-<li><a href="#org6c34f4e">7. FSTAB 🪀</a></li>
-<li><a href="#org708dafa">8. 内核编译和引导</a></li>
-<li><a href="#org43ca24f">9. 最后配置，准备结束</a></li>
+<li><a href="#org62b4171">1. Livecd 💿</a></li>
+<li><a href="#org5cf05d7">2. 分区 💾</a></li>
+<li><a href="#orge10974c">3. 使用luks加密该分区 🔐</a></li>
+<li><a href="#orgdcb6553">4. 打开加密过的分区并格式化为btrfs文件系统 📃</a></li>
+<li><a href="#org090dd17">5. 基本系统安装 🔌</a></li>
+<li><a href="#orge99e160">6. 配置时区和地区 🌍</a></li>
+<li><a href="#org181491b">7. FSTAB 🪀</a></li>
+<li><a href="#org754d2a6">8. 内核编译和引导</a></li>
+<li><a href="#org2c2b8b1">9. 最后配置，准备结束</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9c1317e" class="outline-2">
-<h2 id="org9c1317e"><span class="section-number-2">1</span> Livecd 💿</h2>
+<div id="outline-container-org62b4171" class="outline-2">
+<h2 id="org62b4171"><span class="section-number-2">1</span> Livecd 💿</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <a href="http://www.system-rescue-cd.org/">http://www.system-rescue-cd.org/</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org713ae6e" class="outline-2">
-<h2 id="org713ae6e"><span class="section-number-2">2</span> 分区 💾</h2>
+<div id="outline-container-org5cf05d7" class="outline-2">
+<h2 id="org5cf05d7"><span class="section-number-2">2</span> 分区 💾</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-bash">&#10095; lsblk
@@ -271,8 +272,8 @@ w &#20889;&#20837;&#20998;&#21306;&#34920;
 </div>
 </div>
 </div>
-<div id="outline-container-orgaf8d799" class="outline-2">
-<h2 id="orgaf8d799"><span class="section-number-2">3</span> 使用luks加密该分区 🔐</h2>
+<div id="outline-container-orge10974c" class="outline-2">
+<h2 id="orge10974c"><span class="section-number-2">3</span> 使用luks加密该分区 🔐</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-bash">&#10095; cryptsetup -s 512 --type luks1 luksFormat /dev/sda1
@@ -292,8 +293,8 @@ Verify passphrase: ...
 </div>
 </div>
 </div>
-<div id="outline-container-org66777f5" class="outline-2">
-<h2 id="org66777f5"><span class="section-number-2">4</span> 打开加密过的分区并格式化为btrfs文件系统 📃</h2>
+<div id="outline-container-orgdcb6553" class="outline-2">
+<h2 id="orgdcb6553"><span class="section-number-2">4</span> 打开加密过的分区并格式化为btrfs文件系统 📃</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 <pre class="src src-bash">&#10095; cryptsetup luksOpen /dev/sda1 root
@@ -311,8 +312,8 @@ Enter passphrase for /dev/sda1: ...
 </div>
 </div>
 </div>
-<div id="outline-container-org2842505" class="outline-2">
-<h2 id="org2842505"><span class="section-number-2">5</span> 基本系统安装 🔌</h2>
+<div id="outline-container-org090dd17" class="outline-2">
+<h2 id="org090dd17"><span class="section-number-2">5</span> 基本系统安装 🔌</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 下载并解压到根目录stage3文件
@@ -468,8 +469,8 @@ my ryzen pc:
 </div>
 </div>
 </div>
-<div id="outline-container-org70fe5cc" class="outline-2">
-<h2 id="org70fe5cc"><span class="section-number-2">6</span> 配置时区和地区 🌍</h2>
+<div id="outline-container-orge99e160" class="outline-2">
+<h2 id="orge99e160"><span class="section-number-2">6</span> 配置时区和地区 🌍</h2>
 <div class="outline-text-2" id="text-6">
 <div class="org-src-container">
 <pre class="src src-bash">&#10095;
@@ -491,8 +492,8 @@ my ryzen pc:
 </div>
 </div>
 </div>
-<div id="outline-container-org6c34f4e" class="outline-2">
-<h2 id="org6c34f4e"><span class="section-number-2">7</span> FSTAB 🪀</h2>
+<div id="outline-container-org181491b" class="outline-2">
+<h2 id="org181491b"><span class="section-number-2">7</span> FSTAB 🪀</h2>
 <div class="outline-text-2" id="text-7">
 <div class="org-src-container">
 <pre class="src src-bash">&#10095; blkid /dev/mapper/root
@@ -503,8 +504,8 @@ my ryzen pc:
 </div>
 </div>
 </div>
-<div id="outline-container-org708dafa" class="outline-2">
-<h2 id="org708dafa"><span class="section-number-2">8</span> 内核编译和引导</h2>
+<div id="outline-container-org754d2a6" class="outline-2">
+<h2 id="org754d2a6"><span class="section-number-2">8</span> 内核编译和引导</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 下载内核和genkernel
@@ -575,8 +576,8 @@ dmcrypt添加到boot级别:
 </div>
 </div>
 </div>
-<div id="outline-container-org43ca24f" class="outline-2">
-<h2 id="org43ca24f"><span class="section-number-2">9</span> 最后配置，准备结束</h2>
+<div id="outline-container-org2c2b8b1" class="outline-2">
+<h2 id="org2c2b8b1"><span class="section-number-2">9</span> 最后配置，准备结束</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 安装sudo，dhcpcd
@@ -616,7 +617,7 @@ Happy Enjoy!
 <div id="postamble" class="status">
 <p class="date">Date: 2020-04-30 Thu 00:00</p>
 <p class="author">Author: keke</p>
-<p class="date">Created: 2020-05-04 Mon 20:20</p>
+<p class="date">Created: 2020-05-05 Tue 11:14</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.1.9)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
