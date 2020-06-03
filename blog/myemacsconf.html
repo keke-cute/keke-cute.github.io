@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-31 Sun 19:16 -->
+<!-- 2020-06-03 Wed 14:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>我的Emacs配置</title>
@@ -66,47 +66,48 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2851218">1. Preview</a></li>
-<li><a href="#org0770749">2. Is A?</a></li>
-<li><a href="#org6a85af0">3. 初始化 straight.el 插件管理</a></li>
-<li><a href="#orgf67897f">4. 预下载基础包</a></li>
-<li><a href="#orgd080cfc">5. 载入启动界面</a></li>
-<li><a href="#org15c2cff">6. 主程序的一些设置</a>
+<li><a href="#orge28bd65">1. Preview</a></li>
+<li><a href="#org64db757">2. Is A?</a></li>
+<li><a href="#orgdc897dc">3. 初始化 straight.el 插件管理</a></li>
+<li><a href="#org645dd67">4. 预下载基础包</a></li>
+<li><a href="#org6131cf5">5. 载入启动界面</a></li>
+<li><a href="#orgbb9651e">6. 主程序的一些设置</a>
 <ul>
-<li><a href="#orgd5d69ab">6.1. UI</a></li>
-<li><a href="#org9078846">6.2. 透明度</a></li>
-<li><a href="#org4019355">6.3. 默认功能设置</a></li>
-<li><a href="#org6a0a9ee">6.4. 字体</a>
+<li><a href="#orgaa56786">6.1. UI</a></li>
+<li><a href="#org777a4e4">6.2. 透明度</a></li>
+<li><a href="#orgd854b70">6.3. 默认功能设置</a></li>
+<li><a href="#org7cf871a">6.4. 字体</a>
 <ul>
-<li><a href="#org9acb08b">6.4.1. doom-modeline</a></li>
-<li><a href="#org532ea02">6.4.2. doom-themes</a></li>
+<li><a href="#org3df997a">6.4.1. doom-modeline</a></li>
+<li><a href="#orgc0bf49c">6.4.2. doom-themes</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org385f99e">7. 包的配置</a>
+<li><a href="#org6d823fb">7. 包的配置</a>
 <ul>
-<li><a href="#org76a9897">7.1. yasnippet</a></li>
-<li><a href="#orgaac8c57">7.2. company</a></li>
-<li><a href="#orgc25eb54">7.3. IVY all</a></li>
-<li><a href="#org64c9484">7.4. magit</a></li>
-<li><a href="#orgcb0b638">7.5. rime</a></li>
-<li><a href="#org9273ed5">7.6. nox</a></li>
+<li><a href="#org855bd8f">7.1. yasnippet</a></li>
+<li><a href="#org1d54ce8">7.2. company</a></li>
+<li><a href="#orgb886f9a">7.3. IVY all</a></li>
+<li><a href="#org1dd77f9">7.4. magit</a></li>
+<li><a href="#org5d6c25f">7.5. rime</a></li>
+<li><a href="#org2dea200">7.6. nox</a></li>
+<li><a href="#org87df20c">7.7. meow</a></li>
 </ul>
 </li>
-<li><a href="#orgb701fcb">8. Org-mode</a></li>
-<li><a href="#org03d25c5">9. 键位配置</a></li>
-<li><a href="#orgee76873">10. 一些好用的函数</a>
+<li><a href="#org6eae27e">8. Org-mode</a></li>
+<li><a href="#org90025b3">9. 键位配置</a></li>
+<li><a href="#org29bd3bc">10. 一些好用的函数</a>
 <ul>
-<li><a href="#org6f5077e">10.1. keke-run-current-file</a></li>
-<li><a href="#orga5e52a2">10.2. keke-html-open-in-chrome-browser</a></li>
+<li><a href="#org56f6857">10.1. keke-run-current-file</a></li>
+<li><a href="#orgc4becea">10.2. keke-html-open-in-chrome-browser</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2851218" class="outline-2">
-<h2 id="org2851218"><span class="section-number-2">1</span> Preview</h2>
+<div id="outline-container-orge28bd65" class="outline-2">
+<h2 id="orge28bd65"><span class="section-number-2">1</span> Preview</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <img src="https://s1.ax1x.com/2020/03/29/GVOav9.png" alt="GVOav9.png" />
@@ -114,8 +115,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-org0770749" class="outline-2">
-<h2 id="org0770749"><span class="section-number-2">2</span> Is A?</h2>
+<div id="outline-container-org64db757" class="outline-2">
+<h2 id="org64db757"><span class="section-number-2">2</span> Is A?</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: #F92660;">defconst</span> <span style="color: #F8F8F2;">*is-a-mac*</span> (eq system-type 'darwin))
@@ -124,8 +125,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org6a85af0" class="outline-2">
-<h2 id="org6a85af0"><span class="section-number-2">3</span> 初始化 straight.el 插件管理</h2>
+<div id="outline-container-orgdc897dc" class="outline-2">
+<h2 id="orgdc897dc"><span class="section-number-2">3</span> 初始化 straight.el 插件管理</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: #F92660;">defvar</span> <span style="color: #F8F8F2;">bootstrap-version</span>)
@@ -144,8 +145,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgf67897f" class="outline-2">
-<h2 id="orgf67897f"><span class="section-number-2">4</span> 预下载基础包</h2>
+<div id="outline-container-org645dd67" class="outline-2">
+<h2 id="org645dd67"><span class="section-number-2">4</span> 预下载基础包</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'use-package)
@@ -156,8 +157,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgd080cfc" class="outline-2">
-<h2 id="orgd080cfc"><span class="section-number-2">5</span> 载入启动界面</h2>
+<div id="outline-container-org6131cf5" class="outline-2">
+<h2 id="org6131cf5"><span class="section-number-2">5</span> 载入启动界面</h2>
 <div class="outline-text-2" id="text-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'dashboard)
@@ -175,12 +176,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org15c2cff" class="outline-2">
-<h2 id="org15c2cff"><span class="section-number-2">6</span> 主程序的一些设置</h2>
+<div id="outline-container-orgbb9651e" class="outline-2">
+<h2 id="orgbb9651e"><span class="section-number-2">6</span> 主程序的一些设置</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orgd5d69ab" class="outline-3">
-<h3 id="orgd5d69ab"><span class="section-number-3">6.1</span> UI</h3>
+<div id="outline-container-orgaa56786" class="outline-3">
+<h3 id="orgaa56786"><span class="section-number-3">6.1</span> UI</h3>
 <div class="outline-text-3" id="text-6-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"> (menu-bar-mode -1)
@@ -193,8 +194,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org9078846" class="outline-3">
-<h3 id="org9078846"><span class="section-number-3">6.2</span> 透明度</h3>
+<div id="outline-container-org777a4e4" class="outline-3">
+<h3 id="org777a4e4"><span class="section-number-3">6.2</span> 透明度</h3>
 <div class="outline-text-3" id="text-6-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(add-to-list 'default-frame-alist'(ns-transparent-titlebar . t))
@@ -204,8 +205,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org4019355" class="outline-3">
-<h3 id="org4019355"><span class="section-number-3">6.3</span> 默认功能设置</h3>
+<div id="outline-container-orgd854b70" class="outline-3">
+<h3 id="orgd854b70"><span class="section-number-3">6.3</span> 默认功能设置</h3>
 <div class="outline-text-3" id="text-6-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #555556; font-style: italic;">;; </span><span style="color: #555556; font-style: italic;">&#33258;&#21160;&#21152;&#36733;&#22806;&#37096;&#20462;&#25913;&#36807;&#30340;&#25991;&#20214;</span>
@@ -222,8 +223,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org6a0a9ee" class="outline-3">
-<h3 id="org6a0a9ee"><span class="section-number-3">6.4</span> 字体</h3>
+<div id="outline-container-org7cf871a" class="outline-3">
+<h3 id="org7cf871a"><span class="section-number-3">6.4</span> 字体</h3>
 <div class="outline-text-3" id="text-6-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: #F92660;">when</span> *is-a-mac*
@@ -238,8 +239,8 @@ for the JavaScript code in this tag.
 </pre>
 </div>
 </div>
-<div id="outline-container-org9acb08b" class="outline-4">
-<h4 id="org9acb08b"><span class="section-number-4">6.4.1</span> doom-modeline</h4>
+<div id="outline-container-org3df997a" class="outline-4">
+<h4 id="org3df997a"><span class="section-number-4">6.4.1</span> doom-modeline</h4>
 <div class="outline-text-4" id="text-6-4-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'doom-modeline)
@@ -249,8 +250,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org532ea02" class="outline-4">
-<h4 id="org532ea02"><span class="section-number-4">6.4.2</span> doom-themes</h4>
+<div id="outline-container-orgc0bf49c" class="outline-4">
+<h4 id="orgc0bf49c"><span class="section-number-4">6.4.2</span> doom-themes</h4>
 <div class="outline-text-4" id="text-6-4-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'doom-themes)
@@ -278,12 +279,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org385f99e" class="outline-2">
-<h2 id="org385f99e"><span class="section-number-2">7</span> 包的配置</h2>
+<div id="outline-container-org6d823fb" class="outline-2">
+<h2 id="org6d823fb"><span class="section-number-2">7</span> 包的配置</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org76a9897" class="outline-3">
-<h3 id="org76a9897"><span class="section-number-3">7.1</span> yasnippet</h3>
+<div id="outline-container-org855bd8f" class="outline-3">
+<h3 id="org855bd8f"><span class="section-number-3">7.1</span> yasnippet</h3>
 <div class="outline-text-3" id="text-7-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'yasnippet)
@@ -297,8 +298,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgaac8c57" class="outline-3">
-<h3 id="orgaac8c57"><span class="section-number-3">7.2</span> company</h3>
+<div id="outline-container-org1d54ce8" class="outline-3">
+<h3 id="org1d54ce8"><span class="section-number-3">7.2</span> company</h3>
 <div class="outline-text-3" id="text-7-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'company)
@@ -319,8 +320,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgc25eb54" class="outline-3">
-<h3 id="orgc25eb54"><span class="section-number-3">7.3</span> IVY all</h3>
+<div id="outline-container-orgb886f9a" class="outline-3">
+<h3 id="orgb886f9a"><span class="section-number-3">7.3</span> IVY all</h3>
 <div class="outline-text-3" id="text-7-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'ivy)
@@ -340,8 +341,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org64c9484" class="outline-3">
-<h3 id="org64c9484"><span class="section-number-3">7.4</span> magit</h3>
+<div id="outline-container-org1dd77f9" class="outline-3">
+<h3 id="org1dd77f9"><span class="section-number-3">7.4</span> magit</h3>
 <div class="outline-text-3" id="text-7-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'magit)
@@ -349,8 +350,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgcb0b638" class="outline-3">
-<h3 id="orgcb0b638"><span class="section-number-3">7.5</span> rime</h3>
+<div id="outline-container-org5d6c25f" class="outline-3">
+<h3 id="org5d6c25f"><span class="section-number-3">7.5</span> rime</h3>
 <div class="outline-text-3" id="text-7-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: #F92660;">use-package</span> <span style="color: #9C91E4;">rime</span>
@@ -369,8 +370,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org9273ed5" class="outline-3">
-<h3 id="org9273ed5"><span class="section-number-3">7.6</span> nox</h3>
+<div id="outline-container-org2dea200" class="outline-3">
+<h3 id="org2dea200"><span class="section-number-3">7.6</span> nox</h3>
 <div class="outline-text-3" id="text-7-6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(add-to-list 'load-path <span style="color: #E6DB74;">"~/.emacs.d/nox/"</span>)
@@ -393,9 +394,41 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
+<div id="outline-container-org87df20c" class="outline-3">
+<h3 id="org87df20c"><span class="section-number-3">7.7</span> meow</h3>
+<div class="outline-text-3" id="text-7-7">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(straight-use-package 'meow)
+(<span style="color: #F92660;">use-package</span> <span style="color: #9C91E4;">meow</span>
+  <span style="color: #FD971F;">:init</span>
+  (meow-global-mode 1)
+  <span style="color: #FD971F;">:custom</span>
+  <span style="color: #555556; font-style: italic;">;; </span><span style="color: #555556; font-style: italic;">layout options: qwerty, dvorak, dvp, colemak</span>
+  (meow-layout 'qwerty)
+  <span style="color: #FD971F;">:config</span>
+  (meow-leader-define-key
+ '(<span style="color: #E6DB74;">"k"</span> . kill-buffer)
+ '(<span style="color: #E6DB74;">"l"</span> . goto-line)
+ '(<span style="color: #E6DB74;">"h"</span> . other-window)
+ '(<span style="color: #E6DB74;">"o"</span> . delete-other-windows)
+ '(<span style="color: #E6DB74;">"-"</span> . split-window-below)
+ '(<span style="color: #E6DB74;">"/"</span> . swiper)
+ '(<span style="color: #E6DB74;">"\\"</span> . split-window-right)
+ '(<span style="color: #E6DB74;">"m"</span> . magit-status)
+ '(<span style="color: #E6DB74;">"f"</span> . find-file)
+ '(<span style="color: #E6DB74;">"F"</span> . find-file-literally))
+
+(meow-leader-define-mode-key
+ 'emacs-lisp-mode
+ '(<span style="color: #E6DB74;">"RET"</span> . eval-buffer)
+ '(<span style="color: #E6DB74;">"SPC"</span> . eval-defun)))
+</pre>
 </div>
-<div id="outline-container-orgb701fcb" class="outline-2">
-<h2 id="orgb701fcb"><span class="section-number-2">8</span> Org-mode</h2>
+</div>
+</div>
+</div>
+<div id="outline-container-org6eae27e" class="outline-2">
+<h2 id="org6eae27e"><span class="section-number-2">8</span> Org-mode</h2>
 <div class="outline-text-2" id="text-8">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(add-hook 'org-mode-hook (<span style="color: #F92660;">lambda</span> () (<span style="color: #F92660;">setq</span> truncate-lines nil)))
@@ -403,8 +436,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org03d25c5" class="outline-2">
-<h2 id="org03d25c5"><span class="section-number-2">9</span> 键位配置</h2>
+<div id="outline-container-org90025b3" class="outline-2">
+<h2 id="org90025b3"><span class="section-number-2">9</span> 键位配置</h2>
 <div class="outline-text-2" id="text-9">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(global-set-key (kbd <span style="color: #E6DB74;">"C-c p"</span>) 'keke-run-current-file)
@@ -429,12 +462,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgee76873" class="outline-2">
-<h2 id="orgee76873"><span class="section-number-2">10</span> 一些好用的函数</h2>
+<div id="outline-container-org29bd3bc" class="outline-2">
+<h2 id="org29bd3bc"><span class="section-number-2">10</span> 一些好用的函数</h2>
 <div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-org6f5077e" class="outline-3">
-<h3 id="org6f5077e"><span class="section-number-3">10.1</span> keke-run-current-file</h3>
+<div id="outline-container-org56f6857" class="outline-3">
+<h3 id="org56f6857"><span class="section-number-3">10.1</span> keke-run-current-file</h3>
 <div class="outline-text-3" id="text-10-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: #F92660;">defvar</span> <span style="color: #F8F8F2;">keke-run-current-file-before-hook</span> nil <span style="color: #7f7f80; font-style: italic;">"Hook for `</span><span style="color: #9C91E4; font-style: italic;">keke-run-current-file</span><span style="color: #7f7f80; font-style: italic;">'. Before the file is run."</span>)
@@ -471,8 +504,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orga5e52a2" class="outline-3">
-<h3 id="orga5e52a2"><span class="section-number-3">10.2</span> keke-html-open-in-chrome-browser</h3>
+<div id="outline-container-orgc4becea" class="outline-3">
+<h3 id="orgc4becea"><span class="section-number-3">10.2</span> keke-html-open-in-chrome-browser</h3>
 <div class="outline-text-3" id="text-10-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: #F92660;">defun</span> <span style="color: #A6E22E;">keke-html-open-in-chrome-browser</span> ()
@@ -518,7 +551,7 @@ for the JavaScript code in this tag.
 <div id="postamble" class="status">
 <p class="date">Date: 2020-04-17 Fri 00:00</p>
 <p class="author">Author: keke</p>
-<p class="date">Created: 2020-05-31 Sun 19:16</p>
+<p class="date">Created: 2020-06-03 Wed 14:35</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.0.91 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
