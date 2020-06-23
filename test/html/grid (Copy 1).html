@@ -9,15 +9,13 @@
 	  grid-template-columns: [c1] 100px [c2] 2fr [c3] 1fr;
 	  grid-template-rows: repeat(3, 50px);
 	  grid-gap: 10px 20px;
-	  justify-items: center;
+	  grid-template-areas: "header header header"
+			       "main main sidebar"
+			       "footer footer footer1";
       }
       .item-1 {
 	  background-color: #ef342a;
-	  grid-column-start: 3;
-	  grid-column-end: 4;
-	  grid-row-start: 3;
-	  justify-self: center;
-	  align-self: end;
+	  grid-area: footer1;
       }
 
       .item-2 {
