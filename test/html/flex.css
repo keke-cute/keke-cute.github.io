@@ -1,11 +1,16 @@
 #box {
     display: flex;
+    height: 500px;
 }
 .item1 {
     background-color: pink;
+    flex: 1 0 10px;
+    order: 2;
+    align-self: center;
 }
 .item2 {
     background-color: blue;
+    order: 1;
 }
 .item3 {
     background-color: gray;
