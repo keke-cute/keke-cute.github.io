@@ -18,3 +18,5 @@ var s = 'keke';
 console.log(s.length);
 console.log(s[0]);
 console.log(s.toUpperCase());
+let me;
+me = 'keke';
