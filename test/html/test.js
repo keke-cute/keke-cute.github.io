@@ -27,3 +27,4 @@ console.log(typeof num);
 let apple = 10;
 let oranges = 11;
 console.log(+apple + +oranges);
+let year = prompt('please','');
