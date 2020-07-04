@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-07-04 Sat 20:17 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>React</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="keke" />
+<link rel="stylesheet" type="text/css" href="css/m-dark.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,400i,600%7CSource+Sans+Pro:400,400i,600&amp;subset=latin-ext" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">React</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd46114c">1. 组件使用函数</a></li>
+<li><a href="#orge84e760">2. 解构props</a></li>
+<li><a href="#orgdc862c3">3. 页面重渲染</a></li>
+<li><a href="#org945fc5b">4. 有状态组件</a></li>
+<li><a href="#org4587baf">5. 鼠标事件处理</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd46114c" class="outline-2">
+<h2 id="orgd46114c"><span class="section-number-2">1</span> 组件使用函数</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+before:
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #819cd6; font-weight: bold;">const</span> <span style="color: #a6c1e0;">Hello</span> = <span style="color: #ff4500; font-weight: bold;">(</span>props<span style="color: #ff4500; font-weight: bold;">)</span> =&gt; <span style="color: #ff4500; font-weight: bold;">{</span>
+  <span style="color: #819cd6; font-weight: bold;">const</span> <span style="color: #a6c1e0;">bornYear</span> = <span style="color: #ffd700; font-weight: bold;">()</span> =&gt; <span style="color: #ffd700; font-weight: bold;">{</span>
+    <span style="color: #819cd6; font-weight: bold;">const</span> <span style="color: #a6c1e0;">yearNow</span> = <span style="color: #819cd6; font-weight: bold;">new</span> <span style="color: #b0a2e7;">Date</span><span style="color: #ffff00; font-weight: bold;">()</span>.getFullYear<span style="color: #ffff00; font-weight: bold;">()</span>
+    <span style="color: #819cd6; font-weight: bold;">return</span> yearNow - props.age
+  <span style="color: #ffd700; font-weight: bold;">}</span>
+</pre>
+</div>
+<p>
+after:
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #819cd6; font-weight: bold;">const</span> <span style="color: #a6c1e0;">bornYear</span> = <span style="color: #ff4500; font-weight: bold;">()</span> =&gt; <span style="color: #819cd6; font-weight: bold;">new</span> <span style="color: #b0a2e7;">Date</span><span style="color: #ff4500; font-weight: bold;">()</span>.getFullYear<span style="color: #ff4500; font-weight: bold;">()</span> - age <span style="color: #6e7899; font-style: italic;">//</span><span style="color: #6e7899; font-style: italic;">&#26356;&#31616;&#21270;&#30340;&#20989;&#25968;&#25805;&#20316;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge84e760" class="outline-2">
+<h2 id="orge84e760"><span class="section-number-2">2</span> 解构props</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+before:
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #819cd6; font-weight: bold;">const</span> <span style="color: #a6c1e0;">Hello</span> = <span style="color: #ff4500; font-weight: bold;">(</span>props<span style="color: #ff4500; font-weight: bold;">)</span> =&gt; <span style="color: #ff4500; font-weight: bold;">{</span>
+  <span style="color: #819cd6; font-weight: bold;">return</span> <span style="color: #ffd700; font-weight: bold;">(</span>
+    &lt;div&gt;
+      &lt;p&gt;
+        Hello <span style="color: #ffff00; font-weight: bold;">{</span>props.name<span style="color: #ffff00; font-weight: bold;">}</span>, you are <span style="color: #ffff00; font-weight: bold;">{</span>props.age<span style="color: #ffff00; font-weight: bold;">}</span> years old
+      &lt;/p&gt;
+    &lt;/div&gt;
+  <span style="color: #ffd700; font-weight: bold;">)</span>
+<span style="color: #ff4500; font-weight: bold;">}</span>
+</pre>
+</div>
+<p>
+after:
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #819cd6; font-weight: bold;">const</span> <span style="color: #a6c1e0;">Hello</span> = <span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #ffd700; font-weight: bold;">{</span>name, age<span style="color: #ffd700; font-weight: bold;">}</span><span style="color: #ff4500; font-weight: bold;">)</span> =&gt; <span style="color: #ff4500; font-weight: bold;">{</span> <span style="color: #6e7899; font-style: italic;">//</span><span style="color: #6e7899; font-style: italic;">&#30452;&#25509;&#20540;&#21462;&#20195;props&#21487;&#20197;&#30452;&#25509;&#29992;</span>
+    <span style="color: #819cd6; font-weight: bold;">return</span> <span style="color: #ffd700; font-weight: bold;">(</span>
+        &lt;div&gt;
+            &lt;p&gt;
+                Hello <span style="color: #ffff00; font-weight: bold;">{</span>name<span style="color: #ffff00; font-weight: bold;">}</span>, you are <span style="color: #ffff00; font-weight: bold;">{</span>age<span style="color: #ffff00; font-weight: bold;">}</span> years old
+            &lt;/p&gt;
+        &lt;/div&gt;
+    <span style="color: #ffd700; font-weight: bold;">)</span>
+<span style="color: #ff4500; font-weight: bold;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdc862c3" class="outline-2">
+<h2 id="orgdc862c3"><span class="section-number-2">3</span> 页面重渲染</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+重新调用一次ReactDOM.render即可重新渲染 !不推荐!
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #819cd6; font-weight: bold;">let</span> <span style="color: #a6c1e0;">refresh</span> = <span style="color: #ff4500; font-weight: bold;">()</span> =&gt; <span style="color: #ff4500; font-weight: bold;">{</span>
+    ReactDOM.render<span style="color: #ffd700; font-weight: bold;">(</span>&lt;App counter=<span style="color: #ffff00; font-weight: bold;">{</span>counter<span style="color: #ffff00; font-weight: bold;">}</span> /&gt;,
+                    document.getElementById<span style="color: #ffff00; font-weight: bold;">(</span><span style="color: #5b94ab;">'root'</span><span style="color: #ffff00; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
+<span style="color: #ff4500; font-weight: bold;">}</span>
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #819cd6; font-weight: bold;">let</span> <span style="color: #a6c1e0;">counter</span> = 1
+refresh<span style="color: #ff4500; font-weight: bold;">()</span>
+counter += 1
+refresh<span style="color: #ff4500; font-weight: bold;">()</span>
+counter += 1
+refresh<span style="color: #ff4500; font-weight: bold;">()</span>
+</pre>
+</div>
+<p>
+通过setInterval延时操作即可观测到
+</p>
+<div class="org-src-container">
+<pre class="src src-js">setInterval<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #ffd700; font-weight: bold;">()</span> =&gt; <span style="color: #ffd700; font-weight: bold;">{</span>
+    refresh<span style="color: #ffff00; font-weight: bold;">()</span>
+    counter += 1
+<span style="color: #ffd700; font-weight: bold;">}</span>, 1000<span style="color: #ff4500; font-weight: bold;">)</span> <span style="color: #6e7899; font-style: italic;">//</span><span style="color: #6e7899; font-style: italic;">&#36825;&#26159;&#20010;&#27599;&#31186;&#30456;&#21152;&#30340;&#27515;&#24490;&#29615;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org945fc5b" class="outline-2">
+<h2 id="org945fc5b"><span class="section-number-2">4</span> 有状态组件</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+State Hook:
+</p>
+
+<p>
+导入:
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #819cd6; font-weight: bold;">import</span> React, <span style="color: #ff4500; font-weight: bold;">{</span> useState <span style="color: #ff4500; font-weight: bold;">}</span> from <span style="color: #5b94ab;">'react'</span> <span style="color: #6e7899; font-style: italic;">//</span>
+</pre>
+</div>
+<p>
+调用state，用0进行初始化counter
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #819cd6; font-weight: bold;">const</span> <span style="color: #ff4500; font-weight: bold;">[</span> <span style="color: #a6c1e0;">counter</span>, <span style="color: #a6c1e0;">setCounter</span> <span style="color: #ff4500; font-weight: bold;">]</span> = useState<span style="color: #ff4500; font-weight: bold;">(</span>0<span style="color: #ff4500; font-weight: bold;">)</span> <span style="color: #6e7899; font-style: italic;">//</span><span style="color: #6e7899; font-style: italic;">&#35299;&#26500;&#36171;&#20540;&#35821;&#27861;&#23558;&#20803;&#32032;&#20998;&#37197;&#32473;x&#21644;&#25805;&#20316;x</span>
+</pre>
+</div>
+<p>
+setTimeout函数会操作setCounter函数进行+1、1秒计时
+</p>
+<div class="org-src-container">
+<pre class="src src-js">setTimeout<span style="color: #ff4500; font-weight: bold;">(</span>
+  <span style="color: #ffd700; font-weight: bold;">()</span> =&gt; setCounter<span style="color: #ffd700; font-weight: bold;">(</span>counter + 1<span style="color: #ffd700; font-weight: bold;">)</span>, <span style="color: #6e7899; font-style: italic;">//</span><span style="color: #6e7899; font-style: italic;">&#20316;&#20026;&#31532;&#19968;&#20010;&#21442;&#25968;</span>
+  1000 <span style="color: #6e7899; font-style: italic;">//</span><span style="color: #6e7899; font-style: italic;">&#31532;&#20108;&#20010;&#21442;&#25968;&#65292;&#24310;&#36831;&#19968;&#31186;</span>
+<span style="color: #ff4500; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4587baf" class="outline-2">
+<h2 id="org4587baf"><span class="section-number-2">5</span> 鼠标事件处理</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+onClick连接到函数即可
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #819cd6; font-weight: bold;">const</span> <span style="color: #a6c1e0;">handleClick</span> = <span style="color: #ff4500; font-weight: bold;">()</span> =&gt; <span style="color: #ff4500; font-weight: bold;">{</span>
+  console.log<span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #5b94ab;">'clicked'</span><span style="color: #ffd700; font-weight: bold;">)</span>
+<span style="color: #ff4500; font-weight: bold;">}</span>
+<span style="color: #819cd6; font-weight: bold;">return</span> <span style="color: #ff4500; font-weight: bold;">(</span>
+        &lt;button onClick=<span style="color: #ffd700; font-weight: bold;">{</span>handleClick<span style="color: #ffd700; font-weight: bold;">}</span>&gt;click&lt;/button&gt;
+<span style="color: #ff4500; font-weight: bold;">)</span>
+</pre>
+</div>
+<p>
+也可以直接定义
+</p>
+<div class="org-src-container">
+<pre class="src src-js">&lt;button onClick= <span style="color: #ff4500; font-weight: bold;">{</span> <span style="color: #ffd700; font-weight: bold;">()</span> =&gt; setCounter<span style="color: #ffd700; font-weight: bold;">(</span>counter + 1<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">}</span>&gt;
+</pre>
+</div>
+<p>
+利于重用:
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #819cd6; font-weight: bold;">const</span> <span style="color: #a6c1e0;">Button</span> = <span style="color: #ff4500; font-weight: bold;">(</span>props<span style="color: #ff4500; font-weight: bold;">)</span> =&gt; <span style="color: #ff4500; font-weight: bold;">{</span>
+    <span style="color: #819cd6; font-weight: bold;">return</span> <span style="color: #ffd700; font-weight: bold;">(</span>
+        &lt;button onClick = <span style="color: #ffff00; font-weight: bold;">{</span>props.handleClick<span style="color: #ffff00; font-weight: bold;">}</span>&gt;
+            <span style="color: #ffff00; font-weight: bold;">{</span>props.text<span style="color: #ffff00; font-weight: bold;">}</span>
+        &lt;/button&gt;
+    <span style="color: #ffd700; font-weight: bold;">)</span>
+<span style="color: #ff4500; font-weight: bold;">}</span>
+
+<span style="color: #819cd6; font-weight: bold;">const</span> <span style="color: #a6c1e0;">App</span> = <span style="color: #ff4500; font-weight: bold;">()</span> =&gt; <span style="color: #ff4500; font-weight: bold;">{</span>
+    <span style="color: #819cd6; font-weight: bold;">const</span> <span style="color: #ffd700; font-weight: bold;">[</span> <span style="color: #a6c1e0;">counter</span>, <span style="color: #a6c1e0;">setCounter</span> <span style="color: #ffd700; font-weight: bold;">]</span> = useState<span style="color: #ffd700; font-weight: bold;">(</span>0<span style="color: #ffd700; font-weight: bold;">)</span>
+    <span style="color: #819cd6; font-weight: bold;">const</span> <span style="color: #a6c1e0;">addByone</span> = <span style="color: #ffd700; font-weight: bold;">()</span> =&gt; setCounter<span style="color: #ffd700; font-weight: bold;">(</span>counter + 1<span style="color: #ffd700; font-weight: bold;">)</span>
+    <span style="color: #819cd6; font-weight: bold;">const</span> <span style="color: #a6c1e0;">setZero</span> = <span style="color: #ffd700; font-weight: bold;">()</span> =&gt; setCounter<span style="color: #ffd700; font-weight: bold;">(</span>0<span style="color: #ffd700; font-weight: bold;">)</span>
+    <span style="color: #819cd6; font-weight: bold;">const</span> <span style="color: #a6c1e0;">cutByone</span> = <span style="color: #ffd700; font-weight: bold;">()</span> =&gt; setCounter<span style="color: #ffd700; font-weight: bold;">(</span>counter - 1<span style="color: #ffd700; font-weight: bold;">)</span>
+    console.log<span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #5b94ab;">'rendering...'</span>, counter<span style="color: #ffd700; font-weight: bold;">)</span>
+    <span style="color: #819cd6; font-weight: bold;">return</span> <span style="color: #ffd700; font-weight: bold;">(</span>
+        &lt;div&gt;
+            &lt;Display counter = <span style="color: #ffff00; font-weight: bold;">{</span>counter<span style="color: #ffff00; font-weight: bold;">}</span>/&gt;
+            &lt;Button handleClick= <span style="color: #ffff00; font-weight: bold;">{</span>addByone<span style="color: #ffff00; font-weight: bold;">}</span> text=<span style="color: #5b94ab;">'plus'</span> /&gt;
+            &lt;Button handleClick= <span style="color: #ffff00; font-weight: bold;">{</span>setZero<span style="color: #ffff00; font-weight: bold;">}</span> text = <span style="color: #5b94ab;">'zero'</span> /&gt;
+            &lt;Button handleClick= <span style="color: #ffff00; font-weight: bold;">{</span>cutByone<span style="color: #ffff00; font-weight: bold;">}</span> text = <span style="color: #5b94ab;">'minus'</span> /&gt;
+        &lt;/div&gt;
+    <span style="color: #ffd700; font-weight: bold;">)</span>
+<span style="color: #ff4500; font-weight: bold;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2020-07-04 Sat 00:00</p>
+<p class="author">Author: keke</p>
+<p class="date">Created: 2020-07-04 Sat 20:17</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.0.91 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
