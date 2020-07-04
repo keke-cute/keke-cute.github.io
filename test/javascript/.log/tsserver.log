@@ -1,0 +1,17 @@
+Info 0    [15:30:21.694] Starting TS Server
+Info 1    [15:30:21.695] Version: 3.9.5
+Info 2    [15:30:21.695] Arguments: /opt/local/bin/node /opt/local/bin/tsserver --logFile /Users/keke/javascript/.log/tsserver.log --logVerbosity info --cancellationPipeName /private/var/folders/sw/pxgsr_354f1btf01cbrd2tym0000gn/T/0740962eca9dd3ead169fa6934f58bc7/tscancellation*
+Info 3    [15:30:21.695] Platform: darwin NodeVersion: 14 CaseSensitive: false
+Info 4    [15:30:22.579] Search path: /Users/keke/javascript
+Info 5    [15:30:22.580] For info: /Users/keke/javascript/object.js :: No config files found.
+Info 6    [15:30:22.587] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 7    [15:30:23.302] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 1 structureChanged: true Elapsed: 715ms
+Info 8    [15:30:23.302] Project '/dev/null/inferredProject1*' (Inferred)
+Info 9    [15:30:23.302] 	Files (6)
+
+Info 10   [15:30:23.302] -----------------------------------------------
+Info 11   [15:30:24.658] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 12   [15:30:24.659] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 2 structureChanged: false Elapsed: 0ms
+Info 13   [15:30:27.36] Before ensureProjectForOpenFiles:
+Info 14   [15:30:27.36] After ensureProjectForOpenFiles:
+Info 15   [15:30:27.36] got projects updated in background, updating diagnostics for /Users/keke/javascript/object.js
