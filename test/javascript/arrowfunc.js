@@ -23,3 +23,4 @@ function ask(question, yes, no) {
 }
 
 ask("are u ok?", () => alert('ok'), () =>(alert('no')));
+

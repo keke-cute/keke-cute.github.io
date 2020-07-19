@@ -84,3 +84,4 @@ for (let key in user) {
 let clone = Object.assign({}, user);
 console.log(clone);
 //方便的循环赋值
+
