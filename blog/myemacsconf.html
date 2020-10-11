@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-04 Sat 20:24 -->
+<!-- 2020-10-11 Sun 17:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>我的Emacs配置</title>
+<title>My Emacs Configure</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="keke" />
 <link rel="stylesheet" type="text/css" href="css/m-dark.css" />
@@ -61,322 +61,297 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">我的Emacs配置</h1>
+<h1 class="title">My Emacs Configure</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3bbed31">1. Straight.el</a></li>
-<li><a href="#org0708432">2. Is A?</a></li>
-<li><a href="#orgcbaada8">3. Is graphic?</a></li>
-<li><a href="#org03b4947">4. UI</a></li>
-<li><a href="#orgfe60acd">5. Editor</a>
+<li><a href="#org137b82d">1. Straight.el</a></li>
+<li><a href="#org2d53c79">2. Is A?</a></li>
+<li><a href="#org6b4eaf6">3. Is graphic?</a></li>
+<li><a href="#org027cccd">4. UI</a></li>
+<li><a href="#orgeb8bee1">5. Editor</a></li>
+<li><a href="#orgec75e6a">6. Package</a>
 <ul>
-<li><a href="#orge706ae9">5.1. highlight-indent-guides</a></li>
-</ul>
-</li>
-<li><a href="#orga559c86">6. Packages</a>
-<ul>
-<li><a href="#orgac1dc37">6.1. xah<sub>fly</sub><sub>keys</sub></a></li>
-<li><a href="#orgb000d93">6.2. which<sub>key</sub></a></li>
-<li><a href="#org2549d59">6.3. lsp-mode</a></li>
-<li><a href="#orgb4ce145">6.4. company</a></li>
-<li><a href="#org5a0ed22">6.5. magit</a></li>
-<li><a href="#org0ce950f">6.6. yasnippet</a></li>
-</ul>
-</li>
-<li><a href="#org34a2a46">7. Func</a>
-<ul>
-<li><a href="#org0032ac0">7.1. Open in Google Chrome</a></li>
+<li><a href="#orge8470f2">6.1. Roam</a></li>
+<li><a href="#org6eb5e14">6.2. Which-key</a></li>
+<li><a href="#org89fdd85">6.3. emacs-rime</a></li>
+<li><a href="#orgeaa8bd5">6.4. helm</a></li>
+<li><a href="#org168ddf3">6.5. ace-window</a></li>
+<li><a href="#org37b9be4">6.6. exec-path-from-shell</a></li>
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div id="outline-container-org3bbed31" class="outline-2">
-<h2 id="org3bbed31"><span class="section-number-2">1</span> Straight.el</h2>
-<div class="outline-text-2" id="text-1">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">defvar</span> <span style="color: #a6c1e0;">bootstrap-version</span><span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">let</span> <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #ffff00; font-weight: bold;">(</span>bootstrap-file
-       <span style="color: #00ff7f; font-weight: bold;">(</span>expand-file-name <span style="color: #5b94ab;">"straight/repos/straight.el/bootstrap.el"</span> user-emacs-directory<span style="color: #00ff7f; font-weight: bold;">)</span><span style="color: #ffff00; font-weight: bold;">)</span>
-      <span style="color: #ffff00; font-weight: bold;">(</span>bootstrap-version 5<span style="color: #ffff00; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">unless</span> <span style="color: #ffff00; font-weight: bold;">(</span>file-exists-p bootstrap-file<span style="color: #ffff00; font-weight: bold;">)</span>
-    <span style="color: #ffff00; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">with-current-buffer</span>
-        <span style="color: #00ff7f; font-weight: bold;">(</span>url-retrieve-synchronously
-         <span style="color: #5b94ab;">"https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"</span>
-         'silent 'inhibit-cookies<span style="color: #00ff7f; font-weight: bold;">)</span>
-      <span style="color: #00ff7f; font-weight: bold;">(</span>goto-char <span style="color: #00ffff; font-weight: bold;">(</span>point-max<span style="color: #00ffff; font-weight: bold;">)</span><span style="color: #00ff7f; font-weight: bold;">)</span>
-      <span style="color: #00ff7f; font-weight: bold;">(</span>eval-print-last-sexp<span style="color: #00ff7f; font-weight: bold;">)</span><span style="color: #ffff00; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span>load bootstrap-file nil 'nomessage<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
-</pre>
-</div>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #ff4500; font-weight: bold;">(</span>straight-use-package 'use-package<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span>straight-use-package 'posframe<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span>straight-use-package 'vterm<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span>straight-use-package 'typescript-mode<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span>straight-use-package 'htmlize<span style="color: #ff4500; font-weight: bold;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org0708432" class="outline-2">
-<h2 id="org0708432"><span class="section-number-2">2</span> Is A?</h2>
-<div class="outline-text-2" id="text-2">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">defconst</span> <span style="color: #a6c1e0;">*is-a-mac*</span> <span style="color: #ffd700; font-weight: bold;">(</span>eq system-type 'darwin<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">defconst</span> <span style="color: #a6c1e0;">*is-a-linux*</span> <span style="color: #ffd700; font-weight: bold;">(</span>eq system-type 'gnu/linux<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgcbaada8" class="outline-2">
-<h2 id="orgcbaada8"><span class="section-number-2">3</span> Is graphic?</h2>
-<div class="outline-text-2" id="text-3">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">defun</span> <span style="color: #cccccc; font-weight: bold;">graphic-p</span> <span style="color: #ffd700; font-weight: bold;">()</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span>display-graphic-p<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org03b4947" class="outline-2">
-<h2 id="org03b4947"><span class="section-number-2">4</span> UI</h2>
-<div class="outline-text-2" id="text-4">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">when</span> <span style="color: #ffd700; font-weight: bold;">(</span>graphic-p<span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>menu-bar-mode -1<span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span>tool-bar-mode -1<span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span>scroll-bar-mode -1<span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span>global-linum-mode 1<span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #6e7899; font-style: italic;">;;</span><span style="color: #6e7899; font-style: italic;">(setq inhibit-startup-message t)</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span>global-hl-line-mode t<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #6e7899; font-style: italic;">;;</span><span style="color: #6e7899; font-style: italic;">&#23383;&#20307;</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">when</span> *is-a-mac*
-<span style="color: #ffd700; font-weight: bold;">(</span>set-frame-font <span style="color: #5b94ab;">"Monaco 14"</span><span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">when</span> *is-a-linux*
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-frame-font <span style="color: #5b94ab;">"Operator Mono 12"</span><span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">if</span> <span style="color: #ffd700; font-weight: bold;">(</span>version&lt; <span style="color: #5b94ab;">"27.0"</span> emacs-version<span style="color: #ffd700; font-weight: bold;">)</span>
-           <span style="color: #ffd700; font-weight: bold;">(</span>set-fontset-font
-            <span style="color: #5b94ab;">"fontset-default"</span> 'unicode <span style="color: #5b94ab;">"Noto Color Emoji"</span> nil 'prepend<span style="color: #ffd700; font-weight: bold;">)</span>
-         <span style="color: #ffd700; font-weight: bold;">(</span>set-fontset-font
-          t 'symbol <span style="color: #ffff00; font-weight: bold;">(</span>font-spec <span style="color: #7ebebd;">:family</span> <span style="color: #5b94ab;">"Noto Color Emoji"</span><span style="color: #ffff00; font-weight: bold;">)</span> nil 'prepend<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #6e7899; font-style: italic;">;;</span><span style="color: #6e7899; font-style: italic;">&#20027;&#39064;</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">when</span> <span style="color: #ffd700; font-weight: bold;">(</span>graphic-p<span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span>add-to-list 'custom-theme-load-path <span style="color: #5b94ab;">"~/.emacs.d/themes/"</span><span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span>load-theme `wilmersdorf t<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #6e7899; font-style: italic;">;;</span><span style="color: #6e7899; font-style: italic;">&#36879;&#26126;</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">when</span> <span style="color: #ffd700; font-weight: bold;">(</span>graphic-p<span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span>add-to-list 'default-frame-alist'<span style="color: #ffff00; font-weight: bold;">(</span>ns-transparent-titlebar . t<span style="color: #ffff00; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span>add-to-list 'default-frame-alist'<span style="color: #ffff00; font-weight: bold;">(</span>ns-appearance . dark<span style="color: #ffff00; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span>add-to-list 'default-frame-alist'<span style="color: #ffff00; font-weight: bold;">(</span>alpha . <span style="color: #00ff7f; font-weight: bold;">(</span>80 . 75<span style="color: #00ff7f; font-weight: bold;">)</span><span style="color: #ffff00; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #6e7899; font-style: italic;">;;</span><span style="color: #6e7899; font-style: italic;">&#127752;&#25324;&#21495;</span>
-<span style="color: #ff4500; font-weight: bold;">(</span>straight-use-package 'rainbow-delimiters<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">use-package</span> 
-  rainbow-delimiters 
-  <span style="color: #7ebebd;">:config</span>
-  <span style="color: #6e7899; font-style: italic;">;; </span><span style="color: #6e7899; font-style: italic;">&#35774;&#32622;&#27599;&#19968;&#32423;&#25324;&#21495;&#30340;&#39068;&#33394;</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-foreground 'rainbow-delimiters-depth-1-face <span style="color: #5b94ab;">"orange red"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-foreground 'rainbow-delimiters-depth-2-face <span style="color: #5b94ab;">"gold"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-foreground 'rainbow-delimiters-depth-3-face <span style="color: #5b94ab;">"yellow"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-foreground 'rainbow-delimiters-depth-4-face <span style="color: #5b94ab;">"spring green"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-foreground 'rainbow-delimiters-depth-5-face <span style="color: #5b94ab;">"cyan"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-foreground 'rainbow-delimiters-depth-6-face <span style="color: #5b94ab;">"magenta"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-foreground 'rainbow-delimiters-depth-7-face <span style="color: #5b94ab;">"goldenrod"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-foreground 'rainbow-delimiters-depth-8-face <span style="color: #5b94ab;">"IndianRed1"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-foreground 'rainbow-delimiters-depth-9-face <span style="color: #5b94ab;">"ivory1"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-bold 'rainbow-delimiters-depth-1-face <span style="color: #5b94ab;">"t"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-bold 'rainbow-delimiters-depth-2-face <span style="color: #5b94ab;">"t"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-bold 'rainbow-delimiters-depth-3-face <span style="color: #5b94ab;">"t"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-bold 'rainbow-delimiters-depth-4-face <span style="color: #5b94ab;">"t"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-bold 'rainbow-delimiters-depth-5-face <span style="color: #5b94ab;">"t"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-bold 'rainbow-delimiters-depth-6-face <span style="color: #5b94ab;">"t"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-bold 'rainbow-delimiters-depth-7-face <span style="color: #5b94ab;">"t"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-bold 'rainbow-delimiters-depth-8-face <span style="color: #5b94ab;">"t"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>set-face-bold 'rainbow-delimiters-depth-9-face <span style="color: #5b94ab;">"t"</span><span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #ffd700; font-weight: bold;">(</span>add-hook 'prog-mode-hook #'rainbow-delimiters-mode<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgfe60acd" class="outline-2">
-<h2 id="orgfe60acd"><span class="section-number-2">5</span> Editor</h2>
-<div class="outline-text-2" id="text-5">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #6e7899; font-style: italic;">;; </span><span style="color: #6e7899; font-style: italic;">&#33258;&#21160;&#21152;&#36733;&#22806;&#37096;&#20462;&#25913;&#36807;&#30340;&#25991;&#20214;</span>
-<span style="color: #ff4500; font-weight: bold;">(</span>global-auto-revert-mode 1<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #6e7899; font-style: italic;">;; </span><span style="color: #6e7899; font-style: italic;">&#20851;&#38381;&#33258;&#24049;&#29983;&#20135;&#30340;&#20445;&#23384;&#25991;&#20214;</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">setq</span> auto-save-default nil<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #6e7899; font-style: italic;">;; </span><span style="color: #6e7899; font-style: italic;">&#20851;&#38381;&#33258;&#24049;&#29983;&#20135;&#30340;&#22791;&#20221;&#25991;&#20214;</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">setq</span> make-backup-files nil<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #6e7899; font-style: italic;">;; </span><span style="color: #6e7899; font-style: italic;">&#36873;&#20013;&#26576;&#20010;&#21306;&#22495;&#32487;&#32493;&#32534;&#36753;&#21487;&#20197;&#26367;&#25442;&#25481;&#35813;&#21306;&#22495;</span>
-<span style="color: #ff4500; font-weight: bold;">(</span>delete-selection-mode 1<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #6e7899; font-style: italic;">;; </span><span style="color: #6e7899; font-style: italic;">&#35774;&#32622;h &#25991;&#20214;&#40664;&#35748;&#20026;c++&#25991;&#20214;</span>
-<span style="color: #ff4500; font-weight: bold;">(</span>add-to-list 'auto-mode-alist '<span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #5b94ab;">"\\.h\\'"</span> . c++-mode<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #6e7899; font-style: italic;">;; </span><span style="color: #6e7899; font-style: italic;">orgmode</span>
-<span style="color: #ff4500; font-weight: bold;">(</span>add-hook 'org-mode-hook <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">lambda</span> <span style="color: #ffff00; font-weight: bold;">()</span> <span style="color: #ffff00; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">setq</span> truncate-lines nil<span style="color: #ffff00; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
-</pre>
-</div>
-</div>
-<div id="outline-container-orge706ae9" class="outline-3">
-<h3 id="orge706ae9"><span class="section-number-3">5.1</span> highlight-indent-guides</h3>
-<div class="outline-text-3" id="text-5-1">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #ff4500; font-weight: bold;">(</span>straight-use-package 'highlight-indent-guides<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">use-package</span> <span style="color: #a6c1e0;">highlight-indent-guides</span>
-  <span style="color: #7ebebd;">:hook</span> <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #ffff00; font-weight: bold;">(</span>prog-mode web-mode<span style="color: #ffff00; font-weight: bold;">)</span> . highlight-indent-guides-mode<span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #7ebebd;">:config</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">setq</span> highlight-indent-guides-method <span style="color: #ffff00; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">if</span> window-system 'character 'nil<span style="color: #ffff00; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">setq</span> highlight-indent-guides-responsive 'stack<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-orga559c86" class="outline-2">
-<h2 id="orga559c86"><span class="section-number-2">6</span> Packages</h2>
-<div class="outline-text-2" id="text-6">
-</div>
-<div id="outline-container-orgac1dc37" class="outline-3">
-<h3 id="orgac1dc37"><span class="section-number-3">6.1</span> xah<sub>fly</sub><sub>keys</sub></h3>
-<div class="outline-text-3" id="text-6-1">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #ff4500; font-weight: bold;">(</span>straight-use-package 'xah-fly-keys<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">use-package</span> <span style="color: #a6c1e0;">xah-fly-keys</span>
-  <span style="color: #7ebebd;">:config</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span>xah-fly-keys-set-layout 'qwerty<span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span>xah-fly-keys 1<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span>define-key key-translation-map <span style="color: #ffd700; font-weight: bold;">(</span>kbd <span style="color: #5b94ab;">"ESC"</span><span style="color: #ffd700; font-weight: bold;">)</span> <span style="color: #ffd700; font-weight: bold;">(</span>kbd <span style="color: #5b94ab;">"C-g"</span><span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span>define-key xah-fly-w-keymap <span style="color: #ffd700; font-weight: bold;">(</span>kbd <span style="color: #5b94ab;">"o"</span><span style="color: #ffd700; font-weight: bold;">)</span> 'xah-html-open-in-chrome-browser<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span>define-key xah-fly-w-keymap <span style="color: #ffd700; font-weight: bold;">(</span>kbd <span style="color: #5b94ab;">"1"</span><span style="color: #ffd700; font-weight: bold;">)</span> 'delete-other-windows<span style="color: #ff4500; font-weight: bold;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgb000d93" class="outline-3">
-<h3 id="orgb000d93"><span class="section-number-3">6.2</span> which<sub>key</sub></h3>
-<div class="outline-text-3" id="text-6-2">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #ff4500; font-weight: bold;">(</span>straight-use-package 'which-key<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span>which-key-mode<span style="color: #ff4500; font-weight: bold;">)</span>
-</pre>
-</div>
 </div>
 </div>
 
-<div id="outline-container-org2549d59" class="outline-3">
-<h3 id="org2549d59"><span class="section-number-3">6.3</span> lsp-mode</h3>
+<div class="figure">
+<p><img src="./2020-10-11_17-31.png" alt="2020-10-11_17-31.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li>this is my curreent emacs config, old archive see other branch</li>
+<li>git clone me, and run:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-shell">git submodule update --init --recursive
+</pre>
+</div>
+<div id="outline-container-org137b82d" class="outline-2">
+<h2 id="org137b82d"><span class="section-number-2">1</span> Straight.el</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+	(url-retrieve-synchronously
+	 "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+	 'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(straight-use-package 'use-package)
+(straight-use-package 'magit)
+(straight-use-package 'vterm)
+(straight-use-package 'terraform-mode)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2d53c79" class="outline-2">
+<h2 id="org2d53c79"><span class="section-number-2">2</span> Is A?</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defconst *is-a-mac* (eq system-type 'darwin))
+(defconst *is-a-linux* (eq system-type 'gnu/linux))
+;; if the default directory not '~/',fix it.
+(when *is-a-mac*
+  (setq command-line-default-directory "~/"))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6b4eaf6" class="outline-2">
+<h2 id="org6b4eaf6"><span class="section-number-2">3</span> Is graphic?</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defun graphic-p ()
+  (display-graphic-p))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org027cccd" class="outline-2">
+<h2 id="org027cccd"><span class="section-number-2">4</span> UI</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(when (graphic-p)
+  ;;  transparent frame
+  (add-to-list 'default-frame-alist'(ns-transparent-titlebar . t))
+  (add-to-list 'default-frame-alist'(ns-appearance . dark))
+  (add-to-list 'default-frame-alist'(alpha . (80 . 75)))
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+  (global-linum-mode 1)
+  (tool-bar-mode -1)
+  (setq org-startup-with-inline-images t)
+  ;; default frame size
+  ;;      (setq initial-frame-alist
+  ;;	    '(
+  ;;	      (width . 106)
+  ;;	      (height . 56)
+  ;;	      )))
+  )
+(display-time-mode 1)
+;; teansparent title(mac only)
+(when (memq window-system '(mac ns))
+  (menu-bar-mode 1)
+  (add-to-list 'default-frame-alist '(ns-appearance . dark)) ; nil for dark text
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
+
+;; 指定模式禁用行号
+(add-hook 'vterm-mode-hook 'my-inhibit-global-linum-mode)
+(defun my-inhibit-global-linum-mode ()
+  "Counter-act `global-linum-mode'."
+  (add-hook 'after-change-major-mode-hook
+	    (lambda () (linum-mode 0))
+	    :append :local))
+;; 字体设置
+(when (graphic-p)
+  (let ((emacs-font-size 13)
+	(emacs-font-name "Rec Mono Linear"))
+    (set-frame-font (format "%s-%s" (eval emacs-font-name) (eval emacs-font-size)))
+    (set-fontset-font (frame-parameter nil 'font) 'unicode (eval emacs-font-name)))
+  (with-eval-after-load 'org
+    (defun org-buffer-face-mode-variable ()
+      (interactive)
+      (make-face 'width-font-face)
+      (set-face-attribute 'width-font-face nil :font "Sarasa Mono SC 15")
+      (setq buffer-face-mode-face 'width-font-face)
+      (buffer-face-mode))
+    (add-hook 'org-mode-hook 'org-buffer-face-mode-variable)))
+
+(if (version&lt; "27.0" emacs-version)
+    (set-fontset-font
+     "fontset-default" 'unicode "Apple Color Emoji" nil 'prepend)
+  (set-fontset-font
+   t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend))
+;; theme
+(use-package lazycat-theme
+  :load-path "~/.emacs.d/site-lisp/lazycat-theme")
+(straight-use-package 'modus-operandi-theme)
+(straight-use-package 'modus-vivendi-theme)
+(straight-use-package 'circadian)
+(use-package
+  circadian
+  :config
+  ;; 经纬度，可以在https://www.latlong.net/获取，默认是广州的
+  (setq calendar-latitude 35.388779
+	calendar-longitude 116.084290)
+  ;; sunrise 白天用的主题 sunset 晚上用的主题
+  (setq circadian-themes '((:sunrise . lazycat-light)
+			   (:sunset . lazycat-dark)))
+  (circadian-setup))
+;; mode-line
+(use-package awesome-tray
+  :load-path "~/.emacs.d/site-lisp/awesome-tray"
+  :init
+  (require 'awesome-tray)
+  (awesome-tray-mode 1))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgeb8bee1" class="outline-2">
+<h2 id="orgeb8bee1"><span class="section-number-2">5</span> Editor</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">;; 自动加载外部修改过的文件
+(global-auto-revert-mode 1)
+;; 关闭自己生产的保存文件
+(setq auto-save-default nil)
+;; 关闭自己生产的备份文件
+(setq make-backup-files nil)
+;; 选中某个区域继续编辑可以替换掉该区域
+(delete-selection-mode 1)
+;; 设置h 文件默认为c++文件
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+;; orgmode
+(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
+;; without lock files
+(setq create-lockfiles nil)
+;; y-or-n
+(fset 'yes-or-no-p 'y-or-n-p)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgec75e6a" class="outline-2">
+<h2 id="orgec75e6a"><span class="section-number-2">6</span> Package</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-orge8470f2" class="outline-3">
+<h3 id="orge8470f2"><span class="section-number-3">6.1</span> Roam</h3>
+<div class="outline-text-3" id="text-6-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">;;(straight-use-package 'org-roam)
+;;(straight-use-package 'org-roam-server)
+;;(use-package org-roam
+;;  :hook
+;;  (after-init . org-roam-mode)
+;;  :custom
+;;  (org-roam-directory "~/src/org/roam")
+;;  :bind (:map org-roam-mode-map
+;;	      (("C-c n l" . org-roam)
+;;	       ("C-c n f" . org-roam-find-file)
+;;	       ("C-c n g" . org-roam-graph-show))
+;;	      :map org-mode-map
+;;	      (("C-c n i" . org-roam-insert))
+;;	      (("C-c n I" . org-roam-insert-immediate))))
+;;(use-package org-roam-server
+;;  :config
+;;  (setq org-roam-server-host "127.0.0.1"
+;;      org-roam-server-port 9090
+;;      org-roam-server-export-inline-images t
+;;      org-roam-server-authenticate nil
+;;      org-roam-server-label-truncate t
+;;      org-roam-server-label-truncate-length 60
+;;      org-roam-server-label-wrap-length 20)
+;;  (org-roam-server-mode)
+;;  (require 'org-roam-protocol))
+;;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6eb5e14" class="outline-3">
+<h3 id="org6eb5e14"><span class="section-number-3">6.2</span> Which-key</h3>
+<div class="outline-text-3" id="text-6-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(straight-use-package 'which-key)
+(use-package which-key
+  :config
+  (which-key-mode))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org89fdd85" class="outline-3">
+<h3 id="org89fdd85"><span class="section-number-3">6.3</span> emacs-rime</h3>
 <div class="outline-text-3" id="text-6-3">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #ff4500; font-weight: bold;">(</span>straight-use-package 'lsp-mode<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span>straight-use-package 'lsp-ui<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span>straight-use-package 'lsp-treemacs<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #6e7899; font-style: italic;">;; </span><span style="color: #6e7899; font-style: italic;">set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">setq</span> lsp-keymap-prefix <span style="color: #5b94ab;">"s-l"</span><span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">use-package</span> <span style="color: #a6c1e0;">lsp-mode</span>
-  <span style="color: #7ebebd;">:hook</span> <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #6e7899; font-style: italic;">;; </span><span style="color: #6e7899; font-style: italic;">replace XXX-mode with concrete major-mode(e. g. python-mode)</span>
-         <span style="color: #ffff00; font-weight: bold;">(</span>html-mode . lsp<span style="color: #ffff00; font-weight: bold;">)</span>
-         <span style="color: #ffff00; font-weight: bold;">(</span>css-mode . lsp<span style="color: #ffff00; font-weight: bold;">)</span>
-         <span style="color: #ffff00; font-weight: bold;">(</span>js-mode . lsp<span style="color: #ffff00; font-weight: bold;">)</span>
-         <span style="color: #ffff00; font-weight: bold;">(</span>typescript-mode . lsp<span style="color: #ffff00; font-weight: bold;">)</span>
-         <span style="color: #6e7899; font-style: italic;">;; </span><span style="color: #6e7899; font-style: italic;">if you want which-key integration</span>
-         <span style="color: #ffff00; font-weight: bold;">(</span>lsp-mode . lsp-enable-which-key-integration<span style="color: #ffff00; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #7ebebd;">:commands</span> lsp<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">use-package</span> <span style="color: #a6c1e0;">lsp-ui</span> <span style="color: #7ebebd;">:commands</span> lsp-ui-mode<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">use-package</span> <span style="color: #a6c1e0;">lsp-treemacs</span> <span style="color: #7ebebd;">:commands</span> lsp-treemacs-errors-list<span style="color: #ff4500; font-weight: bold;">)</span>
+<pre class="src src-emacs-lisp">(when (graphic-p)
+  (when *is-a-linux*
+    (use-package rime
+      :straight (rime :type git
+		      :host github
+		      :repo "DogLooksGood/emacs-rime"
+		      :files ("*.el" "Makefile" "lib.c"))
+      :custom
+      (default-input-method "rime")
+      (rime-show-candidate 'posframe))))
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb4ce145" class="outline-3">
-<h3 id="orgb4ce145"><span class="section-number-3">6.4</span> company</h3>
+<div id="outline-container-orgeaa8bd5" class="outline-3">
+<h3 id="orgeaa8bd5"><span class="section-number-3">6.4</span> helm</h3>
 <div class="outline-text-3" id="text-6-4">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #ff4500; font-weight: bold;">(</span>straight-use-package 'company<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">use-package</span> <span style="color: #a6c1e0;">company</span> 
-  <span style="color: #7ebebd;">:defer</span> 2 
-  <span style="color: #7ebebd;">:hook</span> <span style="color: #ffd700; font-weight: bold;">(</span>after-init . global-company-mode<span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #7ebebd;">:init</span> <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">setq</span> company-tooltip-align-annotations t company-idle-delay 0 company-echo-delay 0
-              company-minimum-prefix-length 1 company-require-match nil company-dabbrev-ignore-case
-              nil company-dabbrev-downcase nil company-show-numbers t<span style="color: #ffd700; font-weight: bold;">)</span> 
-  <span style="color: #7ebebd;">:config</span> 
-  <span style="color: #7ebebd;">:bind</span> <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #7ebebd;">:map</span> company-active-map
-              <span style="color: #ffff00; font-weight: bold;">(</span><span style="color: #5b94ab;">"M-n"</span> . nil<span style="color: #ffff00; font-weight: bold;">)</span> 
-              <span style="color: #ffff00; font-weight: bold;">(</span><span style="color: #5b94ab;">"M-p"</span> . nil<span style="color: #ffff00; font-weight: bold;">)</span> 
-              <span style="color: #ffff00; font-weight: bold;">(</span><span style="color: #5b94ab;">"C-n"</span> . #'company-select-next<span style="color: #ffff00; font-weight: bold;">)</span> 
-              <span style="color: #ffff00; font-weight: bold;">(</span><span style="color: #5b94ab;">"C-p"</span> . #'company-select-previous<span style="color: #ffff00; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
+<pre class="src src-emacs-lisp">(straight-use-package 'helm)
+(global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
+(global-set-key (kbd "C-x C-f") #'helm-find-files)
+(helm-mode 1)
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org5a0ed22" class="outline-3">
-<h3 id="org5a0ed22"><span class="section-number-3">6.5</span> magit</h3>
+<div id="outline-container-org168ddf3" class="outline-3">
+<h3 id="org168ddf3"><span class="section-number-3">6.5</span> ace-window</h3>
 <div class="outline-text-3" id="text-6-5">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #ff4500; font-weight: bold;">(</span>straight-use-package 'magit<span style="color: #ff4500; font-weight: bold;">)</span>
+<pre class="src src-emacs-lisp">(straight-use-package 'ace-window)
+(global-set-key (kbd "M-o") 'ace-window)
+(setq aw-dispatch-always t)
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org0ce950f" class="outline-3">
-<h3 id="org0ce950f"><span class="section-number-3">6.6</span> yasnippet</h3>
+<div id="outline-container-org37b9be4" class="outline-3">
+<h3 id="org37b9be4"><span class="section-number-3">6.6</span> exec-path-from-shell</h3>
 <div class="outline-text-3" id="text-6-6">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #ff4500; font-weight: bold;">(</span>straight-use-package 'yasnippet<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span>straight-use-package 'yasnippet-snippets<span style="color: #ff4500; font-weight: bold;">)</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">use-package</span> <span style="color: #a6c1e0;">yasnippet</span>
-  <span style="color: #7ebebd;">:commands</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span>yas-reload-all<span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #7ebebd;">:init</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span>add-hook 'prog-mode-hook #'yas-minor-mode<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-org34a2a46" class="outline-2">
-<h2 id="org34a2a46"><span class="section-number-2">7</span> Func</h2>
-<div class="outline-text-2" id="text-7">
-</div>
-<div id="outline-container-org0032ac0" class="outline-3">
-<h3 id="org0032ac0"><span class="section-number-3">7.1</span> Open in Google Chrome</h3>
-<div class="outline-text-3" id="text-7-1">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">defun</span> <span style="color: #cccccc; font-weight: bold;">xah-html-open-in-chrome-browser</span> <span style="color: #ffd700; font-weight: bold;">()</span>
-  <span style="color: #6e7899;">"Open the current file or `</span><span style="color: #a6c1e0;">dired</span><span style="color: #6e7899;">' marked files in Google Chrome browser.</span>
-<span style="color: #6e7899;">Work in Windows, macOS, linux.</span>
-<span style="color: #6e7899;">URL `</span><span style="color: #a6c1e0;">http://ergoemacs.org/emacs/emacs_dired_open_file_in_ext_apps.html</span><span style="color: #6e7899;">'</span>
-<span style="color: #6e7899;">Version 2019-11-10"</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">interactive</span><span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">let*</span> <span style="color: #ffff00; font-weight: bold;">(</span>
-         <span style="color: #00ff7f; font-weight: bold;">(</span>$file-list
-          <span style="color: #00ffff; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">if</span> <span style="color: #ff00ff; font-weight: bold;">(</span>string-equal major-mode <span style="color: #5b94ab;">"dired-mode"</span><span style="color: #ff00ff; font-weight: bold;">)</span>
-              <span style="color: #ff00ff; font-weight: bold;">(</span>dired-get-marked-files<span style="color: #ff00ff; font-weight: bold;">)</span>
-            <span style="color: #ff00ff; font-weight: bold;">(</span>list <span style="color: #daa520; font-weight: bold;">(</span>buffer-file-name<span style="color: #daa520; font-weight: bold;">)</span><span style="color: #ff00ff; font-weight: bold;">)</span><span style="color: #00ffff; font-weight: bold;">)</span><span style="color: #00ff7f; font-weight: bold;">)</span>
-         <span style="color: #00ff7f; font-weight: bold;">(</span>$do-it-p <span style="color: #00ffff; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">if</span> <span style="color: #ff00ff; font-weight: bold;">(</span>&lt;= <span style="color: #daa520; font-weight: bold;">(</span>length $file-list<span style="color: #daa520; font-weight: bold;">)</span> 5<span style="color: #ff00ff; font-weight: bold;">)</span>
-                       t
-                     <span style="color: #ff00ff; font-weight: bold;">(</span>y-or-n-p <span style="color: #5b94ab;">"Open more than 5 files? "</span><span style="color: #ff00ff; font-weight: bold;">)</span><span style="color: #00ffff; font-weight: bold;">)</span><span style="color: #00ff7f; font-weight: bold;">)</span><span style="color: #ffff00; font-weight: bold;">)</span>
-    <span style="color: #ffff00; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">when</span> $do-it-p
-      <span style="color: #00ff7f; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">cond</span>
-       <span style="color: #00ffff; font-weight: bold;">(</span><span style="color: #ff00ff; font-weight: bold;">(</span>string-equal system-type <span style="color: #5b94ab;">"darwin"</span><span style="color: #ff00ff; font-weight: bold;">)</span>
-        <span style="color: #ff00ff; font-weight: bold;">(</span>mapc
-         <span style="color: #daa520; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">lambda</span> <span style="color: #ff6a6a; font-weight: bold;">(</span>$fpath<span style="color: #ff6a6a; font-weight: bold;">)</span>
-           <span style="color: #ff6a6a; font-weight: bold;">(</span>shell-command
-            <span style="color: #fffff0; font-weight: bold;">(</span>format <span style="color: #5b94ab;">"open -a /Applications/Google\\ Chrome.app \"%s\""</span> $fpath<span style="color: #fffff0; font-weight: bold;">)</span><span style="color: #ff6a6a; font-weight: bold;">)</span><span style="color: #daa520; font-weight: bold;">)</span>
-         $file-list<span style="color: #ff00ff; font-weight: bold;">)</span><span style="color: #00ffff; font-weight: bold;">)</span>
-       <span style="color: #00ffff; font-weight: bold;">(</span><span style="color: #ff00ff; font-weight: bold;">(</span>string-equal system-type <span style="color: #5b94ab;">"windows-nt"</span><span style="color: #ff00ff; font-weight: bold;">)</span>
-        <span style="color: #6e7899; font-style: italic;">;; </span><span style="color: #6e7899; font-style: italic;">"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" 2019-11-09</span>
-        <span style="color: #ff00ff; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">let</span> <span style="color: #daa520; font-weight: bold;">(</span><span style="color: #ff6a6a; font-weight: bold;">(</span>process-connection-type nil<span style="color: #ff6a6a; font-weight: bold;">)</span><span style="color: #daa520; font-weight: bold;">)</span>
-          <span style="color: #daa520; font-weight: bold;">(</span>mapc
-           <span style="color: #ff6a6a; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">lambda</span> <span style="color: #fffff0; font-weight: bold;">(</span>$fpath<span style="color: #fffff0; font-weight: bold;">)</span>
-             <span style="color: #fffff0; font-weight: bold;">(</span>start-process <span style="color: #5b94ab;">""</span> nil <span style="color: #5b94ab;">"powershell"</span> <span style="color: #5b94ab;">"start-process"</span> <span style="color: #5b94ab;">"chrome"</span> $fpath <span style="color: #fffff0; font-weight: bold;">)</span><span style="color: #ff6a6a; font-weight: bold;">)</span>
-           $file-list<span style="color: #daa520; font-weight: bold;">)</span><span style="color: #ff00ff; font-weight: bold;">)</span><span style="color: #00ffff; font-weight: bold;">)</span>
-       <span style="color: #00ffff; font-weight: bold;">(</span><span style="color: #ff00ff; font-weight: bold;">(</span>string-equal system-type <span style="color: #5b94ab;">"gnu/linux"</span><span style="color: #ff00ff; font-weight: bold;">)</span>
-        <span style="color: #ff00ff; font-weight: bold;">(</span>mapc
-         <span style="color: #daa520; font-weight: bold;">(</span><span style="color: #819cd6; font-weight: bold;">lambda</span> <span style="color: #ff6a6a; font-weight: bold;">(</span>$fpath<span style="color: #ff6a6a; font-weight: bold;">)</span>
-           <span style="color: #ff6a6a; font-weight: bold;">(</span>shell-command <span style="color: #fffff0; font-weight: bold;">(</span>format <span style="color: #5b94ab;">"google-chrome-stable \"%s\""</span> $fpath<span style="color: #fffff0; font-weight: bold;">)</span><span style="color: #ff6a6a; font-weight: bold;">)</span><span style="color: #daa520; font-weight: bold;">)</span>
-         $file-list<span style="color: #ff00ff; font-weight: bold;">)</span><span style="color: #00ffff; font-weight: bold;">)</span><span style="color: #00ff7f; font-weight: bold;">)</span><span style="color: #ffff00; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff4500; font-weight: bold;">)</span>
+<pre class="src src-emacs-lisp">;; if macos can't use path, fix it
+(straight-use-package 'exec-path-from-shell)
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 </pre>
 </div>
 </div>
@@ -384,10 +359,10 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: 2020-04-17 Fri 00:00</p>
+<p class="date">Date: 2020-09-13 Sun 00:00</p>
 <p class="author">Author: keke</p>
-<p class="date">Created: 2020-07-04 Sat 20:24</p>
-<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.0.91 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
+<p class="date">Created: 2020-10-11 Sun 17:38</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
