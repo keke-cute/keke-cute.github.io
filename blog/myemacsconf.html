@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-10-11 Sun 17:38 -->
+<!-- 2020-10-11 Sun 17:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Emacs Configure</title>
@@ -66,19 +66,19 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org137b82d">1. Straight.el</a></li>
-<li><a href="#org2d53c79">2. Is A?</a></li>
-<li><a href="#org6b4eaf6">3. Is graphic?</a></li>
-<li><a href="#org027cccd">4. UI</a></li>
-<li><a href="#orgeb8bee1">5. Editor</a></li>
-<li><a href="#orgec75e6a">6. Package</a>
+<li><a href="#orga96c8b9">1. Straight.el</a></li>
+<li><a href="#org9215396">2. Is A?</a></li>
+<li><a href="#orgc76bf2e">3. Is graphic?</a></li>
+<li><a href="#orgfb0f9b9">4. UI</a></li>
+<li><a href="#orge37b93f">5. Editor</a></li>
+<li><a href="#org849c69f">6. Package</a>
 <ul>
-<li><a href="#orge8470f2">6.1. Roam</a></li>
-<li><a href="#org6eb5e14">6.2. Which-key</a></li>
-<li><a href="#org89fdd85">6.3. emacs-rime</a></li>
-<li><a href="#orgeaa8bd5">6.4. helm</a></li>
-<li><a href="#org168ddf3">6.5. ace-window</a></li>
-<li><a href="#org37b9be4">6.6. exec-path-from-shell</a></li>
+<li><a href="#org4cebfc0">6.1. Roam</a></li>
+<li><a href="#orgfc73427">6.2. Which-key</a></li>
+<li><a href="#orgacd5f88">6.3. emacs-rime</a></li>
+<li><a href="#org8e9553b">6.4. helm</a></li>
+<li><a href="#orga70b285">6.5. ace-window</a></li>
+<li><a href="#org43e100a">6.6. exec-path-from-shell</a></li>
 </ul>
 </li>
 </ul>
@@ -86,7 +86,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div class="figure">
-<p><img src="./2020-10-11_17-31.png" alt="2020-10-11_17-31.png" />
+<p><img src="https://raw.githubusercontent.com/keke-cute/.emacs.d/master/2020-10-11_17-31.png" alt="2020-10-11_17-31.png" />
 </p>
 </div>
 <ul class="org-ul">
@@ -97,8 +97,8 @@ for the JavaScript code in this tag.
 <pre class="src src-shell">git submodule update --init --recursive
 </pre>
 </div>
-<div id="outline-container-org137b82d" class="outline-2">
-<h2 id="org137b82d"><span class="section-number-2">1</span> Straight.el</h2>
+<div id="outline-container-orga96c8b9" class="outline-2">
+<h2 id="orga96c8b9"><span class="section-number-2">1</span> Straight.el</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(defvar bootstrap-version)
@@ -124,8 +124,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org2d53c79" class="outline-2">
-<h2 id="org2d53c79"><span class="section-number-2">2</span> Is A?</h2>
+<div id="outline-container-org9215396" class="outline-2">
+<h2 id="org9215396"><span class="section-number-2">2</span> Is A?</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(defconst *is-a-mac* (eq system-type 'darwin))
@@ -137,8 +137,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org6b4eaf6" class="outline-2">
-<h2 id="org6b4eaf6"><span class="section-number-2">3</span> Is graphic?</h2>
+<div id="outline-container-orgc76bf2e" class="outline-2">
+<h2 id="orgc76bf2e"><span class="section-number-2">3</span> Is graphic?</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(defun graphic-p ()
@@ -147,8 +147,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org027cccd" class="outline-2">
-<h2 id="org027cccd"><span class="section-number-2">4</span> UI</h2>
+<div id="outline-container-orgfb0f9b9" class="outline-2">
+<h2 id="orgfb0f9b9"><span class="section-number-2">4</span> UI</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(when (graphic-p)
@@ -228,8 +228,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgeb8bee1" class="outline-2">
-<h2 id="orgeb8bee1"><span class="section-number-2">5</span> Editor</h2>
+<div id="outline-container-orge37b93f" class="outline-2">
+<h2 id="orge37b93f"><span class="section-number-2">5</span> Editor</h2>
 <div class="outline-text-2" id="text-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">;; 自动加载外部修改过的文件
@@ -252,12 +252,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgec75e6a" class="outline-2">
-<h2 id="orgec75e6a"><span class="section-number-2">6</span> Package</h2>
+<div id="outline-container-org849c69f" class="outline-2">
+<h2 id="org849c69f"><span class="section-number-2">6</span> Package</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orge8470f2" class="outline-3">
-<h3 id="orge8470f2"><span class="section-number-3">6.1</span> Roam</h3>
+<div id="outline-container-org4cebfc0" class="outline-3">
+<h3 id="org4cebfc0"><span class="section-number-3">6.1</span> Roam</h3>
 <div class="outline-text-3" id="text-6-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">;;(straight-use-package 'org-roam)
@@ -290,8 +290,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org6eb5e14" class="outline-3">
-<h3 id="org6eb5e14"><span class="section-number-3">6.2</span> Which-key</h3>
+<div id="outline-container-orgfc73427" class="outline-3">
+<h3 id="orgfc73427"><span class="section-number-3">6.2</span> Which-key</h3>
 <div class="outline-text-3" id="text-6-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'which-key)
@@ -302,8 +302,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org89fdd85" class="outline-3">
-<h3 id="org89fdd85"><span class="section-number-3">6.3</span> emacs-rime</h3>
+<div id="outline-container-orgacd5f88" class="outline-3">
+<h3 id="orgacd5f88"><span class="section-number-3">6.3</span> emacs-rime</h3>
 <div class="outline-text-3" id="text-6-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(when (graphic-p)
@@ -320,8 +320,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgeaa8bd5" class="outline-3">
-<h3 id="orgeaa8bd5"><span class="section-number-3">6.4</span> helm</h3>
+<div id="outline-container-org8e9553b" class="outline-3">
+<h3 id="org8e9553b"><span class="section-number-3">6.4</span> helm</h3>
 <div class="outline-text-3" id="text-6-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'helm)
@@ -333,8 +333,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org168ddf3" class="outline-3">
-<h3 id="org168ddf3"><span class="section-number-3">6.5</span> ace-window</h3>
+<div id="outline-container-orga70b285" class="outline-3">
+<h3 id="orga70b285"><span class="section-number-3">6.5</span> ace-window</h3>
 <div class="outline-text-3" id="text-6-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'ace-window)
@@ -344,8 +344,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org37b9be4" class="outline-3">
-<h3 id="org37b9be4"><span class="section-number-3">6.6</span> exec-path-from-shell</h3>
+<div id="outline-container-org43e100a" class="outline-3">
+<h3 id="org43e100a"><span class="section-number-3">6.6</span> exec-path-from-shell</h3>
 <div class="outline-text-3" id="text-6-6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">;; if macos can't use path, fix it
@@ -361,7 +361,7 @@ for the JavaScript code in this tag.
 <div id="postamble" class="status">
 <p class="date">Date: 2020-09-13 Sun 00:00</p>
 <p class="author">Author: keke</p>
-<p class="date">Created: 2020-10-11 Sun 17:38</p>
+<p class="date">Created: 2020-10-11 Sun 17:43</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
