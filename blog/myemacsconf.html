@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-10-11 Sun 17:43 -->
+<!-- 2020-10-13 Tue 17:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Emacs Configure</title>
@@ -66,19 +66,28 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga96c8b9">1. Straight.el</a></li>
-<li><a href="#org9215396">2. Is A?</a></li>
-<li><a href="#orgc76bf2e">3. Is graphic?</a></li>
-<li><a href="#orgfb0f9b9">4. UI</a></li>
-<li><a href="#orge37b93f">5. Editor</a></li>
-<li><a href="#org849c69f">6. Package</a>
+<li><a href="#org4c1a8bc">1. Straight.el</a></li>
+<li><a href="#orgeea7155">2. Is A?</a></li>
+<li><a href="#org5f22aa9">3. Is graphic?</a></li>
+<li><a href="#org6de8dcc">4. UI</a>
 <ul>
-<li><a href="#org4cebfc0">6.1. Roam</a></li>
-<li><a href="#orgfc73427">6.2. Which-key</a></li>
-<li><a href="#orgacd5f88">6.3. emacs-rime</a></li>
-<li><a href="#org8e9553b">6.4. helm</a></li>
-<li><a href="#orga70b285">6.5. ace-window</a></li>
-<li><a href="#org43e100a">6.6. exec-path-from-shell</a></li>
+<li><a href="#orgb3c8b45">4.1. Main UI</a></li>
+<li><a href="#org4eb264b">4.2. Font</a></li>
+<li><a href="#org960e8d2">4.3. Theme &amp; Modeline</a></li>
+</ul>
+</li>
+<li><a href="#org10fd3bb">5. Editor</a></li>
+<li><a href="#org4df831a">6. Package</a>
+<ul>
+<li><a href="#org7791bc2">6.1. FlyCheck</a></li>
+<li><a href="#org319603d">6.2. Company</a></li>
+<li><a href="#orgf998c5f">6.3. Lsp(include go)</a></li>
+<li><a href="#orga0cf674">6.4. Ivy</a></li>
+<li><a href="#orgd62d8fd">6.5. Which-key</a></li>
+<li><a href="#org83e3676">6.6. Emacs-rime</a></li>
+<li><a href="#org9a895d7">6.7. Ace-window</a></li>
+<li><a href="#org3ba880f">6.8. Exec-path-from-shell</a></li>
+<li><a href="#org2dfc4d6">6.9. Xah-run-current-file</a></li>
 </ul>
 </li>
 </ul>
@@ -97,8 +106,8 @@ for the JavaScript code in this tag.
 <pre class="src src-shell">git submodule update --init --recursive
 </pre>
 </div>
-<div id="outline-container-orga96c8b9" class="outline-2">
-<h2 id="orga96c8b9"><span class="section-number-2">1</span> Straight.el</h2>
+<div id="outline-container-org4c1a8bc" class="outline-2">
+<h2 id="org4c1a8bc"><span class="section-number-2">1</span> Straight.el</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(defvar bootstrap-version)
@@ -120,25 +129,23 @@ for the JavaScript code in this tag.
 (straight-use-package 'magit)
 (straight-use-package 'vterm)
 (straight-use-package 'terraform-mode)
+(straight-use-package 'posframe)
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org9215396" class="outline-2">
-<h2 id="org9215396"><span class="section-number-2">2</span> Is A?</h2>
+<div id="outline-container-orgeea7155" class="outline-2">
+<h2 id="orgeea7155"><span class="section-number-2">2</span> Is A?</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(defconst *is-a-mac* (eq system-type 'darwin))
 (defconst *is-a-linux* (eq system-type 'gnu/linux))
-;; if the default directory not '~/',fix it.
-(when *is-a-mac*
-  (setq command-line-default-directory "~/"))
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc76bf2e" class="outline-2">
-<h2 id="orgc76bf2e"><span class="section-number-2">3</span> Is graphic?</h2>
+<div id="outline-container-org5f22aa9" class="outline-2">
+<h2 id="org5f22aa9"><span class="section-number-2">3</span> Is graphic?</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(defun graphic-p ()
@@ -147,9 +154,13 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgfb0f9b9" class="outline-2">
-<h2 id="orgfb0f9b9"><span class="section-number-2">4</span> UI</h2>
+<div id="outline-container-org6de8dcc" class="outline-2">
+<h2 id="org6de8dcc"><span class="section-number-2">4</span> UI</h2>
 <div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orgb3c8b45" class="outline-3">
+<h3 id="orgb3c8b45"><span class="section-number-3">4.1</span> Main UI</h3>
+<div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(when (graphic-p)
   ;;  transparent frame
@@ -160,6 +171,8 @@ for the JavaScript code in this tag.
   (scroll-bar-mode -1)
   (global-linum-mode 1)
   (tool-bar-mode -1)
+  (global-hl-line-mode t)
+  (setq inhibit-splash-screen t)
   (setq org-startup-with-inline-images t)
   ;; default frame size
   ;;      (setq initial-frame-alist
@@ -169,24 +182,27 @@ for the JavaScript code in this tag.
   ;;	      )))
   )
 (display-time-mode 1)
-;; teansparent title(mac only)
-(when (memq window-system '(mac ns))
-  (menu-bar-mode 1)
-  (add-to-list 'default-frame-alist '(ns-appearance . dark)) ; nil for dark text
-  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
-
 ;; 指定模式禁用行号
 (add-hook 'vterm-mode-hook 'my-inhibit-global-linum-mode)
+(add-hook 'eshell-mode-hook 'my-inhibit-global-linum-mode)
 (defun my-inhibit-global-linum-mode ()
   "Counter-act `global-linum-mode'."
   (add-hook 'after-change-major-mode-hook
 	    (lambda () (linum-mode 0))
 	    :append :local))
-;; 字体设置
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4eb264b" class="outline-3">
+<h3 id="org4eb264b"><span class="section-number-3">4.2</span> Font</h3>
+<div class="outline-text-3" id="text-4-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">;; 字体设置
 (when (graphic-p)
   (let ((emacs-font-size 13)
 	(emacs-font-name "Rec Mono Linear"))
-    (set-frame-font (format "%s-%s" (eval emacs-font-name) (eval emacs-font-size)))
+    (set-frame-font (format "%s-%s" (eval emacs-font-name) (eval emacs-font-size)) nil t)
     (set-fontset-font (frame-parameter nil 'font) 'unicode (eval emacs-font-name)))
   (with-eval-after-load 'org
     (defun org-buffer-face-mode-variable ()
@@ -202,7 +218,15 @@ for the JavaScript code in this tag.
      "fontset-default" 'unicode "Apple Color Emoji" nil 'prepend)
   (set-fontset-font
    t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend))
-;; theme
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org960e8d2" class="outline-3">
+<h3 id="org960e8d2"><span class="section-number-3">4.3</span> Theme &amp; Modeline</h3>
+<div class="outline-text-3" id="text-4-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">;; theme
 (use-package lazycat-theme
   :load-path "~/.emacs.d/site-lisp/lazycat-theme")
 (straight-use-package 'modus-operandi-theme)
@@ -228,8 +252,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orge37b93f" class="outline-2">
-<h2 id="orge37b93f"><span class="section-number-2">5</span> Editor</h2>
+</div>
+<div id="outline-container-org10fd3bb" class="outline-2">
+<h2 id="org10fd3bb"><span class="section-number-2">5</span> Editor</h2>
 <div class="outline-text-2" id="text-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">;; 自动加载外部修改过的文件
@@ -252,47 +277,130 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org849c69f" class="outline-2">
-<h2 id="org849c69f"><span class="section-number-2">6</span> Package</h2>
+<div id="outline-container-org4df831a" class="outline-2">
+<h2 id="org4df831a"><span class="section-number-2">6</span> Package</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org4cebfc0" class="outline-3">
-<h3 id="org4cebfc0"><span class="section-number-3">6.1</span> Roam</h3>
+<div id="outline-container-org7791bc2" class="outline-3">
+<h3 id="org7791bc2"><span class="section-number-3">6.1</span> FlyCheck</h3>
 <div class="outline-text-3" id="text-6-1">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">;;(straight-use-package 'org-roam)
-;;(straight-use-package 'org-roam-server)
-;;(use-package org-roam
-;;  :hook
-;;  (after-init . org-roam-mode)
-;;  :custom
-;;  (org-roam-directory "~/src/org/roam")
-;;  :bind (:map org-roam-mode-map
-;;	      (("C-c n l" . org-roam)
-;;	       ("C-c n f" . org-roam-find-file)
-;;	       ("C-c n g" . org-roam-graph-show))
-;;	      :map org-mode-map
-;;	      (("C-c n i" . org-roam-insert))
-;;	      (("C-c n I" . org-roam-insert-immediate))))
-;;(use-package org-roam-server
-;;  :config
-;;  (setq org-roam-server-host "127.0.0.1"
-;;      org-roam-server-port 9090
-;;      org-roam-server-export-inline-images t
-;;      org-roam-server-authenticate nil
-;;      org-roam-server-label-truncate t
-;;      org-roam-server-label-truncate-length 60
-;;      org-roam-server-label-wrap-length 20)
-;;  (org-roam-server-mode)
-;;  (require 'org-roam-protocol))
-;;
+<pre class="src src-emacs-lisp">(straight-use-package 'flycheck)
+(straight-use-package 'flycheck-posframe)
+
+(use-package flycheck
+  :init (global-flycheck-mode))
+
+(use-package flycheck-posframe
+  :after flycheck
+  :config (add-hook 'flycheck-mode-hook #'flycheck-posframe-mode))
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfc73427" class="outline-3">
-<h3 id="orgfc73427"><span class="section-number-3">6.2</span> Which-key</h3>
+<div id="outline-container-org319603d" class="outline-3">
+<h3 id="org319603d"><span class="section-number-3">6.2</span> Company</h3>
 <div class="outline-text-3" id="text-6-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(straight-use-package 'company)
+(straight-use-package 'company-box)
+(use-package company 
+  :defer 2 
+  :hook (after-init . global-company-mode) 
+  :init (setq company-tooltip-align-annotations t company-idle-delay 0.1 company-echo-delay 0
+	      company-minimum-prefix-length 2 company-require-match nil company-dabbrev-ignore-case
+	      nil company-dabbrev-downcase nil company-show-numbers t) 
+  :config 
+  :bind (:map company-active-map
+	      ("M-n" . nil) 
+	      ("M-p" . nil) 
+	      ("C-n" . #'company-select-next) 
+	      ("C-p" . #'company-select-previous)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf998c5f" class="outline-3">
+<h3 id="orgf998c5f"><span class="section-number-3">6.3</span> Lsp(include go)</h3>
+<div class="outline-text-3" id="text-6-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(straight-use-package 'lsp-mode)
+(straight-use-package 'go-mode)
+(straight-use-package 'lsp-ui)
+(use-package lsp-mode
+  :commands lsp
+  :hook ((go-mode) . lsp)
+  :custom
+  (lsp-idle-delay 1200)
+  (lsp-auto-guess-root nil)
+  (lsp-file-watch-threshold 2000)
+  (read-process-output-max (* 1024 1024))
+  (lsp-eldoc-hook nil)
+  (lsp-prefer-flymake nil)
+  :bind (:map lsp-mode-map
+	      ("C-c C-f" . lsp-format-buffer)
+	      ("M-RET" . lsp-ui-sideline-apply-code-actions))
+  :config
+  (setq lsp-prefer-capf t))
+
+(use-package lsp-ui :commands lsp-ui-mode)
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga0cf674" class="outline-3">
+<h3 id="orga0cf674"><span class="section-number-3">6.4</span> Ivy</h3>
+<div class="outline-text-3" id="text-6-4">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(straight-use-package 'ivy)
+(straight-use-package 'swiper)
+(straight-use-package 'counsel)
+(straight-use-package 'ivy-posframe)
+
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+;; enable this if you want `swiper' to use it
+;; (setq search-default-mode #'char-fold-to-regexp)
+(global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
+(global-set-key (kbd "&lt;f6&gt;") 'ivy-resume)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "&lt;f1&gt; f") 'counsel-describe-function)
+(global-set-key (kbd "&lt;f1&gt; v") 'counsel-describe-variable)
+(global-set-key (kbd "&lt;f1&gt; o") 'counsel-describe-symbol)
+(global-set-key (kbd "&lt;f1&gt; l") 'counsel-find-library)
+(global-set-key (kbd "&lt;f2&gt; i") 'counsel-info-lookup-symbol)
+(global-set-key (kbd "&lt;f2&gt; u") 'counsel-unicode-char)
+(global-set-key (kbd "C-c g") 'counsel-git)
+(global-set-key (kbd "C-c j") 'counsel-git-grep)
+(global-set-key (kbd "C-c k") 'counsel-ag)
+(global-set-key (kbd "C-x l") 'counsel-locate)
+(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+(use-package ivy-posframe
+  :custom
+  (ivy-posframe-font "Rec Mono Linear-15")
+  (ivy-posframe-parameters
+   '((left-fringe . 5)
+     (right-fringe . 5)))
+  (ivy-posframe-border-width 2)
+  (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+  :custom-face
+  (ivy-posframe ((t (:background "#000000"))))
+  (ivy-posframe-border ((t (:background "#6272a4"))))
+  (ivy-posframe-cursor ((t (:background "#61bfff"))))
+  :config
+  (ivy-posframe-mode 1))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd62d8fd" class="outline-3">
+<h3 id="orgd62d8fd"><span class="section-number-3">6.5</span> Which-key</h3>
+<div class="outline-text-3" id="text-6-5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'which-key)
 (use-package which-key
@@ -302,9 +410,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgacd5f88" class="outline-3">
-<h3 id="orgacd5f88"><span class="section-number-3">6.3</span> emacs-rime</h3>
-<div class="outline-text-3" id="text-6-3">
+<div id="outline-container-org83e3676" class="outline-3">
+<h3 id="org83e3676"><span class="section-number-3">6.6</span> Emacs-rime</h3>
+<div class="outline-text-3" id="text-6-6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(when (graphic-p)
   (when *is-a-linux*
@@ -320,22 +428,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org8e9553b" class="outline-3">
-<h3 id="org8e9553b"><span class="section-number-3">6.4</span> helm</h3>
-<div class="outline-text-3" id="text-6-4">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(straight-use-package 'helm)
-(global-set-key (kbd "M-x") #'helm-M-x)
-(global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
-(global-set-key (kbd "C-x C-f") #'helm-find-files)
-(helm-mode 1)
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orga70b285" class="outline-3">
-<h3 id="orga70b285"><span class="section-number-3">6.5</span> ace-window</h3>
-<div class="outline-text-3" id="text-6-5">
+<div id="outline-container-org9a895d7" class="outline-3">
+<h3 id="org9a895d7"><span class="section-number-3">6.7</span> Ace-window</h3>
+<div class="outline-text-3" id="text-6-7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(straight-use-package 'ace-window)
 (global-set-key (kbd "M-o") 'ace-window)
@@ -344,14 +439,130 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org43e100a" class="outline-3">
-<h3 id="org43e100a"><span class="section-number-3">6.6</span> exec-path-from-shell</h3>
-<div class="outline-text-3" id="text-6-6">
+<div id="outline-container-org3ba880f" class="outline-3">
+<h3 id="org3ba880f"><span class="section-number-3">6.8</span> Exec-path-from-shell</h3>
+<div class="outline-text-3" id="text-6-8">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">;; if macos can't use path, fix it
-(straight-use-package 'exec-path-from-shell)
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
+<pre class="src src-emacs-lisp">(straight-use-package 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2dfc4d6" class="outline-3">
+<h3 id="org2dfc4d6"><span class="section-number-3">6.9</span> Xah-run-current-file</h3>
+<div class="outline-text-3" id="text-6-9">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defvar xah-run-current-file-before-hook nil "Hook for `xah-run-current-file'. Before the file is run.")
+
+(defvar xah-run-current-file-after-hook nil "Hook for `xah-run-current-file'. After the file is run.")
+
+(defun xah-run-current-go-file ()
+  "Run or build current golang file.
+
+To build, call `universal-argument' first.
+
+Version 2018-10-12"
+  (interactive)
+  (when (not (buffer-file-name)) (save-buffer))
+  (when (buffer-modified-p) (save-buffer))
+  (let* (
+	 ($outputb "*xah-run output*")
+	 (resize-mini-windows nil)
+	 ($fname (buffer-file-name))
+	 ($fSuffix (file-name-extension $fname))
+	 ($progName "go")
+	 $cmdStr)
+    (setq $cmdStr (concat $progName " \""   $fname "\" &amp;"))
+    (if current-prefix-arg
+	(progn
+	  (setq $cmdStr (format "%s build \"%s\" " $progName $fname)))
+      (progn
+	(setq $cmdStr (format "%s run \"%s\" &amp;" $progName $fname))))
+    (progn
+      (message "running %s" $fname)
+      (message "%s" $cmdStr)
+      (shell-command $cmdStr $outputb )
+      ;;
+      )))
+
+(defun xah-run-current-file ()
+  "Execute the current file.
+For example, if the current buffer is x.py, then it'll call 「python x.py」 in a shell.
+Output is printed to buffer “*xah-run output*”.
+
+The file can be Emacs Lisp, PHP, Perl, Python, Ruby, JavaScript, TypeScript, golang, Bash, Ocaml, Visual Basic, TeX, Java, Clojure.
+File suffix is used to determine what program to run.
+
+If the file is modified or not saved, save it automatically before run.
+
+URL `http://ergoemacs.org/emacs/elisp_run_current_file.html'
+Version 2020-09-06"
+  (interactive)
+  (let (
+	($outBuffer "*xah-run output*")
+	(resize-mini-windows nil)
+	($suffixMap
+	 ;; (‹extension› . ‹shell program name›)
+	 `(
+	   ("php" . "php")
+	   ("pl" . "perl")
+	   ("py" . "python")
+	   ("py3" . ,(if (string-equal system-type "windows-nt") "c:/Python32/python.exe" "python3"))
+	   ("rb" . "ruby")
+	   ("go" . "go run")
+	   ("hs" . "runhaskell")
+	   ;; ("js" . "node")
+	   ("js" . "deno run")
+	   ("mjs" . "node --experimental-modules ")
+	   ("ts" . "tsc") ; TypeScript
+	   ("tsx" . "tsc")
+	   ("sh" . "bash")
+	   ("clj" . "java -cp ~/apps/clojure-1.6.0/clojure-1.6.0.jar clojure.main")
+	   ("rkt" . "racket")
+	   ("ml" . "ocaml")
+	   ("vbs" . "cscript")
+	   ("tex" . "pdflatex")
+	   ("latex" . "pdflatex")
+	   ("java" . "javac")
+	   ;; ("pov" . "/usr/local/bin/povray +R2 +A0.1 +J1.2 +Am2 +Q9 +H480 +W640")
+	   ))
+	$fname
+	$fSuffix
+	$progName
+	$cmdStr)
+    (when (not (buffer-file-name)) (save-buffer))
+    (when (buffer-modified-p) (save-buffer))
+    (setq $fname (buffer-file-name))
+    (setq $fSuffix (file-name-extension $fname))
+    (setq $progName (cdr (assoc $fSuffix $suffixMap)))
+    (setq $cmdStr (concat $progName " \""   $fname "\" &amp;"))
+    (run-hooks 'xah-run-current-file-before-hook)
+    (cond
+     ((string-equal $fSuffix "el")
+      (load $fname))
+     ((or (string-equal $fSuffix "ts") (string-equal $fSuffix "tsx"))
+      (if (fboundp 'xah-ts-compile-file)
+	  (progn
+	    (xah-ts-compile-file current-prefix-arg))
+	(if $progName
+	    (progn
+	      (message "Running")
+	      (shell-command $cmdStr $outBuffer ))
+	  (error "No recognized program file suffix for this file."))))
+     ((string-equal $fSuffix "go")
+      (xah-run-current-go-file))
+     ((string-equal $fSuffix "java")
+      (progn
+	(shell-command (format "javac %s" $fname) $outBuffer )
+	(shell-command (format "java %s" (file-name-sans-extension
+					  (file-name-nondirectory $fname))) $outBuffer )))
+     (t (if $progName
+	    (progn
+	      (message "Running")
+	      (shell-command $cmdStr $outBuffer ))
+	  (error "No recognized program file suffix for this file."))))
+    (run-hooks 'xah-run-current-file-after-hook)))
 </pre>
 </div>
 </div>
@@ -359,9 +570,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: 2020-09-13 Sun 00:00</p>
+<p class="date">Date: 2020-10-13 Tue 00:00</p>
 <p class="author">Author: keke</p>
-<p class="date">Created: 2020-10-11 Sun 17:43</p>
+<p class="date">Created: 2020-10-13 Tue 17:48</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
