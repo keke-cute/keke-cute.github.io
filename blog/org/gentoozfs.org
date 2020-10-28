@@ -1,0 +1,6 @@
+#+title: Lazy install Geotoo GNU/Linux ZFS on root
+#+author: keke
+#+email: liushike1997@gmail.com
+#+date: <2020-04-25 Sat>
+#+export_file_name: ~/keke-cute.github.io/blog/coreboot.html
+#+options: creator:t author:t
