@@ -4,7 +4,435 @@
 <title><![CDATA[Ethereal Horizon]]></title>
 <description><![CDATA[Ethereal Horizon]]></description>
 <link>https://keke-cute.github.io/</link>
-<lastBuildDate>Mon, 08 Mar 2021 19:37:06 +0800</lastBuildDate>
+<lastBuildDate>Mon, 08 Mar 2021 21:03:13 +0800</lastBuildDate>
+<item>
+  <title><![CDATA[Record My Gentoo Linux Install]]></title>
+  <description><![CDATA[
+
+<div id="outline-container-orge9b1b3c" class="outline-2">
+<h2 id="orge9b1b3c">LiveCD</h2>
+<div class="outline-text-2" id="text-orge9b1b3c">
+<p>
+For zfs installation, I need <a href="https://github.com/nchevsky/systemrescue-zfs">systemrescue-zfs</a> or <a href="https://gitlab.com/m_zhou/archiso">archiso</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-orga28f8e6" class="outline-2">
+<h2 id="orga28f8e6">Format and Partition</h2>
+<div class="outline-text-2" id="text-orga28f8e6">
+<p>
+My normal GPT partition plan:
+</p>
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Device</td>
+<td class="org-left">Size</td>
+<td class="org-left">Type</td>
+</tr>
+
+<tr>
+<td class="org-left">/dev/nvme0n1p1</td>
+<td class="org-left">80M</td>
+<td class="org-left">EFI System</td>
+</tr>
+
+<tr>
+<td class="org-left">/dev/nvme0n1p2</td>
+<td class="org-left">Memory Size</td>
+<td class="org-left">Linux swap</td>
+</tr>
+
+<tr>
+<td class="org-left">/dev/nvme0n1p3</td>
+<td class="org-left">All Other Size</td>
+<td class="org-left">Linux filesystem</td>
+</tr>
+</tbody>
+</table>
+<div class="org-src-container">
+<pre class="src src-shell">fdisk /dev/nvme0n1 
+</pre>
+</div>
+<p>
+Let me format the partitions:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mkfs.fat -F32 /dev/nvme0n1p1
+mkswap -f /dev/nvme0n1p2
+swapon /dev/nvme0n1p2
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9f8983c" class="outline-2">
+<h2 id="org9f8983c">Create zpool</h2>
+<div class="outline-text-2" id="text-org9f8983c">
+<p>
+Use native encryption and zstd compression:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">zpool create -f -O encryption=on -O keyformat=passphrase -o ashift=12 -o cachefile= -O compression=zstd -O acltype=posixacl -O atime=off -O xattr=sa -m none -R /mnt/gentoo kpool /dev/disk/by-id/nvme-xxx-part2 
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0b7be78" class="outline-2">
+<h2 id="org0b7be78">Create zfs datasets</h2>
+<div class="outline-text-2" id="text-org0b7be78">
+<p>
+Just create root and home datasets:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">zfs create kpool/gentoo
+zfs create -o mountpoint=/ kpool/gentoo/os
+zfs create -o mountpoint=/home kpool/gentoo/home
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgce0d0a3" class="outline-2">
+<h2 id="orgce0d0a3">Install stage3</h2>
+<div class="outline-text-2" id="text-orgce0d0a3">
+<p>
+Go gentoo website:<a href="https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/current-stage3-amd64/">Stage3</a>, Normal I use stage3-amd64-nomultilib:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">cd /mnt/gentoo
+wget ......
+tar vxpf stage3-*.tar.xz --xattrs-include=<span style="background-color: #faece1;">'*.*'</span> --numeric-owner
+rm stage*
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org748b6b2" class="outline-2">
+<h2 id="org748b6b2">Mount partition</h2>
+<div class="outline-text-2" id="text-org748b6b2">
+<p>
+For zfs, I only mount one partition:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mount /dev/nvme0n1p1 /mnt/gentoo/boot
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org312d0d7" class="outline-2">
+<h2 id="org312d0d7">Generate fstab</h2>
+<div class="outline-text-2" id="text-org312d0d7">
+<p>
+Normal, I use archiso, the fstab file only one command:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">genfstab -U /mnt/gentoo &gt; /mnt/gentoo/etc/fstab
+</pre>
+</div>
+<p>
+Delete no use mountpoint:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">nano /mnt/gentoo/etc/fstab 
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc32ef1f" class="outline-2">
+<h2 id="orgc32ef1f">Edit /etc/portage/make.conf</h2>
+<div class="outline-text-2" id="text-orgc32ef1f">
+<div class="org-src-container">
+<pre class="src src-shell">nano /mnt/gentoo/etc/portage/make.conf
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-conf"><span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">GCC</span>
+CFLAGS=<span style="background-color: #faece1;">"-march=native -O3 -pipe"</span>
+CXXFLAGS=<span style="background-color: #faece1;">"${CFLAGS}"</span>
+CHOST=<span style="background-color: #faece1;">"x86_64-pc-linux-gnu"</span>
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">3600</span>
+CPU_FLAGS_X86=<span style="background-color: #faece1;">"aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sha sse sse2 sse3 sse4_1 sse4_2 sse4a ssse3"</span>
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">Surface GO</span>
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">CPU_FLAGS_X86="aes mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"</span>
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">Nas</span>
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">CPU_FLAGS_X86="mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"</span>
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">MAKEOPTS="-j5"</span>
+MAKEOPTS=<span style="background-color: #faece1;">"-j13"</span>
+
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">USE</span>
+USE=<span style="background-color: #faece1;">"-bindist elogind gtk pulseaudio -consolekit -systemd -clang"</span>
+
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">Portage</span>
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">GENTOO_MIRRORS="https://mirrors.tuna.tsinghua.edu.cn/gentoo/"</span>
+EMERGE_DEFAULT_OPTS=<span style="background-color: #faece1;">"--ask --verbose=y --keep-going --with-bdeps=y --load-average"</span>
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">FEATURES="${FEATURES} -userpriv -usersandbox -sandbox"</span>
+ACCEPT_KEYWORDS=<span style="background-color: #faece1;">"~amd64"</span>
+ACCEPT_LICENSE=<span style="background-color: #faece1;">"*"</span>
+
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">Language</span>
+L10N=<span style="background-color: #faece1;">"en-US zh-CN en zh"</span>
+LINGUAS=<span style="background-color: #faece1;">"en_US zh_CN en zh"</span>
+
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">Else</span>
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">VIDEO_CARDS="intel i965"</span>
+VIDEO_CARDS=<span style="background-color: #faece1;">"amdgpu radeonsi"</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4912627" class="outline-2">
+<h2 id="org4912627">Configure portage repos</h2>
+<div class="outline-text-2" id="text-org4912627">
+<p>
+I use git:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mkdir /mnt/gentoo/etc/portage/repos.conf
+nano /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-conf">[DEFAULT]
+main-repo = gentoo
+
+[gentoo]
+location = /var/db/repos/gentoo
+sync-type = git
+sync-uri = https://github.com/gentoo-mirror/gentoo
+auto-sync = yes
+</pre>
+</div>
+<p>
+Clone portage repo:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">git clone --depth=1 https://github.com/gentoo-mirror/gentoo /mnt/gentoo/var/db/repos/gentoo
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf4e4a8a" class="outline-2">
+<h2 id="orgf4e4a8a">Copy zpool cachefile</h2>
+<div class="outline-text-2" id="text-orgf4e4a8a">
+<div class="org-src-container">
+<pre class="src src-shell">mkdir /mnt/gentoo/etc/zfs
+cp /etc/zfs/zpool.cache /mnt/gentoo/etc/zfs
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7511980" class="outline-2">
+<h2 id="org7511980">Now chroot</h2>
+<div class="outline-text-2" id="text-org7511980">
+<p>
+Let me chroot:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">dns</span>
+cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">mount</span>
+mount -t proc none proc
+mount --rbind /sys sys
+mount --rbind /dev dev
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">chroot</span>
+chroot /mnt/gentoo /bin/bash
+source /etc/profile
+export PS1=<span style="background-color: #faece1;">"(chroot) ${PS1}"</span>  
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9855144" class="outline-2">
+<h2 id="org9855144">Configure current system</h2>
+<div class="outline-text-2" id="text-org9855144">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">check profile is correct</span>
+eselect profile list
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">if not correct</span>
+eselect profile set x
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">timezone</span>
+echo <span style="background-color: #faece1;">"Asia/Shanghai"</span> &gt; /etc/timezone
+emerge --config sys-libs/timezone-data
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">locale</span>
+echo <span style="background-color: #faece1;">"en_US.UTF-8 UTF-8</span>
+<span style="background-color: #faece1;">zh_CN.UTF-8 UTF-8"</span> &gt;&gt; /etc/locale.gen
+locale-gen
+eselect locale list
+eselect locale set
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">hostname</span>
+echo hostname=<span style="background-color: #faece1;">\"</span>MyHostName<span style="background-color: #faece1;">\"</span> &gt; /etc/conf.d/hostname
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1277eb6" class="outline-2">
+<h2 id="org1277eb6">Compile the world</h2>
+<div class="outline-text-2" id="text-org1277eb6">
+<div class="org-src-container">
+<pre class="src src-shell">emerge -vDuUq @world
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org929d678" class="outline-2">
+<h2 id="org929d678">Compile kernel</h2>
+<div class="outline-text-2" id="text-org929d678">
+<p>
+I have .config file:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">cd /usr/src/linux
+cp /path/to/.config .
+make -j13
+make install
+make modules_install
+</pre>
+</div>
+<p>
+I don't have .config file:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">cd /usr/src/linux
+make localmodconfig
+make -j13
+make install
+make modules_install
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgeaea330" class="outline-2">
+<h2 id="orgeaea330">Install zfs</h2>
+<div class="outline-text-2" id="text-orgeaea330">
+<div class="org-src-container">
+<pre class="src src-shell">emerge zfs
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgee394a7" class="outline-2">
+<h2 id="orgee394a7">Generate initramfs</h2>
+<div class="outline-text-2" id="text-orgee394a7">
+<p>
+I use dracut:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">don't need resume</span>
+dracut -H --kver xx
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">need resume</span>
+dracut -a <span style="background-color: #faece1;">"resume"</span> -H --kver xx
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc46bb62" class="outline-2">
+<h2 id="orgc46bb62">Add OpenRC service to boot or default</h2>
+<div class="outline-text-2" id="text-orgc46bb62">
+<div class="org-src-container">
+<pre class="src src-shell">rc-update add zfs-import boot
+rc-update add zfs-mount boot
+rc-update add elogind boot
+rc-update add sshd
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org618c079" class="outline-2">
+<h2 id="org618c079">User manager</h2>
+<div class="outline-text-2" id="text-org618c079">
+<div class="org-src-container">
+<pre class="src src-shell">passwd
+useradd -m -G users,wheel,portage,usb,video xx
+passwd xx
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">sudo</span>
+sed -i <span style="background-color: #faece1;">'s/\# \%wheel ALL=(ALL) ALL/\%wheel ALL=(ALL) ALL/g'</span> /etc/sudoers
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdb62a99" class="outline-2">
+<h2 id="orgdb62a99">Configure Bootloader</h2>
+<div class="outline-text-2" id="text-orgdb62a99">
+<p>
+I use systemd-boot:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">install</span>
+bootctl install --path /boot
+</pre>
+</div>
+<p>
+edit loader file
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">nano /boot/loader/loader.conf
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-conf">default gentoo.conf
+timeout 2
+editor 0
+</pre>
+</div>
+<p>
+edit entries file
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">nano /boot/loader/entries/gentoo.conf
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-conf"><span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">normal</span>
+title   Gentoo Linux
+linux   /vmlinuz-xx-gentoo
+initrd  /initramfs-xx-gentoo.img
+options root=ZFS=kpool/gentoo/os rw spl.spl_hostid=0x00bab10c resume=UUID=swap uuid
+<span style="background-color: #e1f0e5; font-style: italic;"># </span><span style="background-color: #e1f0e5; font-style: italic;">amd pci passthrough</span>
+title   Gentoo Linux With GPU
+linux   /vmlinuz-xx-gentoo
+initrd  /initramfs-xx-gentoo.img
+options root=ZFS=kpool/gentoo/os rw spl.spl_hostid=0x00bab10c amd_iommu=on iommu=pt pcie_acs_override=downstream,multifunction vfio_iommu_type1.allow_unsafe_interrupts=1
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2d349d3" class="outline-2">
+<h2 id="org2d349d3">Umount and export zpool</h2>
+<div class="outline-text-2" id="text-org2d349d3">
+<p>
+The end step:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">umount /boot/
+swapooff /dev/nvme0n1p2
+<span style="color: #0a3a45;">exit</span>
+umount -l sys
+umount -l proc
+umount -l dev
+cd /
+zpool export kpool
+poweroff
+</pre>
+</div>
+<p>
+Happy Enjoy The New System.
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://keke-cute.github.io/tags.html">Tags</a>: <a href="https://keke-cute.github.io/tag-gentoo.html">gentoo</a> <a href="https://keke-cute.github.io/tag-linux.html">linux</a> </div>]]></description>
+  <category><![CDATA[gentoo]]></category>
+  <category><![CDATA[linux]]></category>
+  <link>https://keke-cute.github.io/2021-03-08-record-my-gentoo-linux-install.html</link>
+  <pubDate>Mon, 08 Mar 2021 19:42:00 +0800</pubDate>
+</item>
 <item>
   <title><![CDATA[Switch to Org-Static-Blog.el]]></title>
   <description><![CDATA[

@@ -1,0 +1,241 @@
+#+title: Record My Gentoo Linux Install
+#+date: <2021-03-08 19:42>
+#+filetags: gentoo linux
+
+* LiveCD
+  For zfs installation, I need [[https://github.com/nchevsky/systemrescue-zfs][systemrescue-zfs]] or [[https://gitlab.com/m_zhou/archiso][archiso]].
+* Format and Partition
+  My normal GPT partition plan:
+  | Device         | Size           | Type             |
+  | /dev/nvme0n1p1 | 80M            | EFI System       |
+  | /dev/nvme0n1p2 | Memory Size    | Linux swap       |
+  | /dev/nvme0n1p3 | All Other Size | Linux filesystem |
+  #+begin_src shell
+    fdisk /dev/nvme0n1 
+  #+end_src
+  Let me format the partitions:
+  #+begin_src shell
+    mkfs.fat -F32 /dev/nvme0n1p1
+    mkswap -f /dev/nvme0n1p2
+    swapon /dev/nvme0n1p2
+  #+end_src
+* Create zpool
+  Use native encryption and zstd compression:
+  #+begin_src shell
+    zpool create -f -O encryption=on -O keyformat=passphrase -o ashift=12 -o cachefile= -O compression=zstd -O acltype=posixacl -O atime=off -O xattr=sa -m none -R /mnt/gentoo kpool /dev/disk/by-id/nvme-xxx-part2 
+  #+end_src
+* Create zfs datasets
+  Just create root and home datasets:
+  #+begin_src shell
+    zfs create kpool/gentoo
+    zfs create -o mountpoint=/ kpool/gentoo/os
+    zfs create -o mountpoint=/home kpool/gentoo/home
+  #+end_src
+* Install stage3
+  Go gentoo website:[[https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/current-stage3-amd64/][Stage3]], Normal I use stage3-amd64-nomultilib:
+  #+begin_src shell
+    cd /mnt/gentoo
+    wget ......
+    tar vxpf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
+    rm stage*
+  #+end_src
+* Mount partition
+  For zfs, I only mount one partition:
+  #+begin_src shell
+    mount /dev/nvme0n1p1 /mnt/gentoo/boot
+  #+end_src
+* Generate fstab
+  Normal, I use archiso, the fstab file only one command:
+  #+begin_src shell
+    genfstab -U /mnt/gentoo > /mnt/gentoo/etc/fstab
+  #+end_src
+  Delete no use mountpoint:
+  #+begin_src shell
+    nano /mnt/gentoo/etc/fstab 
+  #+end_src
+* Edit /etc/portage/make.conf
+  #+begin_src shell
+    nano /mnt/gentoo/etc/portage/make.conf
+  #+end_src
+  #+begin_src conf
+    # GCC
+    CFLAGS="-march=native -O3 -pipe"
+    CXXFLAGS="${CFLAGS}"
+    CHOST="x86_64-pc-linux-gnu"
+    # 3600
+    CPU_FLAGS_X86="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sha sse sse2 sse3 sse4_1 sse4_2 sse4a ssse3"
+    # Surface GO
+    # CPU_FLAGS_X86="aes mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"
+    # Nas
+    # CPU_FLAGS_X86="mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"
+    # MAKEOPTS="-j5"
+    MAKEOPTS="-j13"
+
+    # USE
+    USE="-bindist elogind gtk pulseaudio -consolekit -systemd -clang"
+
+    # Portage
+    # GENTOO_MIRRORS="https://mirrors.tuna.tsinghua.edu.cn/gentoo/"
+    EMERGE_DEFAULT_OPTS="--ask --verbose=y --keep-going --with-bdeps=y --load-average"
+    # FEATURES="${FEATURES} -userpriv -usersandbox -sandbox"
+    ACCEPT_KEYWORDS="~amd64"
+    ACCEPT_LICENSE="*"
+
+    # Language
+    L10N="en-US zh-CN en zh"
+    LINGUAS="en_US zh_CN en zh"
+
+    # Else
+    # VIDEO_CARDS="intel i965"
+    VIDEO_CARDS="amdgpu radeonsi"
+  #+end_src
+* Configure portage repos
+  I use git:
+  #+begin_src shell
+    mkdir /mnt/gentoo/etc/portage/repos.conf
+    nano /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+  #+end_src
+  #+begin_src conf
+    [DEFAULT]
+    main-repo = gentoo
+
+    [gentoo]
+    location = /var/db/repos/gentoo
+    sync-type = git
+    sync-uri = https://github.com/gentoo-mirror/gentoo
+    auto-sync = yes
+  #+end_src
+  Clone portage repo:
+  #+begin_src shell
+    git clone --depth=1 https://github.com/gentoo-mirror/gentoo /mnt/gentoo/var/db/repos/gentoo
+  #+end_src
+* Copy zpool cachefile
+  #+begin_src shell
+    mkdir /mnt/gentoo/etc/zfs
+    cp /etc/zfs/zpool.cache /mnt/gentoo/etc/zfs
+  #+end_src
+* Now chroot
+  Let me chroot:
+  #+begin_src shell
+    # dns
+    cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+    # mount
+    mount -t proc none proc
+    mount --rbind /sys sys
+    mount --rbind /dev dev
+    # chroot
+    chroot /mnt/gentoo /bin/bash
+    source /etc/profile
+    export PS1="(chroot) ${PS1}"  
+  #+end_src
+* Configure current system
+  #+begin_src shell
+    # check profile is correct
+    eselect profile list
+    # if not correct
+    eselect profile set x
+    # timezone
+    echo "Asia/Shanghai" > /etc/timezone
+    emerge --config sys-libs/timezone-data
+    # locale
+    echo "en_US.UTF-8 UTF-8
+    zh_CN.UTF-8 UTF-8" >> /etc/locale.gen
+    locale-gen
+    eselect locale list
+    eselect locale set
+    # hostname
+    echo hostname=\"MyHostName\" > /etc/conf.d/hostname
+  #+end_src
+* Compile the world
+  #+begin_src shell
+    emerge -vDuUq @world
+  #+end_src
+* Compile kernel
+  I have .config file:
+  #+begin_src shell
+    cd /usr/src/linux
+    cp /path/to/.config .
+    make -j13
+    make install
+    make modules_install
+  #+end_src
+  I don't have .config file:
+  #+begin_src shell
+    cd /usr/src/linux
+    make localmodconfig
+    make -j13
+    make install
+    make modules_install
+  #+end_src
+* Install zfs
+  #+begin_src shell
+    emerge zfs
+  #+end_src
+* Generate initramfs
+  I use dracut:
+  #+begin_src shell
+    # don't need resume
+    dracut -H --kver xx
+    # need resume
+    dracut -a "resume" -H --kver xx
+  #+end_src
+* Add OpenRC service to boot or default
+  #+begin_src shell
+    rc-update add zfs-import boot
+    rc-update add zfs-mount boot
+    rc-update add elogind boot
+    rc-update add sshd
+  #+end_src
+* User manager
+  #+begin_src shell
+    passwd
+    useradd -m -G users,wheel,portage,usb,video xx
+    passwd xx
+    # sudo
+    sed -i 's/\# \%wheel ALL=(ALL) ALL/\%wheel ALL=(ALL) ALL/g' /etc/sudoers
+  #+end_src
+* Configure Bootloader
+  I use systemd-boot:
+  #+begin_src shell
+    # install
+    bootctl install --path /boot
+  #+end_src
+  edit loader file
+  #+begin_src shell
+    nano /boot/loader/loader.conf
+  #+end_src
+  #+begin_src conf
+    default gentoo.conf
+    timeout 2
+    editor 0
+  #+end_src
+  edit entries file
+  #+begin_src shell
+    nano /boot/loader/entries/gentoo.conf
+  #+end_src
+  #+begin_src conf
+    # normal
+    title	Gentoo Linux
+    linux	/vmlinuz-xx-gentoo
+    initrd	/initramfs-xx-gentoo.img
+    options	root=ZFS=kpool/gentoo/os rw spl.spl_hostid=0x00bab10c resume=UUID=swap uuid
+    # amd pci passthrough
+    title	Gentoo Linux With GPU
+    linux	/vmlinuz-xx-gentoo
+    initrd	/initramfs-xx-gentoo.img
+    options	root=ZFS=kpool/gentoo/os rw spl.spl_hostid=0x00bab10c amd_iommu=on iommu=pt pcie_acs_override=downstream,multifunction vfio_iommu_type1.allow_unsafe_interrupts=1
+  #+end_src
+* Umount and export zpool
+  The end step:
+  #+begin_src shell
+    umount /boot/
+    swapooff /dev/nvme0n1p2
+    exit
+    umount -l sys
+    umount -l proc
+    umount -l dev
+    cd /
+    zpool export kpool
+    poweroff
+  #+end_src
+  Happy Enjoy The New System.
