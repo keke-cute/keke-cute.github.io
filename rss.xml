@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+<channel>
+<title><![CDATA[Ethereal Horizon]]></title>
+<description><![CDATA[Ethereal Horizon]]></description>
+<link>https://keke-cute.github.io/</link>
+<lastBuildDate>Mon, 08 Mar 2021 19:37:06 +0800</lastBuildDate>
+<item>
+  <title><![CDATA[Switch to Org-Static-Blog.el]]></title>
+  <description><![CDATA[
+<div id="outline-container-org8f47f23" class="outline-2">
+<h2 id="org8f47f23">Hello,World~ Welcome to Ethereal Horizon.</h2>
+</div>
+<div id="outline-container-org46c084b" class="outline-2">
+<h2 id="org46c084b">Code Test</h2>
+<div class="outline-text-2" id="text-org46c084b">
+<p>
+code from <a href="http://ergoemacs.org/emacs/elisp.html">Practical Emacs Lisp</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="background-color: #e1f0e5; font-style: italic;">;; </span><span style="background-color: #e1f0e5; font-style: italic;">all the following are false. They all evaluate to nil</span>
+<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #0a3a45;">if</span> nil <span style="background-color: #faece1;">"yes"</span> <span style="background-color: #faece1;">"no"</span><span style="color: #ff4500; font-weight: bold;">)</span> <span style="background-color: #e1f0e5; font-style: italic;">;  </span><span style="background-color: #e1f0e5; font-style: italic;">"no"</span>
+<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #0a3a45;">if</span> <span style="color: #ffd700; font-weight: bold;">()</span> <span style="background-color: #faece1;">"yes"</span> <span style="background-color: #faece1;">"no"</span><span style="color: #ff4500; font-weight: bold;">)</span> <span style="background-color: #e1f0e5; font-style: italic;">;  </span><span style="background-color: #e1f0e5; font-style: italic;">"no"</span>
+<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #0a3a45;">if</span> '<span style="color: #ffd700; font-weight: bold;">()</span> <span style="background-color: #faece1;">"yes"</span> <span style="background-color: #faece1;">"no"</span><span style="color: #ff4500; font-weight: bold;">)</span> <span style="background-color: #e1f0e5; font-style: italic;">;  </span><span style="background-color: #e1f0e5; font-style: italic;">"no"</span>
+<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #0a3a45;">if</span> <span style="color: #ffd700; font-weight: bold;">(</span>list<span style="color: #ffd700; font-weight: bold;">)</span> <span style="background-color: #faece1;">"yes"</span> <span style="background-color: #faece1;">"no"</span><span style="color: #ff4500; font-weight: bold;">)</span> <span style="background-color: #e1f0e5; font-style: italic;">;  </span><span style="background-color: #e1f0e5; font-style: italic;">"no", because (list) eval to a empty list, same as ()</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org04f2c8e" class="outline-2">
+<h2 id="org04f2c8e">First Post End</h2>
+<div class="outline-text-2" id="text-org04f2c8e">
+<p>
+<a href="https://github.com/bastibe/org-static-blogorg-static-blog.el">org-static-blog.el</a> is fantastic!
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://keke-cute.github.io/tags.html">Tags</a>: <a href="https://keke-cute.github.io/tag-blog.html">blog</a> </div>]]></description>
+  <category><![CDATA[blog]]></category>
+  <link>https://keke-cute.github.io/2021-03-08-switch-to-org-static-blog.el.html</link>
+  <pubDate>Mon, 08 Mar 2021 19:26:00 +0800</pubDate>
+</item>
+</channel>
+</rss>
