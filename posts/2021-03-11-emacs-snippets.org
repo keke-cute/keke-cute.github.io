@@ -2,9 +2,14 @@
 #+date: <2021-03-11 18:04>
 #+filetags: emacs
 
-* Dired sort by Date
-  - C-u-s tr RET
-* Emacs Column edit
-  - C-x SPC (select region)
-  - C-x rt (replace select region) RET
-  - C-x rd (remove select region) RET
+* Operating file
+** Dired sort by Date
+   - C-u-s tr RET
+* Edit text     
+** Emacs Column edit
+   - C-x SPC (select region)
+   - C-x rt (replace select region) RET
+   - C-x rd (remove select region) RET
+* Remote
+** How to use tramp?
+   - C-x C-f /sshx:192.168.1.1: RET username RET password RET (I don't know why ssh not work)
