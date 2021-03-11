@@ -1,0 +1,10 @@
+#+title: Emacs Snippets
+#+date: <2021-03-11 18:04>
+#+filetags: emacs
+
+* Dired sort by Date
+  - C-u-s tr RET
+* Emacs Column edit
+  - C-x SPC (select region)
+  - C-x rt (replace select region) RET
+  - C-x rd (remove select region) RET
