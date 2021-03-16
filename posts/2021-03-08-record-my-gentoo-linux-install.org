@@ -2,6 +2,8 @@
 #+date: <2021-03-08 19:42>
 #+filetags: gentoo linux
 
+* TODO Incomplete
+  - boot partition not in zpool and not encryption
 * LiveCD
   For zfs installation, I need [[https://github.com/nchevsky/systemrescue-zfs][systemrescue-zfs]] or [[https://gitlab.com/m_zhou/archiso][archiso]].
 * Format and Partition
