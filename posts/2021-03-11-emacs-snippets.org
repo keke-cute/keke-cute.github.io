@@ -5,6 +5,10 @@
 * Operating file
 ** Dired sort by Date
    - C-u-s tr RET
+** Dired Edit Mode
+   - C-x C-q to turn dired into editing mode
+   - M-% (if you want replace text in dired buffer)
+   - C-c C-c to exit editing mode (or use C-c ESC drop change)
 * Edit text     
 ** Emacs Column edit
    - C-x SPC (select region)
