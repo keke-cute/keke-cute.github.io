@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://keke-cute.github.io/rss.xml"
+      title="RSS feed for https://keke-cute.github.io/">
+<title>Ethereal Horizon</title>
+<meta name="author" content="keke">
+<meta name="referrer" content="no-referrer">
+<link href= "static/style.css" rel="stylesheet" type="text/css" />
+<link rel="icon" href="static/favicon.ico"></head>
+<body>
+<div id="preamble" class="status"><div class="header">
+  <a href="https://keke-cute.github.io">Ethereal Horizon</a> <A href="https://keke-cute.github.io/emacs.html">Emacs Configure</a>
+</div></div>
+<div id="content">
+<h1 class="title">Posts tagged "gpg":</h1>
+<div class="post-date">21 Mar 2021</div><h1 class="post-title"><a href="https://keke-cute.github.io/2021-03-21-gnupg-usage.html">Gnupg Usage</a></h1>
+
+<div id="outline-container-orgfb08f9f" class="outline-2">
+<h2 id="orgfb08f9f"><span class="todo TODO">TODO</span> Generate GPG Key</h2>
+<div class="outline-text-2" id="text-orgfb08f9f">
+</div>
+<div id="outline-container-org457f4f3" class="outline-3">
+<h3 id="org457f4f3">Make WorkSpace</h3>
+<div class="outline-text-3" id="text-org457f4f3">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">make temp dir</span>
+export GNUPGHOME=$<span style="color: #ff4500; font-weight: bold;">(</span>mktemp -d<span style="color: #ff4500; font-weight: bold;">)</span>
+cd $GNUPGHOME
+<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">get gpg.conf</span>
+curl -O <span style="color: #8b0000;">"https://raw.githubusercontent.com/drduh/config/master/gpg.conf"</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7ccc2b8" class="outline-3">
+<h3 id="org7ccc2b8">Generate-key</h3>
+<div class="outline-text-3" id="text-org7ccc2b8">
+<div class="org-src-container">
+<pre class="src src-shell">gpg --expert --full-generate-key
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org5a75d55" class="outline-2">
+<h2 id="org5a75d55">OpenGPG Smart Card</h2>
+<div class="outline-text-2" id="text-org5a75d55">
+</div>
+<div id="outline-container-orgad50722" class="outline-3">
+<h3 id="orgad50722"><span class="todo TODO">TODO</span> Yubikey</h3>
+</div>
+<div id="outline-container-orgfcee3b7" class="outline-3">
+<h3 id="orgfcee3b7">Make Gnuk Card(only need 10¥)</h3>
+<div class="outline-text-3" id="text-orgfcee3b7">
+<p>
+Requirements
+</p>
+<ul class="org-ul">
+<li><a href="https://salsa.debian.org/gnuk-team/gnuk/gnuk">gnuk source code</a></li>
+<li>st-link v2(stm32) x2 or st-link v2 + j-link</li>
+<li>Cross-compiling tools(pacman -S arm-none-eabi-gcc arm-none-eabi-newlib)</li>
+<li>openocd (flash gnuk)</li>
+<li>inetutils (telnet)</li>
+</ul>
+</div>
+<div id="outline-container-orge2400ff" class="outline-4">
+<h4 id="orge2400ff">Let me make</h4>
+<div class="outline-text-4" id="text-orge2400ff">
+</div>
+<ul class="org-ul">
+<li><a id="orgf8dd86c"></a>Compile gnuk<br>
+<div class="outline-text-5" id="text-orgf8dd86c">
+<div class="org-src-container">
+<pre class="src src-shell">git clone https://salsa.debian.org/gnuk-team/gnuk/gnuk.git
+cd gnuk/
+git submodule update --init
+cd src/
+./configure --vidpid=234b:0000 --target=ST_DONGLE
+make build/gnuk-vidpid.bin
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orgc7484f2"></a>openocd.cfg<br>
+<div class="outline-text-5" id="text-orgc7484f2">
+<div class="org-src-container">
+<pre class="src src-conf"><span style="color: #006400; font-style: italic;">#</span><span style="color: #006400; font-style: italic;">daemon configuration</span>
+telnet_port 4444
+gdb_port 3333
+
+<span style="color: #006400; font-style: italic;">#</span><span style="color: #006400; font-style: italic;">interface</span>
+interface jlink
+transport select swd
+
+<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">The chip has 64KB sram</span>
+set WORKAREASIZE 0x10000
+
+source [find target/stm32f1x.cfg]
+<span style="color: #006400; font-style: italic;">#</span><span style="color: #006400; font-style: italic;">adapter_khz 100</span>
+gdb_breakpoint_override hard
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orgec29c43"></a>Flash Gnuk<br>
+<div class="outline-text-5" id="text-orgec29c43">
+<p>
+Connecting the ST-LINK
+</p>
+<ul class="org-ul">
+<li>SWDIO</li>
+<li>GND</li>
+<li>SWCLK</li>
+<li>3.3v</li>
+</ul>
+<p>
+Start openocd
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">openocd --file openocd.cfg
+</pre>
+</div>
+<p>
+telnet Gnuk
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">telnet 127.0.0.1 4444
+</pre>
+</div>
+<p>
+flash gnuk
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">stm32f1x unlock 0
+reset halt
+flash write_bank 0 ./src/build/gnuk-vidpid.bin 0
+stm32f1x lock 0
+reset halt
+</pre>
+</div>
+<p>
+Now you have 10¥ GPG Smart Card
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org516a16c" class="outline-2">
+<h2 id="org516a16c">Git verified signature(eg. github)</h2>
+<div class="outline-text-2" id="text-org516a16c">
+</div>
+<div id="outline-container-org03babaf" class="outline-3">
+<h3 id="org03babaf">Copy public key to github</h3>
+<div class="outline-text-3" id="text-org03babaf">
+<div class="org-src-container">
+<pre class="src src-shell">gpg -a --export <span style="color: #ff4500; font-weight: bold;">[</span>you key id<span style="color: #ff4500; font-weight: bold;">]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb76385e" class="outline-3">
+<h3 id="orgb76385e">Config git use the key</h3>
+<div class="outline-text-3" id="text-orgb76385e">
+<div class="org-src-container">
+<pre class="src src-shell">git config --global user.signingkey <span style="color: #ff4500; font-weight: bold;">[</span>you key id<span style="color: #ff4500; font-weight: bold;">]</span>
+</pre>
+</div>
+<p>
+if force gpg sign ?
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">git config --global commit.gpgsign true
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfa9adcc" class="outline-3">
+<h3 id="orgfa9adcc">Commit !</h3>
+<div class="outline-text-3" id="text-orgfa9adcc">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">.gitconfig user.email need equal to gpg public key email</span>
+git add .
+git commit -m <span style="color: #8b0000;">"message"</span> -S
+git push
+</pre>
+</div>
+<p>
+now your commit has verified(the green icon)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org801fb69" class="outline-2">
+<h2 id="org801fb69">References</h2>
+<div class="outline-text-2" id="text-org801fb69">
+<ul class="org-ul">
+<li><a href="https://www.yafa.moe/post/yubikey-guide/">Yubikey Guide</a></li>
+<li><a href="https://kgame.tw/gnupg/stm32-gnuk/">ST-LINK V2 刷 Gnuk </a></li>
+</ul>
+</div>
+</div>
+<div class="taglist"><a href="https://keke-cute.github.io/tags.html">Tags</a>: <a href="https://keke-cute.github.io/tag-gpg.html">gpg</a> </div><div id="archive">
+<a href="https://keke-cute.github.io/archive.html">Other posts</a>
+</div>
+</div>
+<div id="postamble" class="status"><div id="archive">
+  <a href="https://keke-cute.github.io/archive.html">Other posts</a>
+</div>
+<center><a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br /><span xmlns:dct="https://purl.org/dc/terms/" href="https://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Ethereal Horizon</span> by <a xmlns:cc="https://creativecommons.org/ns#" href="https://github.com/keke-cute" property="cc:attributionName" rel="cc:attributionURL">不可视界线</a> is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</center></div>
+</body>
+</html>

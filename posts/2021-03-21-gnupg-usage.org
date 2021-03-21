@@ -1,0 +1,100 @@
+#+title: Gnupg Usage
+#+date: <2021-03-21 19:57>
+#+filetags: gpg
+
+* TODO Generate GPG Key
+** Make WorkSpace
+   #+begin_src shell
+     # make temp dir
+     export GNUPGHOME=$(mktemp -d)
+     cd $GNUPGHOME
+     # get gpg.conf
+     curl -O "https://raw.githubusercontent.com/drduh/config/master/gpg.conf"
+   #+end_src
+** Generate-key
+   #+begin_src shell
+     gpg --expert --full-generate-key
+   #+end_src
+* OpenGPG Smart Card
+** TODO Yubikey
+** Make Gnuk Card(only need 10¥)
+   Requirements
+   - [[https://salsa.debian.org/gnuk-team/gnuk/gnuk][gnuk source code]]
+   - st-link v2(stm32) x2 or st-link v2 + j-link
+   - Cross-compiling tools(pacman -S arm-none-eabi-gcc arm-none-eabi-newlib)
+   - openocd (flash gnuk)
+   - inetutils (telnet)
+*** Let me make
+**** Compile gnuk 
+     #+begin_src shell
+       git clone https://salsa.debian.org/gnuk-team/gnuk/gnuk.git
+       cd gnuk/
+       git submodule update --init
+       cd src/
+       ./configure --vidpid=234b:0000 --target=ST_DONGLE
+       make build/gnuk-vidpid.bin
+     #+end_src
+**** openocd.cfg
+     #+begin_src conf
+       #daemon configuration
+       telnet_port 4444
+       gdb_port 3333
+
+       #interface
+       interface jlink
+       transport select swd
+
+       # The chip has 64KB sram
+       set WORKAREASIZE 0x10000
+
+       source [find target/stm32f1x.cfg]
+       #adapter_khz 100
+       gdb_breakpoint_override hard
+     #+end_src
+**** Flash Gnuk
+     Connecting the ST-LINK
+     - SWDIO
+     - GND
+     - SWCLK
+     - 3.3v
+     Start openocd
+     #+begin_src shell
+       openocd --file openocd.cfg
+     #+end_src
+     telnet Gnuk
+     #+begin_src shell
+       telnet 127.0.0.1 4444
+     #+end_src
+     flash gnuk
+     #+begin_src shell
+       stm32f1x unlock 0
+       reset halt
+       flash write_bank 0 ./src/build/gnuk-vidpid.bin 0
+       stm32f1x lock 0
+       reset halt
+     #+end_src
+     Now you have 10¥ GPG Smart Card
+* Git verified signature(eg. github)
+** Copy public key to github
+   #+begin_src shell
+     gpg -a --export [you key id]
+   #+end_src
+** Config git use the key
+   #+begin_src shell
+     git config --global user.signingkey [you key id]
+   #+end_src
+   if force gpg sign ?
+   #+begin_src shell
+     git config --global commit.gpgsign true
+   #+end_src
+** Commit !
+   #+begin_src shell
+     # .gitconfig user.email need equal to gpg public key email
+     git add .
+     git commit -m "message" -S
+     git push
+   #+end_src
+   now your commit has verified(the green icon)
+* References
+  - [[https://www.yafa.moe/post/yubikey-guide/][Yubikey Guide]]
+  - [[https://kgame.tw/gnupg/stm32-gnuk/][ST-LINK V2 刷 Gnuk ]]
