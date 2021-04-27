@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-04-24 Sat 21:53 -->
+<!-- 2021-04-27 Tue 17:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>我的 Emacs 配置文件</title>
@@ -220,9 +220,9 @@
 <body>
 <div id="content">
 <h1 class="title">我的 Emacs 配置文件</h1>
-<div id="outline-container-org5b1b516" class="outline-2">
-<h2 id="org5b1b516">包管理器与配置包(Straight.el &amp; Leaf)</h2>
-<div class="outline-text-2" id="text-org5b1b516">
+<div id="outline-container-orgb8e0a72" class="outline-2">
+<h2 id="orgb8e0a72">包管理器与配置包(Straight.el &amp; Leaf)</h2>
+<div class="outline-text-2" id="text-orgb8e0a72">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">defvar</span> <span style="color: #B35C44;">bootstrap-version</span><span style="color: #ff8c00; font-weight: bold;">)</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">let</span> <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #9acd32; font-weight: bold;">(</span>bootstrap-file
@@ -251,9 +251,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgfd0a320" class="outline-2">
-<h2 id="orgfd0a320">宏和别名</h2>
-<div class="outline-text-2" id="text-orgfd0a320">
+<div id="outline-container-org9c6dad9" class="outline-2">
+<h2 id="org9c6dad9">宏和别名</h2>
+<div class="outline-text-2" id="text-org9c6dad9">
 <p>
 Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config/core/core-libs.org">https://github.com/nasyxx/emacs.d/blob/master/literate-config/core/core-libs.org</a>
 </p>
@@ -266,15 +266,25 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
     <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">declare</span> <span style="color: #32cd32; font-weight: bold;">(</span>indent defun<span style="color: #32cd32; font-weight: bold;">)</span><span style="color: #9acd32; font-weight: bold;">)</span>
     `<span style="color: #9acd32; font-weight: bold;">(</span>eval-after-load ,feature
        '<span style="color: #32cd32; font-weight: bold;">(</span>progn ,@body<span style="color: #32cd32; font-weight: bold;">)</span><span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff8c00; font-weight: bold;">)</span>
-<span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">defalias</span> '<span style="color: #057748; text-decoration: underline;">gsetq-local</span> #'general-setq-local<span style="color: #ff8c00; font-weight: bold;">)</span>
+
+<span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'general<span style="color: #ff8c00; font-weight: bold;">)</span>
+<span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">leaf</span> general
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:doc</span> <span style="color: #177CB0;">"More convenient key definitions in emacs."</span>
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:url</span> <span style="color: #177CB0;">"https://github.com/noctuid/general.el"</span>
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:require</span> t
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:commands</span> gsetq gsetq-local gsetq-default
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:init</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">defalias</span> '<span style="color: #057748; text-decoration: underline;">gsetq</span> #'general-setq<span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">defalias</span> '<span style="color: #057748; text-decoration: underline;">gsetq-local</span> #'general-setq-local<span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">defalias</span> '<span style="color: #057748; text-decoration: underline;">gsetq-default</span> #'general-setq-default<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff8c00; font-weight: bold;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org3f7c2f2" class="outline-2">
-<h2 id="org3f7c2f2">检测系统</h2>
-<div class="outline-text-2" id="text-org3f7c2f2">
+<div id="outline-container-org4f40e85" class="outline-2">
+<h2 id="org4f40e85">检测系统</h2>
+<div class="outline-text-2" id="text-org4f40e85">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">defconst</span> <span style="color: #B35C44;">*is-a-mac*</span> <span style="color: #ffd700; font-weight: bold;">(</span>eq system-type 'darwin<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff8c00; font-weight: bold;">)</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">defconst</span> <span style="color: #B35C44;">*is-a-linux*</span> <span style="color: #ffd700; font-weight: bold;">(</span>eq system-type 'gnu/linux<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff8c00; font-weight: bold;">)</span>
@@ -302,13 +312,13 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-org7ad0f33" class="outline-2">
-<h2 id="org7ad0f33">界面</h2>
-<div class="outline-text-2" id="text-org7ad0f33">
+<div id="outline-container-orgd0dc7b2" class="outline-2">
+<h2 id="orgd0dc7b2">界面</h2>
+<div class="outline-text-2" id="text-orgd0dc7b2">
 </div>
-<div id="outline-container-orgc12be33" class="outline-3">
-<h3 id="orgc12be33">主要的一些设定</h3>
-<div class="outline-text-3" id="text-orgc12be33">
+<div id="outline-container-org6869350" class="outline-3">
+<h3 id="org6869350">主要的一些设定</h3>
+<div class="outline-text-3" id="text-org6869350">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">setq</span> inhibit-splash-screen t<span style="color: #ff8c00; font-weight: bold;">)</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">when</span> <span style="color: #ffd700; font-weight: bold;">(</span>graphic-p<span style="color: #ffd700; font-weight: bold;">)</span>
@@ -324,9 +334,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-org9714427" class="outline-3">
-<h3 id="org9714427">指定模式禁用行号</h3>
-<div class="outline-text-3" id="text-org9714427">
+<div id="outline-container-org0ae4e04" class="outline-3">
+<h3 id="org0ae4e04">指定模式禁用行号</h3>
+<div class="outline-text-3" id="text-org0ae4e04">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">(defun my-inhibit-global-linum-mode ()</span>
 <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;;   </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">"Counter-act `</span><span style="color: #B35C44; font-weight: bold; font-style: italic; text-decoration: underline;">global-linum-mode</span><span style="color: #758A99; font-style: italic; text-decoration: underline;">'."</span>
@@ -347,9 +357,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-orgae7b6e6" class="outline-3">
-<h3 id="orgae7b6e6">字体设定</h3>
-<div class="outline-text-3" id="text-orgae7b6e6">
+<div id="outline-container-org63ab806" class="outline-3">
+<h3 id="org63ab806">字体设定</h3>
+<div class="outline-text-3" id="text-org63ab806">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">leaf</span> nasy-font
   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:doc</span> <span style="color: #177CB0;">"&#19968;&#20123;&#40664;&#35346;&#20516;&#12290;"</span>
@@ -407,9 +417,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-orgc3e6682" class="outline-3">
-<h3 id="orgc3e6682">设定macOS上的窗口样式</h3>
-<div class="outline-text-3" id="text-orgc3e6682">
+<div id="outline-container-org3eab370" class="outline-3">
+<h3 id="org3eab370">设定macOS上的窗口样式</h3>
+<div class="outline-text-3" id="text-org3eab370">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">leaf</span> mac-frame
   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:when</span> *is-a-mac*
@@ -432,18 +442,18 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-org8ca2945" class="outline-3">
-<h3 id="org8ca2945">主题设定</h3>
-<div class="outline-text-3" id="text-org8ca2945">
+<div id="outline-container-orgedac47b" class="outline-3">
+<h3 id="orgedac47b">主题设定</h3>
+<div class="outline-text-3" id="text-orgedac47b">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>load-theme 'nasy t<span style="color: #ff8c00; font-weight: bold;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orga16a520" class="outline-3">
-<h3 id="orga16a520">工具栏设定</h3>
-<div class="outline-text-3" id="text-orga16a520">
+<div id="outline-container-orgd963905" class="outline-3">
+<h3 id="orgd963905">工具栏设定</h3>
+<div class="outline-text-3" id="text-orgd963905">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">leaf</span> tool-bar
   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:tag</span> <span style="color: #177CB0;">"builtin"</span>
@@ -466,13 +476,13 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-org5d9240f" class="outline-3">
-<h3 id="org5d9240f">一些关于界面的插件</h3>
-<div class="outline-text-3" id="text-org5d9240f">
+<div id="outline-container-orgb6978af" class="outline-3">
+<h3 id="orgb6978af">一些关于界面的插件</h3>
+<div class="outline-text-3" id="text-orgb6978af">
 </div>
-<div id="outline-container-org0689789" class="outline-4">
-<h4 id="org0689789">彩虹括号</h4>
-<div class="outline-text-4" id="text-org0689789">
+<div id="outline-container-org1432575" class="outline-4">
+<h4 id="org1432575">彩虹括号</h4>
+<div class="outline-text-4" id="text-org1432575">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'rainbow-delimiters<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -497,9 +507,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-orgf7f5b22" class="outline-4">
-<h4 id="orgf7f5b22">彩虹猫</h4>
-<div class="outline-text-4" id="text-orgf7f5b22">
+<div id="outline-container-org2977f08" class="outline-4">
+<h4 id="org2977f08">彩虹猫</h4>
+<div class="outline-text-4" id="text-org2977f08">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'nyan-mode<span style="color: #ff8c00; font-weight: bold;">)</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">leaf</span> nyan-mode
@@ -513,9 +523,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-orgaa68b53" class="outline-4">
-<h4 id="orgaa68b53">对齐线</h4>
-<div class="outline-text-4" id="text-orgaa68b53">
+<div id="outline-container-orgdbeee9b" class="outline-4">
+<h4 id="orgdbeee9b">对齐线</h4>
+<div class="outline-text-4" id="text-orgdbeee9b">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">when</span> <span style="color: #ffd700; font-weight: bold;">(</span>graphic-p<span style="color: #ffd700; font-weight: bold;">)</span>
   <span style="color: #ffd700; font-weight: bold;">(</span>straight-use-package 'highlight-indent-guides<span style="color: #ffd700; font-weight: bold;">)</span>
@@ -528,9 +538,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 </div>
-<div id="outline-container-org6158c40" class="outline-4">
-<h4 id="org6158c40">Doom-modeline</h4>
-<div class="outline-text-4" id="text-org6158c40">
+<div id="outline-container-org88d20c2" class="outline-4">
+<h4 id="org88d20c2">Doom-modeline</h4>
+<div class="outline-text-4" id="text-org88d20c2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'doom-modeline<span style="color: #ff8c00; font-weight: bold;">)</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">leaf</span> doom-modeline
@@ -538,7 +548,7 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:defun</span> doom-modeline-def-segment
   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:custom</span>
   <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #9acd32; font-weight: bold;">(</span>doom-modeline-height                      . 25<span style="color: #9acd32; font-weight: bold;">)</span>
-   <span style="color: #9acd32; font-weight: bold;">(</span>doom-modeline-bar-width                   . 3<span style="color: #9acd32; font-weight: bold;">)</span>
+   <span style="color: #9acd32; font-weight: bold;">(</span>doom-modeline-bar-width                   . 5<span style="color: #9acd32; font-weight: bold;">)</span>
    <span style="color: #9acd32; font-weight: bold;">(</span>doom-modeline-window-width-limit          . fill-column<span style="color: #9acd32; font-weight: bold;">)</span>
    <span style="color: #9acd32; font-weight: bold;">(</span>doom-modeline-project-detection           . 'project<span style="color: #9acd32; font-weight: bold;">)</span>  <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">changed</span>
    <span style="color: #9acd32; font-weight: bold;">(</span>doom-modeline-buffer-file-name-style      . 'auto<span style="color: #9acd32; font-weight: bold;">)</span>
@@ -590,9 +600,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-org1403659" class="outline-4">
-<h4 id="org1403659">Doom-Themes</h4>
-<div class="outline-text-4" id="text-org1403659">
+<div id="outline-container-org0b1eb95" class="outline-4">
+<h4 id="org0b1eb95">Doom-Themes</h4>
+<div class="outline-text-4" id="text-org0b1eb95">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'doom-themes<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -613,9 +623,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-orgbf2e818" class="outline-4">
-<h4 id="orgbf2e818">Dashboard</h4>
-<div class="outline-text-4" id="text-orgbf2e818">
+<div id="outline-container-org39da748" class="outline-4">
+<h4 id="org39da748">Dashboard</h4>
+<div class="outline-text-4" id="text-org39da748">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'dashboard<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -634,19 +644,134 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
   <span style="color: #ffd700; font-weight: bold;">(</span>page-break-lines-char . ?&#8888;<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff8c00; font-weight: bold;">)</span>
 
 <span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">leaf</span> dashboard
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:commands</span> dashboard-setup-startup-hook
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:preface</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">defun</span> <span style="color: #057748; text-decoration: underline;">nasy/wfw1</span> <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #057748; font-weight: bold; font-style: italic;">&amp;rest</span> _<span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #177CB0; background-color: #DDEEC4;">"Widget forward 1."</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">interactive</span><span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span>widget-forward 1<span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">defun</span> <span style="color: #057748; text-decoration: underline;">nasy/fw2</span> <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #057748; font-weight: bold; font-style: italic;">&amp;rest</span> _<span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #177CB0; background-color: #DDEEC4;">"Forward 2 chars."</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">interactive</span> <span style="color: #177CB0;">"p"</span><span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span>forward-char 2<span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">defun</span> <span style="color: #057748; text-decoration: underline;">nasy/-recentf</span> <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #057748; font-weight: bold; font-style: italic;">&amp;rest</span> _<span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">interactive</span><span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span>counsel-recentf<span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">defun</span> <span style="color: #057748; text-decoration: underline;">nasy/-bookmarks</span> <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #057748; font-weight: bold; font-style: italic;">&amp;rest</span> _<span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">interactive</span><span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span>bookmark-jump<span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">defun</span> <span style="color: #057748; text-decoration: underline;">nasy/-projects</span> <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #057748; font-weight: bold; font-style: italic;">&amp;rest</span> _<span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">interactive</span><span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span>counsel-projectile-switch-project<span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">defun</span> <span style="color: #057748; text-decoration: underline;">nasy/-dashboard-items</span> <span style="color: #9acd32; font-weight: bold;">(</span>list-size<span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span>insert <span style="color: #177CB0;">"\n"</span><span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span>insert <span style="color: #177CB0;">"&#127763; "</span><span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span>widget-create 'item
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:tag</span> <span style="color: #177CB0;">"Recent Files (r)"</span>
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:action</span> #'nasy/-recentf
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:mouse-face</span> 'highlight
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:button-face</span> 'dashboard-heading
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:button-prefix</span> <span style="color: #177CB0;">""</span>
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:button-suffix</span> <span style="color: #177CB0;">""</span>
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:format</span> <span style="color: #177CB0;">"%[%t%]"</span><span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span>insert <span style="color: #177CB0;">"\n\n"</span><span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span>insert <span style="color: #177CB0;">"&#128218;"</span><span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span>insert <span style="color: #177CB0;">" "</span><span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span>widget-create 'item
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:tag</span> <span style="color: #177CB0;">"Bookmarks (b)"</span>
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:action</span> #'nasy/-bookmarks
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:mouse-face</span> 'highlight
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:button-face</span> 'dashboard-heading
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:button-prefix</span> <span style="color: #177CB0;">""</span>
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:button-suffix</span> <span style="color: #177CB0;">""</span>
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:format</span> <span style="color: #177CB0;">"%[%t%]"</span><span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span>insert <span style="color: #177CB0;">"\n\n"</span><span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span>insert <span style="color: #177CB0;">"&#128640; "</span><span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span>widget-create 'item
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:tag</span> <span style="color: #177CB0;">"Projects (p)"</span>
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:action</span> #'nasy/-projects
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:mouse-face</span> 'highlight
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:button-face</span> 'dashboard-heading
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:button-prefix</span> <span style="color: #177CB0;">""</span>
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:button-suffix</span> <span style="color: #177CB0;">""</span>
+                   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:format</span> <span style="color: #177CB0;">"%[%t%]"</span><span style="color: #9acd32; font-weight: bold;">)</span>
+    <span style="color: #9acd32; font-weight: bold;">(</span>insert <span style="color: #177CB0;">"\n"</span><span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:bind</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #177CB0;">"&lt;f5&gt;"</span> . dashboard-refresh-buffer<span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:dashboard-mode-map</span>
+   <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #177CB0;">"r"</span>              . counsel-recentf<span style="color: #9acd32; font-weight: bold;">)</span>
+   <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #177CB0;">"p"</span>              . counsel-projectile-switch-project<span style="color: #9acd32; font-weight: bold;">)</span>
+   <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #177CB0;">"b"</span>              . counsel-bookmark<span style="color: #9acd32; font-weight: bold;">)</span>
+   <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #177CB0;">"g"</span>              . dashboard-refresh-buffer<span style="color: #9acd32; font-weight: bold;">)</span>
+   <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #177CB0;">"&lt;down-mouse-1&gt;"</span> . nil<span style="color: #9acd32; font-weight: bold;">)</span>
+   <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #177CB0;">"H-p"</span>            . dashboard-previous-line<span style="color: #9acd32; font-weight: bold;">)</span>
+   <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #177CB0;">"H-n"</span>            . dashboard-next-line<span style="color: #9acd32; font-weight: bold;">)</span>
+   <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #177CB0;">"H-b"</span>            . widget-backward<span style="color: #9acd32; font-weight: bold;">)</span>
+   <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #177CB0;">"H-f"</span>            . widget-forward<span style="color: #9acd32; font-weight: bold;">)</span>
+   <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #177CB0;">"&lt;mouse-1&gt;"</span>      . widget-button-click<span style="color: #9acd32; font-weight: bold;">)</span>
+   <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #177CB0;">"&lt;mouse-2&gt;"</span>      . widget-button-click<span style="color: #9acd32; font-weight: bold;">)</span>
+   <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #177CB0;">"&lt;up&gt;"</span>           . widget-backward<span style="color: #9acd32; font-weight: bold;">)</span>
+   <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #177CB0;">"&lt;down&gt;"</span>         . nasy/wfw1<span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:hook</span> <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #9acd32; font-weight: bold;">(</span>dashboard-mode-hook . <span style="color: #32cd32; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">lambda</span> <span style="color: #1e90ff; font-weight: bold;">()</span> <span style="color: #1e90ff; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">gsetq-local</span> tab-width 1<span style="color: #1e90ff; font-weight: bold;">)</span><span style="color: #32cd32; font-weight: bold;">)</span><span style="color: #9acd32; font-weight: bold;">)</span>
+         <span style="color: #9acd32; font-weight: bold;">(</span>after-init-hook     . dashboard-setup-startup-hook<span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:custom</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span>dashboard-org-agenda-categories . '<span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #177CB0;">"Calendar"</span> <span style="color: #177CB0;">"Tasks"</span> <span style="color: #177CB0;">"Appointments"</span><span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
+  `<span style="color: #ffd700; font-weight: bold;">(</span>dashboard-startup-banner       . ,<span style="color: #9acd32; font-weight: bold;">(</span>expand-file-name <span style="color: #177CB0;">"n_icon.png"</span> user-emacs-directory<span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span>dashboard-items . '<span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #32cd32; font-weight: bold;">(</span>n-items . t<span style="color: #32cd32; font-weight: bold;">)</span><span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
+                       <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">(bookmarks . t)))</span>
+                       <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">(registers . 5)</span>
+                       <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">(agenda    . 5)</span>
+                       <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">(projects  . 7)))</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span>dashboard-item-generators . '<span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #32cd32; font-weight: bold;">(</span>n-items   . nasy/-dashboard-items<span style="color: #32cd32; font-weight: bold;">)</span><span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #9acd32; font-weight: bold;">(</span>dashboard-center-content
+    dashboard-show-shortcuts
+    dashboard-set-heading-icons
+    dashboard-set-file-icons
+    dashboard-set-init-info
+    show-week-agenda-p
+    dashboard-set-navigator<span style="color: #9acd32; font-weight: bold;">)</span> <span style="color: #50616D; background-color: #FAFF72; font-weight: bold;">. t</span><span style="color: #ffd700; background-color: #FAFF72; font-weight: bold;">)</span>
   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:config</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span>dashboard-setup-startup-hook<span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">setq</span> dashboard-set-heading-icons t<span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">setq</span> dashboard-set-file-icons t<span style="color: #ffd700; font-weight: bold;">)</span>
-  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">setq</span> dashboard-banner-logo-title <span style="color: #177CB0;">";; Happy Hacking Keke , Emacs &#10084; You ~"</span><span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff8c00; font-weight: bold;">)</span>
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:init</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">after-x</span> 'all-the-icons
+    <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">setq</span> dashboard-navigator-buttons
+          `<span style="color: #32cd32; font-weight: bold;">(</span><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">line1</span>
+            <span style="color: #1e90ff; font-weight: bold;">(</span><span style="color: #7b68ee; font-weight: bold;">(</span>,<span style="color: #8a2be2; font-weight: bold;">(</span>all-the-icons-octicon <span style="color: #177CB0;">"mark-github"</span> <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:height</span> 1.1 <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:v-adjust</span> 0.0<span style="color: #8a2be2; font-weight: bold;">)</span>
+              <span style="color: #177CB0;">"Source"</span>
+              <span style="color: #177CB0;">"Source Page"</span>
+              <span style="color: #8a2be2; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">lambda</span> <span style="color: #ff69b4; font-weight: bold;">(</span><span style="color: #057748; font-weight: bold; font-style: italic;">&amp;rest</span> _<span style="color: #ff69b4; font-weight: bold;">)</span> <span style="color: #ff69b4; font-weight: bold;">(</span>browse-url <span style="color: #177CB0;">"https://github.com/keke-cute/.emacs.d"</span><span style="color: #ff69b4; font-weight: bold;">)</span><span style="color: #8a2be2; font-weight: bold;">)</span><span style="color: #7b68ee; font-weight: bold;">)</span>
+             <span style="color: #7b68ee; font-weight: bold;">(</span>,<span style="color: #8a2be2; font-weight: bold;">(</span>all-the-icons-octicon <span style="color: #177CB0;">"gear"</span> <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:height</span> 1.1 <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:v-adjust</span> 0.0<span style="color: #8a2be2; font-weight: bold;">)</span>
+              <span style="color: #177CB0;">"Config"</span>
+              <span style="color: #177CB0;">"Config File"</span>
+              <span style="color: #8a2be2; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">lambda</span> <span style="color: #ff69b4; font-weight: bold;">(</span><span style="color: #057748; font-weight: bold; font-style: italic;">&amp;rest</span> _<span style="color: #ff69b4; font-weight: bold;">)</span>
+                <span style="color: #ff69b4; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">let</span> <span style="color: #ff69b4; font-weight: bold;">(</span><span style="color: #ff8c00; font-weight: bold;">(</span>upath <span style="color: #ffd700; font-weight: bold;">(</span>expand-file-name <span style="color: #177CB0;">"custom/user-config.el"</span> user-emacs-directory<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff8c00; font-weight: bold;">)</span>
+                      <span style="color: #ff8c00; font-weight: bold;">(</span>epath <span style="color: #ffd700; font-weight: bold;">(</span>expand-file-name <span style="color: #177CB0;">"custom/user-config-example.el"</span> user-emacs-directory<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff8c00; font-weight: bold;">)</span><span style="color: #ff69b4; font-weight: bold;">)</span>
+                  <span style="color: #ff69b4; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">when</span> <span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">and</span> <span style="color: #ffd700; font-weight: bold;">(</span>file-exists-p epath<span style="color: #ffd700; font-weight: bold;">)</span>
+                            <span style="color: #ffd700; font-weight: bold;">(</span>not <span style="color: #9acd32; font-weight: bold;">(</span>file-exists-p upath<span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff8c00; font-weight: bold;">)</span>
+                    <span style="color: #ff8c00; font-weight: bold;">(</span>copy-file epath upath<span style="color: #ff8c00; font-weight: bold;">)</span><span style="color: #ff69b4; font-weight: bold;">)</span>
+                  <span style="color: #ff69b4; font-weight: bold;">(</span>find-file upath<span style="color: #ff69b4; font-weight: bold;">)</span><span style="color: #ff69b4; font-weight: bold;">)</span><span style="color: #8a2be2; font-weight: bold;">)</span><span style="color: #7b68ee; font-weight: bold;">)</span>
+             <span style="color: #7b68ee; font-weight: bold;">(</span>,<span style="color: #8a2be2; font-weight: bold;">(</span>all-the-icons-octicon <span style="color: #177CB0;">"book"</span> <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:height</span> 1.1 <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:v-adjust</span> 0.0<span style="color: #8a2be2; font-weight: bold;">)</span>
+              <span style="color: #177CB0;">"Document"</span>
+              <span style="color: #177CB0;">"Document Page"</span>
+              <span style="color: #8a2be2; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">lambda</span> <span style="color: #ff69b4; font-weight: bold;">(</span><span style="color: #057748; font-weight: bold; font-style: italic;">&amp;rest</span> _<span style="color: #ff69b4; font-weight: bold;">)</span> <span style="color: #ff69b4; font-weight: bold;">(</span>browse-url <span style="color: #177CB0;">"https://keke-cute.github.io/emacs.html"</span><span style="color: #ff69b4; font-weight: bold;">)</span><span style="color: #8a2be2; font-weight: bold;">)</span><span style="color: #7b68ee; font-weight: bold;">)</span><span style="color: #1e90ff; font-weight: bold;">)</span><span style="color: #32cd32; font-weight: bold;">)</span><span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff8c00; font-weight: bold;">)</span>
+  <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">:advice)</span>
+  <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">(:after dashboard-next-line     nasy/fw2)</span>
+  <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">(:after widget-forward          nasy/fw2)</span>
+  <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">(:after widget-backward         nasy/fw2))</span>
+
+<span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">setq-default</span>
+ initial-scratch-message     <span style="color: #ffd700; font-weight: bold;">(</span>concat <span style="color: #177CB0;">";; Happy hacking, "</span> user-login-name <span style="color: #177CB0;">" - Emacs &#9829; you!\n\n"</span><span style="color: #ffd700; font-weight: bold;">)</span>
+ dashboard-banner-logo-title <span style="color: #ffd700; font-weight: bold;">(</span>concat <span style="color: #177CB0;">";; Happy hacking, "</span> user-login-name <span style="color: #177CB0;">" - Emacs &#9829; you!\n\n"</span><span style="color: #ffd700; font-weight: bold;">)</span>
+ <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">initial-buffer-choice       #'(lambda () (get-buffer "*dashboard*"))  ;; It will cause error if you start emacs from Command line with file name</span>
+                                                                          <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">https://github.com/rakanalh/emacs-dashboard/issues/69</span>
+<span style="color: #ff8c00; font-weight: bold;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org03a364b" class="outline-4">
-<h4 id="org03a364b">Minions</h4>
-<div class="outline-text-4" id="text-org03a364b">
+<div id="outline-container-orgc4881b2" class="outline-4">
+<h4 id="orgc4881b2">Minions</h4>
+<div class="outline-text-4" id="text-orgc4881b2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'minions<span style="color: #ff8c00; font-weight: bold;">)</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">leaf</span> minions
@@ -659,9 +784,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-org8b72afe" class="outline-2">
-<h2 id="org8b72afe">编辑器</h2>
-<div class="outline-text-2" id="text-org8b72afe">
+<div id="outline-container-orgda9533c" class="outline-2">
+<h2 id="orgda9533c">编辑器</h2>
+<div class="outline-text-2" id="text-orgda9533c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">&#33258;&#21160;&#21152;&#36733;&#22806;&#37096;&#20462;&#25913;&#36807;&#30340;&#25991;&#20214;</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span>global-auto-revert-mode 1<span style="color: #ff8c00; font-weight: bold;">)</span>
@@ -684,17 +809,18 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-orgce1f80b" class="outline-2">
-<h2 id="orgce1f80b">包</h2>
-<div class="outline-text-2" id="text-orgce1f80b">
+<div id="outline-container-org7a4d7dd" class="outline-2">
+<h2 id="org7a4d7dd">包</h2>
+<div class="outline-text-2" id="text-org7a4d7dd">
 </div>
-<div id="outline-container-org0ff2df0" class="outline-3">
-<h3 id="org0ff2df0">Ivy</h3>
-<div class="outline-text-3" id="text-org0ff2df0">
+<div id="outline-container-orgfce26dc" class="outline-3">
+<h3 id="orgfce26dc">Ivy</h3>
+<div class="outline-text-3" id="text-orgfce26dc">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'ivy<span style="color: #ff8c00; font-weight: bold;">)</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'swiper<span style="color: #ff8c00; font-weight: bold;">)</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'counsel<span style="color: #ff8c00; font-weight: bold;">)</span>
+<span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'counsel-projectile<span style="color: #ff8c00; font-weight: bold;">)</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'ivy-posframe<span style="color: #ff8c00; font-weight: bold;">)</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'all-the-icons-ivy-rich<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -745,9 +871,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-org681c3a2" class="outline-3">
-<h3 id="org681c3a2">Selectrum</h3>
-<div class="outline-text-3" id="text-org681c3a2">
+<div id="outline-container-orgf8ce109" class="outline-3">
+<h3 id="orgf8ce109">Selectrum</h3>
+<div class="outline-text-3" id="text-orgf8ce109">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">(straight-use-package 'selectrum)</span>
 <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span>
@@ -758,9 +884,24 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 </div>
-<div id="outline-container-org2626a47" class="outline-3">
-<h3 id="org2626a47">Company</h3>
-<div class="outline-text-3" id="text-org2626a47">
+<div id="outline-container-org16374e9" class="outline-3">
+<h3 id="org16374e9">Projectile</h3>
+<div class="outline-text-3" id="text-org16374e9">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'projectile<span style="color: #ff8c00; font-weight: bold;">)</span>
+
+<span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">leaf</span> projectile
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:config</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span>projectile-mode +1<span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:bind-keymap</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #177CB0;">"s-p"</span> . projectile-command-map<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff8c00; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd305624" class="outline-3">
+<h3 id="orgd305624">Company</h3>
+<div class="outline-text-3" id="text-orgd305624">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'company<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -782,9 +923,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-orgf1299ba" class="outline-3">
-<h3 id="orgf1299ba">Lsp-mode</h3>
-<div class="outline-text-3" id="text-orgf1299ba">
+<div id="outline-container-org4f09bb0" class="outline-3">
+<h3 id="org4f09bb0">Lsp-mode</h3>
+<div class="outline-text-3" id="text-org4f09bb0">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'lsp-mode<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -795,9 +936,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-orga96da0f" class="outline-3">
-<h3 id="orga96da0f">Flycheck</h3>
-<div class="outline-text-3" id="text-orga96da0f">
+<div id="outline-container-org6bce337" class="outline-3">
+<h3 id="org6bce337">Flycheck</h3>
+<div class="outline-text-3" id="text-org6bce337">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'flycheck<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -809,9 +950,25 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-orgab52df5" class="outline-3">
-<h3 id="orgab52df5">Org-babel</h3>
-<div class="outline-text-3" id="text-orgab52df5">
+<div id="outline-container-org427bbcf" class="outline-3">
+<h3 id="org427bbcf">Which-key</h3>
+<div class="outline-text-3" id="text-org427bbcf">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'which-key<span style="color: #ff8c00; font-weight: bold;">)</span>
+
+<span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">leaf</span> which-key
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:doc</span> <span style="color: #177CB0;">"Emacs package that displays available keybindings in popup."</span>
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:url</span> <span style="color: #177CB0;">"https://github.com/justbur/emacs-which-key"</span>
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:tag</span> <span style="color: #177CB0;">"help"</span>
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:custom</span> <span style="color: #ffd700; font-weight: bold;">(</span>which-key-allow-imprecise-window-fit . nil<span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:hook</span> 'after-init-hook<span style="color: #ff8c00; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3b4bd31" class="outline-3">
+<h3 id="org3b4bd31">Org-babel</h3>
+<div class="outline-text-3" id="text-org3b4bd31">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>custom-set-variables
    '<span style="color: #ffd700; font-weight: bold;">(</span>org-babel-load-languages <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">quote</span> <span style="color: #32cd32; font-weight: bold;">(</span><span style="color: #1e90ff; font-weight: bold;">(</span>emacs-lisp . t<span style="color: #1e90ff; font-weight: bold;">)</span> <span style="color: #1e90ff; font-weight: bold;">(</span>haskell . t<span style="color: #1e90ff; font-weight: bold;">)</span><span style="color: #32cd32; font-weight: bold;">)</span><span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
@@ -821,9 +978,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-orgaf1b510" class="outline-3">
-<h3 id="orgaf1b510">Telega</h3>
-<div class="outline-text-3" id="text-orgaf1b510">
+<div id="outline-container-orge1f09e4" class="outline-3">
+<h3 id="orge1f09e4">Telega</h3>
+<div class="outline-text-3" id="text-orge1f09e4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'telega<span style="color: #ff8c00; font-weight: bold;">)</span>
 </pre>
@@ -831,9 +988,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-orgad5ccd4" class="outline-3">
-<h3 id="orgad5ccd4">Emacs-Rime</h3>
-<div class="outline-text-3" id="text-orgad5ccd4">
+<div id="outline-container-org83a97d7" class="outline-3">
+<h3 id="org83a97d7">Emacs-Rime</h3>
+<div class="outline-text-3" id="text-org83a97d7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'rime<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -879,9 +1036,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 </div>
-<div id="outline-container-orgb0c0439" class="outline-3">
-<h3 id="orgb0c0439">Exec-path-from-shell</h3>
-<div class="outline-text-3" id="text-orgb0c0439">
+<div id="outline-container-org5de3b75" class="outline-3">
+<h3 id="org5de3b75">Exec-path-from-shell</h3>
+<div class="outline-text-3" id="text-org5de3b75">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'exec-path-from-shell<span style="color: #ff8c00; font-weight: bold;">)</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span>exec-path-from-shell-initialize<span style="color: #ff8c00; font-weight: bold;">)</span>
@@ -890,9 +1047,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-orgd286e4a" class="outline-3">
-<h3 id="orgd286e4a">Org-mode</h3>
-<div class="outline-text-3" id="text-orgd286e4a">
+<div id="outline-container-org9e46449" class="outline-3">
+<h3 id="org9e46449">Org-mode</h3>
+<div class="outline-text-3" id="text-org9e46449">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">leaf</span> org
   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:custom</span>
@@ -903,9 +1060,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-orgb85d605" class="outline-3">
-<h3 id="orgb85d605">Org-static-blog</h3>
-<div class="outline-text-3" id="text-orgb85d605">
+<div id="outline-container-org619fb38" class="outline-3">
+<h3 id="org619fb38">Org-static-blog</h3>
+<div class="outline-text-3" id="text-org619fb38">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'org-static-blog<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -954,9 +1111,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-org5fa6d67" class="outline-3">
-<h3 id="org5fa6d67">Org-superstar-mode</h3>
-<div class="outline-text-3" id="text-org5fa6d67">
+<div id="outline-container-org0111071" class="outline-3">
+<h3 id="org0111071">Org-superstar-mode</h3>
+<div class="outline-text-3" id="text-org0111071">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'org-superstar<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -1003,13 +1160,13 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-orgf8fb6cf" class="outline-2">
-<h2 id="orgf8fb6cf">编程语言</h2>
-<div class="outline-text-2" id="text-orgf8fb6cf">
+<div id="outline-container-orga414e22" class="outline-2">
+<h2 id="orga414e22">编程语言</h2>
+<div class="outline-text-2" id="text-orga414e22">
 </div>
-<div id="outline-container-orgc31f8f4" class="outline-3">
-<h3 id="orgc31f8f4">Haskell</h3>
-<div class="outline-text-3" id="text-orgc31f8f4">
+<div id="outline-container-org642df86" class="outline-3">
+<h3 id="org642df86">Haskell</h3>
+<div class="outline-text-3" id="text-org642df86">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'haskell-mode<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -1023,9 +1180,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 
-<div id="outline-container-orgcab8d54" class="outline-3">
-<h3 id="orgcab8d54">Golang</h3>
-<div class="outline-text-3" id="text-orgcab8d54">
+<div id="outline-container-orgbc2c9de" class="outline-3">
+<h3 id="orgbc2c9de">Golang</h3>
+<div class="outline-text-3" id="text-orgbc2c9de">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'go-mode<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -1039,9 +1196,9 @@ Code from <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: 2021-04-24 Sat 00:00</p>
+<p class="date">Date: 2021-04-27 Tue 00:00</p>
 <p class="author">Author: keke</p>
-<p class="date">Created: 2021-04-24 Sat 21:53</p>
+<p class="date">Created: 2021-04-27 Tue 17:01</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.4.4)</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
