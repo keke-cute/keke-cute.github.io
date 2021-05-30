@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-30 Sun 00:49 -->
+<!-- 2021-05-30 Sun 13:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>我的 Emacs 配置文件</title>
@@ -220,9 +220,9 @@
 <body>
 <div id="content">
 <h1 class="title">我的 Emacs 配置文件</h1>
-<div id="outline-container-orgfc46f8c" class="outline-2">
-<h2 id="orgfc46f8c">Straight.el &amp; Leaf</h2>
-<div class="outline-text-2" id="text-orgfc46f8c">
+<div id="outline-container-org4b6d53e" class="outline-2">
+<h2 id="org4b6d53e">Straight.el &amp; Leaf</h2>
+<div class="outline-text-2" id="text-org4b6d53e">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;;</span><span style="color: #758A99; font-style: italic; text-decoration: underline;">---------------------------------------------------------------------</span>
 <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;;</span><span style="color: #758A99; font-style: italic; text-decoration: underline;">(setq comp-deferred-compilation-deny-list ())</span>
@@ -248,9 +248,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org703de48" class="outline-2">
-<h2 id="org703de48">Autoload</h2>
-<div class="outline-text-2" id="text-org703de48">
+<div id="outline-container-orgb3dd073" class="outline-2">
+<h2 id="orgb3dd073">Autoload</h2>
+<div class="outline-text-2" id="text-orgb3dd073">
 <p>
 <a href="https://github.com/nasyxx/emacs.d/blob/master/literate-config/core/core-libs.org">https://github.com/nasyxx/emacs.d/blob/master/literate-config/core/core-libs.org</a>
 </p>
@@ -289,9 +289,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org81bd81f" class="outline-2">
-<h2 id="org81bd81f">Nasy's Font</h2>
-<div class="outline-text-2" id="text-org81bd81f">
+<div id="outline-container-org3292464" class="outline-2">
+<h2 id="org3292464">Nasy's Font</h2>
+<div class="outline-text-2" id="text-org3292464">
 <p>
 <a href="https://github.com/nasyxx/emacs.d/tree/master/literate-config/ui">https://github.com/nasyxx/emacs.d/tree/master/literate-config/ui</a>  
 </p>
@@ -470,9 +470,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgd3fdcab" class="outline-2">
-<h2 id="orgd3fdcab">检测系统</h2>
-<div class="outline-text-2" id="text-orgd3fdcab">
+<div id="outline-container-org2a93baa" class="outline-2">
+<h2 id="org2a93baa">检测系统</h2>
+<div class="outline-text-2" id="text-org2a93baa">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">defconst</span> <span style="color: #B35C44;">*is-a-mac*</span> <span style="color: #ffd700; font-weight: bold;">(</span>eq system-type 'darwin<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff8c00; font-weight: bold;">)</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">defconst</span> <span style="color: #B35C44;">*is-a-linux*</span> <span style="color: #ffd700; font-weight: bold;">(</span>eq system-type 'gnu/linux<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff8c00; font-weight: bold;">)</span>
@@ -500,13 +500,13 @@
 </div>
 </div>
 
-<div id="outline-container-org2d560ca" class="outline-2">
-<h2 id="org2d560ca">界面</h2>
-<div class="outline-text-2" id="text-org2d560ca">
+<div id="outline-container-orgda17b7c" class="outline-2">
+<h2 id="orgda17b7c">界面</h2>
+<div class="outline-text-2" id="text-orgda17b7c">
 </div>
-<div id="outline-container-orgc18565d" class="outline-3">
-<h3 id="orgc18565d">主要的一些设定</h3>
-<div class="outline-text-3" id="text-orgc18565d">
+<div id="outline-container-orgec8720c" class="outline-3">
+<h3 id="orgec8720c">主要的一些设定</h3>
+<div class="outline-text-3" id="text-orgec8720c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">setq</span> inhibit-splash-screen t<span style="color: #ff8c00; font-weight: bold;">)</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">when</span> <span style="color: #ffd700; font-weight: bold;">(</span>graphic-p<span style="color: #ffd700; font-weight: bold;">)</span>
@@ -522,9 +522,9 @@
 </div>
 </div>
 
-<div id="outline-container-org128eb7e" class="outline-3">
-<h3 id="org128eb7e">指定模式禁用行号</h3>
-<div class="outline-text-3" id="text-org128eb7e">
+<div id="outline-container-org6036b3c" class="outline-3">
+<h3 id="org6036b3c">指定模式禁用行号</h3>
+<div class="outline-text-3" id="text-org6036b3c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">(defun my-inhibit-global-linum-mode ()</span>
 <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;;   </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">"Counter-act `</span><span style="color: #B35C44; font-weight: bold; font-style: italic; text-decoration: underline;">global-linum-mode</span><span style="color: #758A99; font-style: italic; text-decoration: underline;">'."</span>
@@ -545,9 +545,9 @@
 </div>
 </div>
 
-<div id="outline-container-org516e9f5" class="outline-3">
-<h3 id="org516e9f5">字体设定</h3>
-<div class="outline-text-3" id="text-org516e9f5">
+<div id="outline-container-org3816e4c" class="outline-3">
+<h3 id="org3816e4c">字体设定</h3>
+<div class="outline-text-3" id="text-org3816e4c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">leaf</span> nasy-font
   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:doc</span> <span style="color: #177CB0;">"&#19968;&#20123;&#40664;&#35346;&#20516;&#12290;"</span>
@@ -605,9 +605,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgd8fe366" class="outline-3">
-<h3 id="orgd8fe366">设定macOS上的窗口样式</h3>
-<div class="outline-text-3" id="text-orgd8fe366">
+<div id="outline-container-orgf2f0346" class="outline-3">
+<h3 id="orgf2f0346">设定macOS上的窗口样式</h3>
+<div class="outline-text-3" id="text-orgf2f0346">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">leaf</span> mac-frame
   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:when</span> *is-a-mac*
@@ -630,9 +630,9 @@
 </div>
 </div>
 
-<div id="outline-container-org71c9469" class="outline-3">
-<h3 id="org71c9469">主题设定</h3>
-<div class="outline-text-3" id="text-org71c9469">
+<div id="outline-container-org15530cb" class="outline-3">
+<h3 id="org15530cb">主题设定</h3>
+<div class="outline-text-3" id="text-org15530cb">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>add-to-list 'load-path <span style="color: #ffd700; font-weight: bold;">(</span>expand-file-name <span style="color: #177CB0;">"emacs-nasy-theme"</span> user-emacs-directory<span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff8c00; font-weight: bold;">)</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">require</span> '<span style="color: #B35C44; font-weight: bold;">nasy-theme</span><span style="color: #ff8c00; font-weight: bold;">)</span>
@@ -641,9 +641,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org1c6dc86" class="outline-3">
-<h3 id="org1c6dc86">工具栏设定</h3>
-<div class="outline-text-3" id="text-org1c6dc86">
+<div id="outline-container-orgc633b59" class="outline-3">
+<h3 id="orgc633b59">工具栏设定</h3>
+<div class="outline-text-3" id="text-orgc633b59">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">leaf</span> tool-bar
   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:tag</span> <span style="color: #177CB0;">"builtin"</span>
@@ -666,13 +666,13 @@
 </div>
 </div>
 
-<div id="outline-container-orgd2c2aa8" class="outline-3">
-<h3 id="orgd2c2aa8">一些关于界面的插件</h3>
-<div class="outline-text-3" id="text-orgd2c2aa8">
+<div id="outline-container-org422fc44" class="outline-3">
+<h3 id="org422fc44">一些关于界面的插件</h3>
+<div class="outline-text-3" id="text-org422fc44">
 </div>
-<div id="outline-container-org7b19a0f" class="outline-4">
-<h4 id="org7b19a0f">彩虹括号</h4>
-<div class="outline-text-4" id="text-org7b19a0f">
+<div id="outline-container-orgdaf65d5" class="outline-4">
+<h4 id="orgdaf65d5">彩虹括号</h4>
+<div class="outline-text-4" id="text-orgdaf65d5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'rainbow-delimiters<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -697,9 +697,9 @@
 </div>
 </div>
 
-<div id="outline-container-org61899e0" class="outline-4">
-<h4 id="org61899e0">彩虹猫</h4>
-<div class="outline-text-4" id="text-org61899e0">
+<div id="outline-container-orgf075ef3" class="outline-4">
+<h4 id="orgf075ef3">彩虹猫</h4>
+<div class="outline-text-4" id="text-orgf075ef3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'nyan-mode<span style="color: #ff8c00; font-weight: bold;">)</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">leaf</span> nyan-mode
@@ -713,9 +713,9 @@
 </div>
 </div>
 
-<div id="outline-container-org642ba97" class="outline-4">
-<h4 id="org642ba97">对齐线</h4>
-<div class="outline-text-4" id="text-org642ba97">
+<div id="outline-container-orga78dfb4" class="outline-4">
+<h4 id="orga78dfb4">对齐线</h4>
+<div class="outline-text-4" id="text-orga78dfb4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">when</span> <span style="color: #ffd700; font-weight: bold;">(</span>graphic-p<span style="color: #ffd700; font-weight: bold;">)</span>
   <span style="color: #ffd700; font-weight: bold;">(</span>straight-use-package 'highlight-indent-guides<span style="color: #ffd700; font-weight: bold;">)</span>
@@ -728,9 +728,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgb2c9fc2" class="outline-4">
-<h4 id="orgb2c9fc2">Doom-modeline</h4>
-<div class="outline-text-4" id="text-orgb2c9fc2">
+<div id="outline-container-org36f1788" class="outline-4">
+<h4 id="org36f1788">Doom-modeline</h4>
+<div class="outline-text-4" id="text-org36f1788">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'doom-modeline<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -750,9 +750,9 @@
 </div>
 </div>
 
-<div id="outline-container-org85ff59f" class="outline-4">
-<h4 id="org85ff59f">Doom-Themes</h4>
-<div class="outline-text-4" id="text-org85ff59f">
+<div id="outline-container-org78b57a9" class="outline-4">
+<h4 id="org78b57a9">Doom-Themes</h4>
+<div class="outline-text-4" id="text-org78b57a9">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'doom-themes<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -773,9 +773,9 @@
 </div>
 </div>
 
-<div id="outline-container-org2f3820b" class="outline-4">
-<h4 id="org2f3820b">Dashboard</h4>
-<div class="outline-text-4" id="text-org2f3820b">
+<div id="outline-container-org6759b70" class="outline-4">
+<h4 id="org6759b70">Dashboard</h4>
+<div class="outline-text-4" id="text-org6759b70">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'dashboard<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -899,9 +899,9 @@
 </div>
 </div>
 
-<div id="outline-container-org63a37e9" class="outline-2">
-<h2 id="org63a37e9">编辑器</h2>
-<div class="outline-text-2" id="text-org63a37e9">
+<div id="outline-container-org17e3eff" class="outline-2">
+<h2 id="org17e3eff">编辑器</h2>
+<div class="outline-text-2" id="text-org17e3eff">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">&#33258;&#21160;&#21152;&#36733;&#22806;&#37096;&#20462;&#25913;&#36807;&#30340;&#25991;&#20214;</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span>global-auto-revert-mode 1<span style="color: #ff8c00; font-weight: bold;">)</span>
@@ -924,13 +924,13 @@
 </div>
 </div>
 
-<div id="outline-container-org85683c0" class="outline-2">
-<h2 id="org85683c0">包</h2>
-<div class="outline-text-2" id="text-org85683c0">
+<div id="outline-container-orge0cef4b" class="outline-2">
+<h2 id="orge0cef4b">包</h2>
+<div class="outline-text-2" id="text-orge0cef4b">
 </div>
-<div id="outline-container-orge94e584" class="outline-3">
-<h3 id="orge94e584">Ivy</h3>
-<div class="outline-text-3" id="text-orge94e584">
+<div id="outline-container-orge246420" class="outline-3">
+<h3 id="orge246420">Ivy</h3>
+<div class="outline-text-3" id="text-orge246420">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'ivy<span style="color: #ff8c00; font-weight: bold;">)</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'swiper<span style="color: #ff8c00; font-weight: bold;">)</span>
@@ -986,9 +986,9 @@
 </div>
 </div>
 
-<div id="outline-container-org37d3b3f" class="outline-3">
-<h3 id="org37d3b3f">Projectile</h3>
-<div class="outline-text-3" id="text-org37d3b3f">
+<div id="outline-container-orgc84c07f" class="outline-3">
+<h3 id="orgc84c07f">Projectile</h3>
+<div class="outline-text-3" id="text-orgc84c07f">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'projectile<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -1000,9 +1000,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org03fc699" class="outline-3">
-<h3 id="org03fc699">Company</h3>
-<div class="outline-text-3" id="text-org03fc699">
+<div id="outline-container-org3896f34" class="outline-3">
+<h3 id="org3896f34">Company</h3>
+<div class="outline-text-3" id="text-org3896f34">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'company<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -1024,9 +1024,9 @@
 </div>
 </div>
 
-<div id="outline-container-org25a11f1" class="outline-3">
-<h3 id="org25a11f1">Lsp-mode</h3>
-<div class="outline-text-3" id="text-org25a11f1">
+<div id="outline-container-org25ffc83" class="outline-3">
+<h3 id="org25ffc83">Lsp-mode</h3>
+<div class="outline-text-3" id="text-org25ffc83">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'lsp-mode<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -1037,9 +1037,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgd68606a" class="outline-3">
-<h3 id="orgd68606a">Flycheck</h3>
-<div class="outline-text-3" id="text-orgd68606a">
+<div id="outline-container-org655bd2a" class="outline-3">
+<h3 id="org655bd2a">Flycheck</h3>
+<div class="outline-text-3" id="text-org655bd2a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'flycheck<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -1050,9 +1050,9 @@
 </div>
 </div>
 
-<div id="outline-container-org491d0e1" class="outline-3">
-<h3 id="org491d0e1">Which-key</h3>
-<div class="outline-text-3" id="text-org491d0e1">
+<div id="outline-container-org8f3bb12" class="outline-3">
+<h3 id="org8f3bb12">Which-key</h3>
+<div class="outline-text-3" id="text-org8f3bb12">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'which-key<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -1066,9 +1066,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orga50221f" class="outline-3">
-<h3 id="orga50221f">Org-babel</h3>
-<div class="outline-text-3" id="text-orga50221f">
+<div id="outline-container-org1e40046" class="outline-3">
+<h3 id="org1e40046">Org-babel</h3>
+<div class="outline-text-3" id="text-org1e40046">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>custom-set-variables
    '<span style="color: #ffd700; font-weight: bold;">(</span>org-babel-load-languages <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">quote</span> <span style="color: #32cd32; font-weight: bold;">(</span><span style="color: #1e90ff; font-weight: bold;">(</span>emacs-lisp . t<span style="color: #1e90ff; font-weight: bold;">)</span> <span style="color: #1e90ff; font-weight: bold;">(</span>haskell . t<span style="color: #1e90ff; font-weight: bold;">)</span><span style="color: #32cd32; font-weight: bold;">)</span><span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
@@ -1078,9 +1078,9 @@
 </div>
 </div>
 
-<div id="outline-container-org05b385c" class="outline-3">
-<h3 id="org05b385c">Emacs-Rime</h3>
-<div class="outline-text-3" id="text-org05b385c">
+<div id="outline-container-org4e285b0" class="outline-3">
+<h3 id="org4e285b0">Emacs-Rime</h3>
+<div class="outline-text-3" id="text-org4e285b0">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'rime<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -1122,9 +1122,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org2ec3b1c" class="outline-3">
-<h3 id="org2ec3b1c">Exec-path-from-shell</h3>
-<div class="outline-text-3" id="text-org2ec3b1c">
+<div id="outline-container-org37f167c" class="outline-3">
+<h3 id="org37f167c">Exec-path-from-shell</h3>
+<div class="outline-text-3" id="text-org37f167c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'exec-path-from-shell<span style="color: #ff8c00; font-weight: bold;">)</span>
 <span style="color: #ff8c00; font-weight: bold;">(</span>exec-path-from-shell-initialize<span style="color: #ff8c00; font-weight: bold;">)</span>
@@ -1133,9 +1133,9 @@
 </div>
 </div>
 
-<div id="outline-container-org79b65f2" class="outline-3">
-<h3 id="org79b65f2">Org-mode</h3>
-<div class="outline-text-3" id="text-org79b65f2">
+<div id="outline-container-org05ada40" class="outline-3">
+<h3 id="org05ada40">Org-mode</h3>
+<div class="outline-text-3" id="text-org05ada40">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">leaf</span> org
   <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:custom</span>
@@ -1146,9 +1146,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgf4dd3e7" class="outline-3">
-<h3 id="orgf4dd3e7">Org-static-blog</h3>
-<div class="outline-text-3" id="text-orgf4dd3e7">
+<div id="outline-container-org707ce16" class="outline-3">
+<h3 id="org707ce16">Org-static-blog</h3>
+<div class="outline-text-3" id="text-org707ce16">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'org-static-blog<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -1197,9 +1197,9 @@
 </div>
 </div>
 
-<div id="outline-container-org567624b" class="outline-3">
-<h3 id="org567624b">Org-superstar-mode</h3>
-<div class="outline-text-3" id="text-org567624b">
+<div id="outline-container-orgffab89e" class="outline-3">
+<h3 id="orgffab89e">Org-superstar-mode</h3>
+<div class="outline-text-3" id="text-orgffab89e">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'org-superstar<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -1247,40 +1247,65 @@
 </div>
 </div>
 
-<div id="outline-container-orgc073463" class="outline-3">
-<h3 id="orgc073463">Magit</h3>
-<div class="outline-text-3" id="text-orgc073463">
+<div id="outline-container-org067728e" class="outline-3">
+<h3 id="org067728e">Org-Roam</h3>
+<div class="outline-text-3" id="text-org067728e">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'org-roam<span style="color: #ff8c00; font-weight: bold;">)</span>
+
+<span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">leaf</span> org-roam
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:doc</span> <span style="color: #177CB0;">"Rudimentary Roam replica with org-mode."</span>
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:url</span> <span style="color: #177CB0;">"https://github.com/org-roam/org-roam"</span>
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:tag</span> <span style="color: #177CB0;">"convenience"</span> <span style="color: #177CB0;">"roam"</span>
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:hook</span> <span style="color: #ffd700; font-weight: bold;">(</span>org-mode-hook<span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:custom</span>
+  `<span style="color: #ffd700; font-weight: bold;">(</span>org-roam-directory . ,<span style="color: #9acd32; font-weight: bold;">(</span>expand-file-name <span style="color: #177CB0;">"~/Repos/roam"</span><span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:bind</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:org-roam-mode-map</span>
+   <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #32cd32; font-weight: bold;">(</span><span style="color: #177CB0;">"C-c n l"</span> . org-roam<span style="color: #32cd32; font-weight: bold;">)</span>
+    <span style="color: #32cd32; font-weight: bold;">(</span><span style="color: #177CB0;">"C-c n f"</span> . org-roam-find-file<span style="color: #32cd32; font-weight: bold;">)</span>
+    <span style="color: #32cd32; font-weight: bold;">(</span><span style="color: #177CB0;">"C-c n g"</span> . org-roam-graph<span style="color: #32cd32; font-weight: bold;">)</span><span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span>
+  <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:org-mode-map</span>
+   <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #32cd32; font-weight: bold;">(</span><span style="color: #177CB0;">"C-c n i"</span> . org-roam-insert<span style="color: #32cd32; font-weight: bold;">)</span><span style="color: #9acd32; font-weight: bold;">)</span>
+   <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #32cd32; font-weight: bold;">(</span><span style="color: #177CB0;">"C-c n I"</span> . org-roam-insert-immediate<span style="color: #32cd32; font-weight: bold;">)</span><span style="color: #9acd32; font-weight: bold;">)</span><span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff8c00; font-weight: bold;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdea7a7a" class="outline-3">
+<h3 id="orgdea7a7a">Magit</h3>
+<div class="outline-text-3" id="text-orgdea7a7a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'magit<span style="color: #ff8c00; font-weight: bold;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org66e3ae3" class="outline-3">
-<h3 id="org66e3ae3">Telega</h3>
-<div class="outline-text-3" id="text-org66e3ae3">
+<div id="outline-container-org5bcfc04" class="outline-3">
+<h3 id="org5bcfc04">Telega</h3>
+<div class="outline-text-3" id="text-org5bcfc04">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package '<span style="color: #ffd700; font-weight: bold;">(</span>telega <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:type</span> git <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:host</span> github <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">:branch</span> <span style="color: #177CB0;">"releases"</span><span style="color: #ffd700; font-weight: bold;">)</span><span style="color: #ff8c00; font-weight: bold;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org44126d2" class="outline-3">
-<h3 id="org44126d2">Htmlize</h3>
-<div class="outline-text-3" id="text-org44126d2">
+<div id="outline-container-org595d554" class="outline-3">
+<h3 id="org595d554">Htmlize</h3>
+<div class="outline-text-3" id="text-org595d554">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'htmlize<span style="color: #ff8c00; font-weight: bold;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org3a3bb3e" class="outline-3">
-<h3 id="org3a3bb3e">Hydra</h3>
-<div class="outline-text-3" id="text-org3a3bb3e">
+<div id="outline-container-org60cc2d1" class="outline-3">
+<h3 id="org60cc2d1">Hydra</h3>
+<div class="outline-text-3" id="text-org60cc2d1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'hydra<span style="color: #ff8c00; font-weight: bold;">)</span>
 
-<span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">with-eval-after-load</span> 'hydra
+<span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">after-x</span> 'hydra
   <span style="color: #ffd700; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">defhydra</span> keke/main <span style="color: #9acd32; font-weight: bold;">(</span>global-map <span style="color: #177CB0;">"&lt;f13&gt;"</span><span style="color: #9acd32; font-weight: bold;">)</span>
     <span style="color: #177CB0; background-color: #DDEEC4;">"My main hydra keymap"</span>
     <span style="color: #9acd32; font-weight: bold;">(</span><span style="color: #177CB0;">"a"</span> eshell <span style="color: #177CB0;">"Terminal"</span><span style="color: #9acd32; font-weight: bold;">)</span>
@@ -1295,9 +1320,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org4f35220" class="outline-3">
-<h3 id="org4f35220">Treemacs</h3>
-<div class="outline-text-3" id="text-org4f35220">
+<div id="outline-container-org947d264" class="outline-3">
+<h3 id="org947d264">Treemacs</h3>
+<div class="outline-text-3" id="text-org947d264">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'treemacs<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -1307,9 +1332,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgc07ef68" class="outline-3">
-<h3 id="orgc07ef68">Ace-Window</h3>
-<div class="outline-text-3" id="text-orgc07ef68">
+<div id="outline-container-orgab6eb6e" class="outline-3">
+<h3 id="orgab6eb6e">Ace-Window</h3>
+<div class="outline-text-3" id="text-orgab6eb6e">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'ace-window<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -1320,13 +1345,13 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgbeeb485" class="outline-2">
-<h2 id="orgbeeb485">编程语言</h2>
-<div class="outline-text-2" id="text-orgbeeb485">
+<div id="outline-container-org4f55526" class="outline-2">
+<h2 id="org4f55526">编程语言</h2>
+<div class="outline-text-2" id="text-org4f55526">
 </div>
-<div id="outline-container-org3ab09cd" class="outline-3">
-<h3 id="org3ab09cd">Haskell</h3>
-<div class="outline-text-3" id="text-org3ab09cd">
+<div id="outline-container-orgf78e6db" class="outline-3">
+<h3 id="orgf78e6db">Haskell</h3>
+<div class="outline-text-3" id="text-orgf78e6db">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;;</span><span style="color: #758A99; font-style: italic; text-decoration: underline;">(straight-use-package 'haskell-mode)</span>
 <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;;</span>
@@ -1340,9 +1365,9 @@
 </div>
 </div>
 
-<div id="outline-container-org93255c6" class="outline-3">
-<h3 id="org93255c6">Golang</h3>
-<div class="outline-text-3" id="text-org93255c6">
+<div id="outline-container-org069810c" class="outline-3">
+<h3 id="org069810c">Golang</h3>
+<div class="outline-text-3" id="text-org069810c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'go-mode<span style="color: #ff8c00; font-weight: bold;">)</span>
 
@@ -1353,9 +1378,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org849f5ef" class="outline-3">
-<h3 id="org849f5ef">Nix</h3>
-<div class="outline-text-3" id="text-org849f5ef">
+<div id="outline-container-org6ddddc3" class="outline-3">
+<h3 id="org6ddddc3">Nix</h3>
+<div class="outline-text-3" id="text-org6ddddc3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'nix-mode<span style="color: #ff8c00; font-weight: bold;">)</span>
 </pre>
@@ -1363,9 +1388,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgcf82291" class="outline-3">
-<h3 id="orgcf82291">Yaml</h3>
-<div class="outline-text-3" id="text-orgcf82291">
+<div id="outline-container-org65e593e" class="outline-3">
+<h3 id="org65e593e">Yaml</h3>
+<div class="outline-text-3" id="text-org65e593e">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #ff8c00; font-weight: bold;">(</span>straight-use-package 'yaml-mode<span style="color: #ff8c00; font-weight: bold;">)</span>
 </pre>
@@ -1377,7 +1402,7 @@
 <div id="postamble" class="status">
 <p class="date">Date: 2021-05-30 Sun 00:00</p>
 <p class="author">Author: keke</p>
-<p class="date">Created: 2021-05-30 Sun 00:49</p>
+<p class="date">Created: 2021-05-30 Sun 13:28</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.4.4)</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
