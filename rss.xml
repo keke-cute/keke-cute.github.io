@@ -4,31 +4,31 @@
 <title><![CDATA[Ethereal Horizon]]></title>
 <description><![CDATA[Ethereal Horizon]]></description>
 <link>https://keke-cute.github.io/</link>
-<lastBuildDate>Sun, 21 Mar 2021 20:31:41 +0800</lastBuildDate>
+<lastBuildDate>Mon, 21 Jun 2021 23:01:03 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Gnupg Usage]]></title>
   <description><![CDATA[
 
-<div id="outline-container-orgfb08f9f" class="outline-2">
-<h2 id="orgfb08f9f"><span class="todo TODO">TODO</span> Generate GPG Key</h2>
-<div class="outline-text-2" id="text-orgfb08f9f">
+<div id="outline-container-org9203ca8" class="outline-2">
+<h2 id="org9203ca8"><span class="todo TODO">TODO</span> Generate GPG Key</h2>
+<div class="outline-text-2" id="text-org9203ca8">
 </div>
-<div id="outline-container-org457f4f3" class="outline-3">
-<h3 id="org457f4f3">Make WorkSpace</h3>
-<div class="outline-text-3" id="text-org457f4f3">
+<div id="outline-container-org5c0f6c6" class="outline-3">
+<h3 id="org5c0f6c6">Make WorkSpace</h3>
+<div class="outline-text-3" id="text-org5c0f6c6">
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">make temp dir</span>
-export GNUPGHOME=$<span style="color: #ff4500; font-weight: bold;">(</span>mktemp -d<span style="color: #ff4500; font-weight: bold;">)</span>
-cd $GNUPGHOME
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">get gpg.conf</span>
-curl -O <span style="color: #8b0000;">"https://raw.githubusercontent.com/drduh/config/master/gpg.conf"</span>
+<pre class="src src-shell"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">make temp dir</span>
+<span style="color: #705438; background-color: #E3EFD1; font-style: italic;">export</span> <span style="color: #B35C44;">GNUPGHOME</span>=$<span style="color: #ff8c00; font-weight: bold;">(</span>mktemp -d<span style="color: #ff8c00; font-weight: bold;">)</span>
+<span style="color: #705438; background-color: #E3EFD1; font-style: italic;">cd</span> $<span style="color: #B35C44;">GNUPGHOME</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">get gpg.conf</span>
+curl -O <span style="color: #177CB0;">"https://raw.githubusercontent.com/drduh/config/master/gpg.conf"</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org7ccc2b8" class="outline-3">
-<h3 id="org7ccc2b8">Generate-key</h3>
-<div class="outline-text-3" id="text-org7ccc2b8">
+<div id="outline-container-orge187b51" class="outline-3">
+<h3 id="orge187b51">Generate-key</h3>
+<div class="outline-text-3" id="text-orge187b51">
 <div class="org-src-container">
 <pre class="src src-shell">gpg --expert --full-generate-key
 </pre>
@@ -36,16 +36,16 @@ curl -O <span style="color: #8b0000;">"https://raw.githubusercontent.com/drduh/c
 </div>
 </div>
 </div>
-<div id="outline-container-org5a75d55" class="outline-2">
-<h2 id="org5a75d55">OpenGPG Smart Card</h2>
-<div class="outline-text-2" id="text-org5a75d55">
+<div id="outline-container-orga62deb6" class="outline-2">
+<h2 id="orga62deb6">OpenGPG Smart Card</h2>
+<div class="outline-text-2" id="text-orga62deb6">
 </div>
-<div id="outline-container-orgad50722" class="outline-3">
-<h3 id="orgad50722"><span class="todo TODO">TODO</span> Yubikey</h3>
+<div id="outline-container-org21fab9b" class="outline-3">
+<h3 id="org21fab9b"><span class="todo TODO">TODO</span> Yubikey</h3>
 </div>
-<div id="outline-container-orgfcee3b7" class="outline-3">
-<h3 id="orgfcee3b7">Make Gnuk Card(only need 10¥)</h3>
-<div class="outline-text-3" id="text-orgfcee3b7">
+<div id="outline-container-orgf657da3" class="outline-3">
+<h3 id="orgf657da3">Make Gnuk Card(only need 10¥)</h3>
+<div class="outline-text-3" id="text-orgf657da3">
 <p>
 Requirements
 </p>
@@ -57,47 +57,47 @@ Requirements
 <li>inetutils (telnet)</li>
 </ul>
 </div>
-<div id="outline-container-orge2400ff" class="outline-4">
-<h4 id="orge2400ff">Let me make</h4>
-<div class="outline-text-4" id="text-orge2400ff">
+<div id="outline-container-org699696b" class="outline-4">
+<h4 id="org699696b">Let me make</h4>
+<div class="outline-text-4" id="text-org699696b">
 </div>
 <ul class="org-ul">
-<li><a id="orgf8dd86c"></a>Compile gnuk<br>
-<div class="outline-text-5" id="text-orgf8dd86c">
+<li><a id="org7496820"></a>Compile gnuk<br>
+<div class="outline-text-5" id="text-org7496820">
 <div class="org-src-container">
 <pre class="src src-shell">git clone https://salsa.debian.org/gnuk-team/gnuk/gnuk.git
-cd gnuk/
+<span style="color: #705438; background-color: #E3EFD1; font-style: italic;">cd</span> gnuk/
 git submodule update --init
-cd src/
+<span style="color: #705438; background-color: #E3EFD1; font-style: italic;">cd</span> src/
 ./configure --vidpid=234b:0000 --target=ST_DONGLE
 make build/gnuk-vidpid.bin
 </pre>
 </div>
 </div>
 </li>
-<li><a id="orgc7484f2"></a>openocd.cfg<br>
-<div class="outline-text-5" id="text-orgc7484f2">
+<li><a id="org0f8d4b2"></a>openocd.cfg<br>
+<div class="outline-text-5" id="text-org0f8d4b2">
 <div class="org-src-container">
-<pre class="src src-conf"><span style="color: #006400; font-style: italic;">#</span><span style="color: #006400; font-style: italic;">daemon configuration</span>
+<pre class="src src-conf"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">#</span><span style="color: #758A99; font-style: italic; text-decoration: underline;">daemon configuration</span>
 telnet_port 4444
 gdb_port 3333
 
-<span style="color: #006400; font-style: italic;">#</span><span style="color: #006400; font-style: italic;">interface</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">#</span><span style="color: #758A99; font-style: italic; text-decoration: underline;">interface</span>
 interface jlink
 transport select swd
 
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">The chip has 64KB sram</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">The chip has 64KB sram</span>
 set WORKAREASIZE 0x10000
 
 source [find target/stm32f1x.cfg]
-<span style="color: #006400; font-style: italic;">#</span><span style="color: #006400; font-style: italic;">adapter_khz 100</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">#</span><span style="color: #758A99; font-style: italic; text-decoration: underline;">adapter_khz 100</span>
 gdb_breakpoint_override hard
 </pre>
 </div>
 </div>
 </li>
-<li><a id="orgec29c43"></a>Flash Gnuk<br>
-<div class="outline-text-5" id="text-orgec29c43">
+<li><a id="orgd1ddc5b"></a>Flash Gnuk<br>
+<div class="outline-text-5" id="text-orgd1ddc5b">
 <p>
 Connecting the ST-LINK
 </p>
@@ -141,24 +141,24 @@ Now you have 10¥ GPG Smart Card
 </div>
 </div>
 </div>
-<div id="outline-container-org516a16c" class="outline-2">
-<h2 id="org516a16c">Git verified signature(eg. github)</h2>
-<div class="outline-text-2" id="text-org516a16c">
+<div id="outline-container-org54903c7" class="outline-2">
+<h2 id="org54903c7">Git verified signature(eg. github)</h2>
+<div class="outline-text-2" id="text-org54903c7">
 </div>
-<div id="outline-container-org03babaf" class="outline-3">
-<h3 id="org03babaf">Copy public key to github</h3>
-<div class="outline-text-3" id="text-org03babaf">
+<div id="outline-container-org0ddde82" class="outline-3">
+<h3 id="org0ddde82">Copy public key to github</h3>
+<div class="outline-text-3" id="text-org0ddde82">
 <div class="org-src-container">
-<pre class="src src-shell">gpg -a --export <span style="color: #ff4500; font-weight: bold;">[</span>you key id<span style="color: #ff4500; font-weight: bold;">]</span>
+<pre class="src src-shell">gpg -a --export <span style="color: #ff8c00; font-weight: bold;">[</span>you key id<span style="color: #ff8c00; font-weight: bold;">]</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb76385e" class="outline-3">
-<h3 id="orgb76385e">Config git use the key</h3>
-<div class="outline-text-3" id="text-orgb76385e">
+<div id="outline-container-org7f5b593" class="outline-3">
+<h3 id="org7f5b593">Config git use the key</h3>
+<div class="outline-text-3" id="text-org7f5b593">
 <div class="org-src-container">
-<pre class="src src-shell">git config --global user.signingkey <span style="color: #ff4500; font-weight: bold;">[</span>you key id<span style="color: #ff4500; font-weight: bold;">]</span>
+<pre class="src src-shell">git config --global user.signingkey <span style="color: #ff8c00; font-weight: bold;">[</span>you key id<span style="color: #ff8c00; font-weight: bold;">]</span>
 </pre>
 </div>
 <p>
@@ -170,13 +170,13 @@ if force gpg sign ?
 </div>
 </div>
 </div>
-<div id="outline-container-orgfa9adcc" class="outline-3">
-<h3 id="orgfa9adcc">Commit !</h3>
-<div class="outline-text-3" id="text-orgfa9adcc">
+<div id="outline-container-org648856d" class="outline-3">
+<h3 id="org648856d">Commit !</h3>
+<div class="outline-text-3" id="text-org648856d">
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">.gitconfig user.email need equal to gpg public key email</span>
+<pre class="src src-shell"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">.gitconfig user.email need equal to gpg public key email</span>
 git add .
-git commit -m <span style="color: #8b0000;">"message"</span> -S
+git commit -m <span style="color: #177CB0;">"message"</span> -S
 git push
 </pre>
 </div>
@@ -186,9 +186,9 @@ now your commit has verified(the green icon)
 </div>
 </div>
 </div>
-<div id="outline-container-org801fb69" class="outline-2">
-<h2 id="org801fb69">References</h2>
-<div class="outline-text-2" id="text-org801fb69">
+<div id="outline-container-org0f823a7" class="outline-2">
+<h2 id="org0f823a7">References</h2>
+<div class="outline-text-2" id="text-org0f823a7">
 <ul class="org-ul">
 <li><a href="https://www.yafa.moe/post/yubikey-guide/">Yubikey Guide</a></li>
 <li><a href="https://kgame.tw/gnupg/stm32-gnuk/">ST-LINK V2 刷 Gnuk </a></li>
@@ -204,21 +204,21 @@ now your commit has verified(the green icon)
   <title><![CDATA[Emacs Snippets]]></title>
   <description><![CDATA[
 
-<div id="outline-container-org2ceb2a7" class="outline-2">
-<h2 id="org2ceb2a7">Operating file</h2>
-<div class="outline-text-2" id="text-org2ceb2a7">
+<div id="outline-container-org52e9725" class="outline-2">
+<h2 id="org52e9725">Operating file</h2>
+<div class="outline-text-2" id="text-org52e9725">
 </div>
-<div id="outline-container-org06dbc56" class="outline-3">
-<h3 id="org06dbc56">Dired sort by Date</h3>
-<div class="outline-text-3" id="text-org06dbc56">
+<div id="outline-container-org3696f45" class="outline-3">
+<h3 id="org3696f45">Dired sort by Date</h3>
+<div class="outline-text-3" id="text-org3696f45">
 <ul class="org-ul">
 <li>C-u-s tr RET</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0b072ac" class="outline-3">
-<h3 id="org0b072ac">Dired Edit Mode</h3>
-<div class="outline-text-3" id="text-org0b072ac">
+<div id="outline-container-orgc02b674" class="outline-3">
+<h3 id="orgc02b674">Dired Edit Mode</h3>
+<div class="outline-text-3" id="text-orgc02b674">
 <ul class="org-ul">
 <li>C-x C-q to turn dired into editing mode</li>
 <li>M-% (if you want replace text in dired buffer)</li>
@@ -227,13 +227,13 @@ now your commit has verified(the green icon)
 </div>
 </div>
 </div>
-<div id="outline-container-orgec32156" class="outline-2">
-<h2 id="orgec32156">Edit text</h2>
-<div class="outline-text-2" id="text-orgec32156">
+<div id="outline-container-orga412013" class="outline-2">
+<h2 id="orga412013">Edit text</h2>
+<div class="outline-text-2" id="text-orga412013">
 </div>
-<div id="outline-container-org666c2ba" class="outline-3">
-<h3 id="org666c2ba">Emacs Column edit</h3>
-<div class="outline-text-3" id="text-org666c2ba">
+<div id="outline-container-org720e8ec" class="outline-3">
+<h3 id="org720e8ec">Emacs Column edit</h3>
+<div class="outline-text-3" id="text-org720e8ec">
 <ul class="org-ul">
 <li>C-x SPC (select region)</li>
 <li>C-x rt (replace select region) RET</li>
@@ -242,13 +242,13 @@ now your commit has verified(the green icon)
 </div>
 </div>
 </div>
-<div id="outline-container-org22898c9" class="outline-2">
-<h2 id="org22898c9">Remote</h2>
-<div class="outline-text-2" id="text-org22898c9">
+<div id="outline-container-org0e8f9ba" class="outline-2">
+<h2 id="org0e8f9ba">Remote</h2>
+<div class="outline-text-2" id="text-org0e8f9ba">
 </div>
-<div id="outline-container-org8a08f77" class="outline-3">
-<h3 id="org8a08f77">How to use tramp?</h3>
-<div class="outline-text-3" id="text-org8a08f77">
+<div id="outline-container-org16360a0" class="outline-3">
+<h3 id="org16360a0">How to use tramp?</h3>
+<div class="outline-text-3" id="text-org16360a0">
 <ul class="org-ul">
 <li>C-x C-f /sshx:192.168.1.1: RET username RET password RET (I don't know why ssh not work)</li>
 </ul>
@@ -264,25 +264,25 @@ now your commit has verified(the green icon)
   <title><![CDATA[Record My Gentoo Linux Install]]></title>
   <description><![CDATA[
 
-<div id="outline-container-org21a8f52" class="outline-2">
-<h2 id="org21a8f52"><span class="todo TODO">TODO</span> Incomplete</h2>
-<div class="outline-text-2" id="text-org21a8f52">
+<div id="outline-container-orga460d43" class="outline-2">
+<h2 id="orga460d43"><span class="todo TODO">TODO</span> Incomplete</h2>
+<div class="outline-text-2" id="text-orga460d43">
 <ul class="org-ul">
 <li>boot partition not in zpool and not encryption</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0da9749" class="outline-2">
-<h2 id="org0da9749">LiveCD</h2>
-<div class="outline-text-2" id="text-org0da9749">
+<div id="outline-container-org59fcd88" class="outline-2">
+<h2 id="org59fcd88">LiveCD</h2>
+<div class="outline-text-2" id="text-org59fcd88">
 <p>
 For zfs installation, I need <a href="https://github.com/nchevsky/systemrescue-zfs">systemrescue-zfs</a> or <a href="https://gitlab.com/m_zhou/archiso">archiso</a>.
 </p>
 </div>
 </div>
-<div id="outline-container-orge60ce58" class="outline-2">
-<h2 id="orge60ce58">Format and Partition</h2>
-<div class="outline-text-2" id="text-orge60ce58">
+<div id="outline-container-org0981300" class="outline-2">
+<h2 id="org0981300">Format and Partition</h2>
+<div class="outline-text-2" id="text-org0981300">
 <p>
 My normal GPT partition plan:
 </p>
@@ -337,50 +337,50 @@ swapon /dev/nvme0n1p2
 </div>
 </div>
 </div>
-<div id="outline-container-orgfdee859" class="outline-2">
-<h2 id="orgfdee859">Create zpool</h2>
-<div class="outline-text-2" id="text-orgfdee859">
+<div id="outline-container-orgb1b72a4" class="outline-2">
+<h2 id="orgb1b72a4">Create zpool</h2>
+<div class="outline-text-2" id="text-orgb1b72a4">
 <p>
 Use native encryption and zstd compression:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">zpool create -f -O encryption=on -O keyformat=passphrase -o ashift=12 -o cachefile= -O compression=zstd -O acltype=posixacl -O atime=off -O xattr=sa -m none -R /mnt/gentoo kpool /dev/disk/by-id/nvme-xxx-part2 
+<pre class="src src-shell">zpool create -f -O <span style="color: #B35C44;">encryption</span>=on -O <span style="color: #B35C44;">keyformat</span>=passphrase -o <span style="color: #B35C44;">ashift</span>=12 -o <span style="color: #B35C44;">cachefile</span>= -O <span style="color: #B35C44;">compression</span>=zstd -O <span style="color: #B35C44;">acltype</span>=posixacl -O <span style="color: #B35C44;">atime</span>=off -O <span style="color: #B35C44;">xattr</span>=sa -m none -R /mnt/gentoo kpool /dev/disk/by-id/nvme-xxx-part2 
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orge6ea1eb" class="outline-2">
-<h2 id="orge6ea1eb">Create zfs datasets</h2>
-<div class="outline-text-2" id="text-orge6ea1eb">
+<div id="outline-container-orge704e00" class="outline-2">
+<h2 id="orge704e00">Create zfs datasets</h2>
+<div class="outline-text-2" id="text-orge704e00">
 <p>
 Just create root and home datasets:
 </p>
 <div class="org-src-container">
 <pre class="src src-shell">zfs create kpool/gentoo
-zfs create -o mountpoint=/ kpool/gentoo/os
-zfs create -o mountpoint=/home kpool/gentoo/home
+zfs create -o <span style="color: #B35C44;">mountpoint</span>=/ kpool/gentoo/os
+zfs create -o <span style="color: #B35C44;">mountpoint</span>=/home kpool/gentoo/home
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org94f187e" class="outline-2">
-<h2 id="org94f187e">Install stage3</h2>
-<div class="outline-text-2" id="text-org94f187e">
+<div id="outline-container-org3a46187" class="outline-2">
+<h2 id="org3a46187">Install stage3</h2>
+<div class="outline-text-2" id="text-org3a46187">
 <p>
 Go gentoo website:<a href="https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/current-stage3-amd64/">Stage3</a>, Normal I use stage3-amd64-nomultilib:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">cd /mnt/gentoo
+<pre class="src src-shell"><span style="color: #705438; background-color: #E3EFD1; font-style: italic;">cd</span> /mnt/gentoo
 wget ......
-tar vxpf stage3-*.tar.xz --xattrs-include=<span style="color: #8b0000;">'*.*'</span> --numeric-owner
+tar vxpf stage3-*.tar.xz --xattrs-include=<span style="color: #177CB0;">'*.*'</span> --numeric-owner
 rm stage*
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orga3fa163" class="outline-2">
-<h2 id="orga3fa163">Mount partition</h2>
-<div class="outline-text-2" id="text-orga3fa163">
+<div id="outline-container-org30e7b95" class="outline-2">
+<h2 id="org30e7b95">Mount partition</h2>
+<div class="outline-text-2" id="text-org30e7b95">
 <p>
 For zfs, I only mount one partition:
 </p>
@@ -390,9 +390,9 @@ For zfs, I only mount one partition:
 </div>
 </div>
 </div>
-<div id="outline-container-org1614eb2" class="outline-2">
-<h2 id="org1614eb2">Generate fstab</h2>
-<div class="outline-text-2" id="text-org1614eb2">
+<div id="outline-container-org8f7d2f0" class="outline-2">
+<h2 id="org8f7d2f0">Generate fstab</h2>
+<div class="outline-text-2" id="text-org8f7d2f0">
 <p>
 Normal, I use archiso, the fstab file only one command:
 </p>
@@ -409,51 +409,51 @@ Delete no use mountpoint:
 </div>
 </div>
 </div>
-<div id="outline-container-org1ac8173" class="outline-2">
-<h2 id="org1ac8173">Edit /etc/portage/make.conf</h2>
-<div class="outline-text-2" id="text-org1ac8173">
+<div id="outline-container-org436cbf6" class="outline-2">
+<h2 id="org436cbf6">Edit /etc/portage/make.conf</h2>
+<div class="outline-text-2" id="text-org436cbf6">
 <div class="org-src-container">
 <pre class="src src-shell">nano /mnt/gentoo/etc/portage/make.conf
 </pre>
 </div>
 <div class="org-src-container">
-<pre class="src src-conf"><span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">GCC</span>
-CFLAGS=<span style="color: #8b0000;">"-march=native -O3 -pipe"</span>
-CXXFLAGS=<span style="color: #8b0000;">"${CFLAGS}"</span>
-CHOST=<span style="color: #8b0000;">"x86_64-pc-linux-gnu"</span>
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">3600</span>
-CPU_FLAGS_X86=<span style="color: #8b0000;">"aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sha sse sse2 sse3 sse4_1 sse4_2 sse4a ssse3"</span>
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">Surface GO</span>
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">CPU_FLAGS_X86="aes mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"</span>
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">Nas</span>
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">CPU_FLAGS_X86="mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"</span>
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">MAKEOPTS="-j5"</span>
-MAKEOPTS=<span style="color: #8b0000;">"-j13"</span>
+<pre class="src src-conf"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">GCC</span>
+<span style="color: #B35C44;">CFLAGS</span>=<span style="color: #177CB0;">"-march=native -O3 -pipe"</span>
+<span style="color: #B35C44;">CXXFLAGS</span>=<span style="color: #177CB0;">"${CFLAGS}"</span>
+<span style="color: #B35C44;">CHOST</span>=<span style="color: #177CB0;">"x86_64-pc-linux-gnu"</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">3600</span>
+<span style="color: #B35C44;">CPU_FLAGS_X86</span>=<span style="color: #177CB0;">"aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sha sse sse2 sse3 sse4_1 sse4_2 sse4a ssse3"</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">Surface GO</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">CPU_FLAGS_X86="aes mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">Nas</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">CPU_FLAGS_X86="mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">MAKEOPTS="-j5"</span>
+<span style="color: #B35C44;">MAKEOPTS</span>=<span style="color: #177CB0;">"-j13"</span>
 
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">USE</span>
-USE=<span style="color: #8b0000;">"-bindist elogind gtk pulseaudio -consolekit -systemd -clang"</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">USE</span>
+<span style="color: #B35C44;">USE</span>=<span style="color: #177CB0;">"-bindist elogind gtk pulseaudio -consolekit -systemd -clang"</span>
 
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">Portage</span>
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">GENTOO_MIRRORS="https://mirrors.tuna.tsinghua.edu.cn/gentoo/"</span>
-EMERGE_DEFAULT_OPTS=<span style="color: #8b0000;">"--ask --verbose=y --keep-going --with-bdeps=y --load-average"</span>
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">FEATURES="${FEATURES} -userpriv -usersandbox -sandbox"</span>
-ACCEPT_KEYWORDS=<span style="color: #8b0000;">"~amd64"</span>
-ACCEPT_LICENSE=<span style="color: #8b0000;">"*"</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">Portage</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">GENTOO_MIRRORS="https://mirrors.tuna.tsinghua.edu.cn/gentoo/"</span>
+<span style="color: #B35C44;">EMERGE_DEFAULT_OPTS</span>=<span style="color: #177CB0;">"--ask --verbose=y --keep-going --with-bdeps=y --load-average"</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">FEATURES="${FEATURES} -userpriv -usersandbox -sandbox"</span>
+<span style="color: #B35C44;">ACCEPT_KEYWORDS</span>=<span style="color: #177CB0;">"~amd64"</span>
+<span style="color: #B35C44;">ACCEPT_LICENSE</span>=<span style="color: #177CB0;">"*"</span>
 
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">Language</span>
-L10N=<span style="color: #8b0000;">"en-US zh-CN en zh"</span>
-LINGUAS=<span style="color: #8b0000;">"en_US zh_CN en zh"</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">Language</span>
+<span style="color: #B35C44;">L10N</span>=<span style="color: #177CB0;">"en-US zh-CN en zh"</span>
+<span style="color: #B35C44;">LINGUAS</span>=<span style="color: #177CB0;">"en_US zh_CN en zh"</span>
 
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">Else</span>
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">VIDEO_CARDS="intel i965"</span>
-VIDEO_CARDS=<span style="color: #8b0000;">"amdgpu radeonsi"</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">Else</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">VIDEO_CARDS="intel i965"</span>
+<span style="color: #B35C44;">VIDEO_CARDS</span>=<span style="color: #177CB0;">"amdgpu radeonsi"</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org359a7f4" class="outline-2">
-<h2 id="org359a7f4">Configure portage repos</h2>
-<div class="outline-text-2" id="text-org359a7f4">
+<div id="outline-container-orgff62862" class="outline-2">
+<h2 id="orgff62862">Configure portage repos</h2>
+<div class="outline-text-2" id="text-orgff62862">
 <p>
 I use git:
 </p>
@@ -463,14 +463,14 @@ nano /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
 </pre>
 </div>
 <div class="org-src-container">
-<pre class="src src-conf">[DEFAULT]
-main-repo = gentoo
+<pre class="src src-conf">[<span style="color: #057748; font-weight: bold; font-style: italic;">DEFAULT</span>]
+<span style="color: #B35C44;">main-repo</span> = gentoo
 
-[gentoo]
-location = /var/db/repos/gentoo
-sync-type = git
-sync-uri = https://github.com/gentoo-mirror/gentoo
-auto-sync = yes
+[<span style="color: #057748; font-weight: bold; font-style: italic;">gentoo</span>]
+<span style="color: #B35C44;">location</span> = /var/db/repos/gentoo
+<span style="color: #B35C44;">sync-type</span> = git
+<span style="color: #B35C44;">sync-uri</span> = https://github.com/gentoo-mirror/gentoo
+<span style="color: #B35C44;">auto-sync</span> = yes
 </pre>
 </div>
 <p>
@@ -482,9 +482,9 @@ Clone portage repo:
 </div>
 </div>
 </div>
-<div id="outline-container-orgfa9e235" class="outline-2">
-<h2 id="orgfa9e235">Copy zpool cachefile</h2>
-<div class="outline-text-2" id="text-orgfa9e235">
+<div id="outline-container-org490b45d" class="outline-2">
+<h2 id="org490b45d">Copy zpool cachefile</h2>
+<div class="outline-text-2" id="text-org490b45d">
 <div class="org-src-container">
 <pre class="src src-shell">mkdir /mnt/gentoo/etc/zfs
 cp /etc/zfs/zpool.cache /mnt/gentoo/etc/zfs
@@ -492,67 +492,67 @@ cp /etc/zfs/zpool.cache /mnt/gentoo/etc/zfs
 </div>
 </div>
 </div>
-<div id="outline-container-org70c4214" class="outline-2">
-<h2 id="org70c4214">Now chroot</h2>
-<div class="outline-text-2" id="text-org70c4214">
+<div id="outline-container-org734407c" class="outline-2">
+<h2 id="org734407c">Now chroot</h2>
+<div class="outline-text-2" id="text-org734407c">
 <p>
 Let me chroot:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">dns</span>
+<pre class="src src-shell"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">dns</span>
 cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">mount</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">mount</span>
 mount -t proc none proc
 mount --rbind /sys sys
 mount --rbind /dev dev
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">chroot</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">chroot</span>
 chroot /mnt/gentoo /bin/bash
-source /etc/profile
-export PS1=<span style="color: #8b0000;">"(chroot) ${PS1}"</span>  
+<span style="color: #705438; background-color: #E3EFD1; font-style: italic;">source</span> /etc/profile
+<span style="color: #705438; background-color: #E3EFD1; font-style: italic;">export</span> <span style="color: #B35C44;">PS1</span>=<span style="color: #177CB0;">"(chroot) ${PS1}"</span>  
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org0629583" class="outline-2">
-<h2 id="org0629583">Configure current system</h2>
-<div class="outline-text-2" id="text-org0629583">
+<div id="outline-container-org89c667c" class="outline-2">
+<h2 id="org89c667c">Configure current system</h2>
+<div class="outline-text-2" id="text-org89c667c">
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">check profile is correct</span>
+<pre class="src src-shell"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">check profile is correct</span>
 eselect profile list
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">if not correct</span>
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">if not correct</span>
 eselect profile set x
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">timezone</span>
-echo <span style="color: #8b0000;">"Asia/Shanghai"</span> &gt; /etc/timezone
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">timezone</span>
+<span style="color: #705438; background-color: #E3EFD1; font-style: italic;">echo</span> <span style="color: #177CB0;">"Asia/Shanghai"</span> &gt; /etc/timezone
 emerge --config sys-libs/timezone-data
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">locale</span>
-echo <span style="color: #8b0000;">"en_US.UTF-8 UTF-8</span>
-<span style="color: #8b0000;">zh_CN.UTF-8 UTF-8"</span> &gt;&gt; /etc/locale.gen
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">locale</span>
+<span style="color: #705438; background-color: #E3EFD1; font-style: italic;">echo</span> <span style="color: #177CB0;">"en_US.UTF-8 UTF-8</span>
+<span style="color: #177CB0;">zh_CN.UTF-8 UTF-8"</span> &gt;&gt; /etc/locale.gen
 locale-gen
 eselect locale list
 eselect locale set
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">hostname</span>
-echo hostname=<span style="color: #8b0000;">\"</span>MyHostName<span style="color: #8b0000;">\"</span> &gt; /etc/conf.d/hostname
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">hostname</span>
+<span style="color: #705438; background-color: #E3EFD1; font-style: italic;">echo</span> <span style="color: #B35C44;">hostname</span>=<span style="color: #177CB0;">\"</span>MyHostName<span style="color: #177CB0;">\"</span> &gt; /etc/conf.d/hostname
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orga67a066" class="outline-2">
-<h2 id="orga67a066">Compile the world</h2>
-<div class="outline-text-2" id="text-orga67a066">
+<div id="outline-container-org10709dc" class="outline-2">
+<h2 id="org10709dc">Compile the world</h2>
+<div class="outline-text-2" id="text-org10709dc">
 <div class="org-src-container">
 <pre class="src src-shell">emerge -vDuUq @world
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfc9bc7e" class="outline-2">
-<h2 id="orgfc9bc7e">Compile kernel</h2>
-<div class="outline-text-2" id="text-orgfc9bc7e">
+<div id="outline-container-org28041e6" class="outline-2">
+<h2 id="org28041e6">Compile kernel</h2>
+<div class="outline-text-2" id="text-org28041e6">
 <p>
 I have .config file:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">cd /usr/src/linux
+<pre class="src src-shell"><span style="color: #705438; background-color: #E3EFD1; font-style: italic;">cd</span> /usr/src/linux
 cp /path/to/.config .
 make -j13
 make install
@@ -563,7 +563,7 @@ make modules_install
 I don't have .config file:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">cd /usr/src/linux
+<pre class="src src-shell"><span style="color: #705438; background-color: #E3EFD1; font-style: italic;">cd</span> /usr/src/linux
 make localmodconfig
 make -j13
 make install
@@ -572,33 +572,33 @@ make modules_install
 </div>
 </div>
 </div>
-<div id="outline-container-orgace7709" class="outline-2">
-<h2 id="orgace7709">Install zfs</h2>
-<div class="outline-text-2" id="text-orgace7709">
+<div id="outline-container-org4957658" class="outline-2">
+<h2 id="org4957658">Install zfs</h2>
+<div class="outline-text-2" id="text-org4957658">
 <div class="org-src-container">
 <pre class="src src-shell">emerge zfs
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org6c24a4d" class="outline-2">
-<h2 id="org6c24a4d">Generate initramfs</h2>
-<div class="outline-text-2" id="text-org6c24a4d">
+<div id="outline-container-orgbaabe88" class="outline-2">
+<h2 id="orgbaabe88">Generate initramfs</h2>
+<div class="outline-text-2" id="text-orgbaabe88">
 <p>
 I use dracut:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">don't need resume</span>
+<pre class="src src-shell"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">don't need resume</span>
 dracut -H --kver xx
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">need resume</span>
-dracut -a <span style="color: #8b0000;">"resume"</span> -H --kver xx
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">need resume</span>
+dracut -a <span style="color: #177CB0;">"resume"</span> -H --kver xx
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org15d1915" class="outline-2">
-<h2 id="org15d1915">Add OpenRC service to boot or default</h2>
-<div class="outline-text-2" id="text-org15d1915">
+<div id="outline-container-orgc5a1466" class="outline-2">
+<h2 id="orgc5a1466">Add OpenRC service to boot or default</h2>
+<div class="outline-text-2" id="text-orgc5a1466">
 <div class="org-src-container">
 <pre class="src src-shell">rc-update add zfs-import boot
 rc-update add zfs-mount boot
@@ -608,27 +608,27 @@ rc-update add sshd
 </div>
 </div>
 </div>
-<div id="outline-container-org6a51254" class="outline-2">
-<h2 id="org6a51254">User manager</h2>
-<div class="outline-text-2" id="text-org6a51254">
+<div id="outline-container-org6152ac8" class="outline-2">
+<h2 id="org6152ac8">User manager</h2>
+<div class="outline-text-2" id="text-org6152ac8">
 <div class="org-src-container">
 <pre class="src src-shell">passwd
 useradd -m -G users,wheel,portage,usb,video xx
 passwd xx
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">sudo</span>
-sed -i <span style="color: #8b0000;">'s/\# \%wheel ALL=(ALL) ALL/\%wheel ALL=(ALL) ALL/g'</span> /etc/sudoers
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">sudo</span>
+sed -i <span style="color: #177CB0;">'s/\# \%wheel ALL=(ALL) ALL/\%wheel ALL=(ALL) ALL/g'</span> /etc/sudoers
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org061d069" class="outline-2">
-<h2 id="org061d069">Configure Bootloader</h2>
-<div class="outline-text-2" id="text-org061d069">
+<div id="outline-container-orgcc5c210" class="outline-2">
+<h2 id="orgcc5c210">Configure Bootloader</h2>
+<div class="outline-text-2" id="text-orgcc5c210">
 <p>
 I use systemd-boot:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">install</span>
+<pre class="src src-shell"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">install</span>
 bootctl install --path /boot
 </pre>
 </div>
@@ -653,34 +653,34 @@ edit entries file
 </pre>
 </div>
 <div class="org-src-container">
-<pre class="src src-conf"><span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">normal</span>
+<pre class="src src-conf"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">normal</span>
 title   Gentoo Linux
 linux   /vmlinuz-xx-gentoo
 initrd  /initramfs-xx-gentoo.img
-options root=ZFS=kpool/gentoo/os rw spl.spl_hostid=0x00bab10c resume=UUID=swap uuid
-<span style="color: #006400; font-style: italic;"># </span><span style="color: #006400; font-style: italic;">amd pci passthrough</span>
+<span style="color: #B35C44;">options root</span>=ZFS=kpool/gentoo/os rw spl.spl_hostid=0x00bab10c resume=UUID=swap uuid
+<span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">amd pci passthrough</span>
 title   Gentoo Linux With GPU
 linux   /vmlinuz-xx-gentoo
 initrd  /initramfs-xx-gentoo.img
-options root=ZFS=kpool/gentoo/os rw spl.spl_hostid=0x00bab10c amd_iommu=on iommu=pt pcie_acs_override=downstream,multifunction vfio_iommu_type1.allow_unsafe_interrupts=1
+<span style="color: #B35C44;">options root</span>=ZFS=kpool/gentoo/os rw spl.spl_hostid=0x00bab10c amd_iommu=on iommu=pt pcie_acs_override=downstream,multifunction vfio_iommu_type1.allow_unsafe_interrupts=1
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org1e5c252" class="outline-2">
-<h2 id="org1e5c252">Umount and export zpool</h2>
-<div class="outline-text-2" id="text-org1e5c252">
+<div id="outline-container-org9e5ab2c" class="outline-2">
+<h2 id="org9e5ab2c">Umount and export zpool</h2>
+<div class="outline-text-2" id="text-org9e5ab2c">
 <p>
 The end step:
 </p>
 <div class="org-src-container">
 <pre class="src src-shell">umount /boot/
 swapooff /dev/nvme0n1p2
-<span style="color: #00008b;">exit</span>
+<span style="color: #50616D; font-weight: bold;">exit</span>
 umount -l sys
 umount -l proc
 umount -l dev
-cd /
+<span style="color: #705438; background-color: #E3EFD1; font-style: italic;">cd</span> /
 zpool export kpool
 poweroff
 </pre>
@@ -699,28 +699,28 @@ Happy Enjoy The New System.
 <item>
   <title><![CDATA[Switch to Org-Static-Blog.el]]></title>
   <description><![CDATA[
-<div id="outline-container-org67eded1" class="outline-2">
-<h2 id="org67eded1">Hello,World~ Welcome to Ethereal Horizon.</h2>
+<div id="outline-container-orgea53cb6" class="outline-2">
+<h2 id="orgea53cb6">Hello,World~ Welcome to Ethereal Horizon.</h2>
 </div>
-<div id="outline-container-orgf278659" class="outline-2">
-<h2 id="orgf278659">Code Test</h2>
-<div class="outline-text-2" id="text-orgf278659">
+<div id="outline-container-org0dc4bfc" class="outline-2">
+<h2 id="org0dc4bfc">Code Test</h2>
+<div class="outline-text-2" id="text-org0dc4bfc">
 <p>
 code from <a href="http://ergoemacs.org/emacs/elisp.html">Practical Emacs Lisp</a>
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #006400; font-style: italic;">;; </span><span style="color: #006400; font-style: italic;">all the following are false. They all evaluate to nil</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #00008b;">if</span> nil <span style="color: #8b0000;">"yes"</span> <span style="color: #8b0000;">"no"</span><span style="color: #ff4500; font-weight: bold;">)</span> <span style="color: #006400; font-style: italic;">;  </span><span style="color: #006400; font-style: italic;">"no"</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #00008b;">if</span> <span style="color: #ffd700; font-weight: bold;">()</span> <span style="color: #8b0000;">"yes"</span> <span style="color: #8b0000;">"no"</span><span style="color: #ff4500; font-weight: bold;">)</span> <span style="color: #006400; font-style: italic;">;  </span><span style="color: #006400; font-style: italic;">"no"</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #00008b;">if</span> '<span style="color: #ffd700; font-weight: bold;">()</span> <span style="color: #8b0000;">"yes"</span> <span style="color: #8b0000;">"no"</span><span style="color: #ff4500; font-weight: bold;">)</span> <span style="color: #006400; font-style: italic;">;  </span><span style="color: #006400; font-style: italic;">"no"</span>
-<span style="color: #ff4500; font-weight: bold;">(</span><span style="color: #00008b;">if</span> <span style="color: #ffd700; font-weight: bold;">(</span>list<span style="color: #ffd700; font-weight: bold;">)</span> <span style="color: #8b0000;">"yes"</span> <span style="color: #8b0000;">"no"</span><span style="color: #ff4500; font-weight: bold;">)</span> <span style="color: #006400; font-style: italic;">;  </span><span style="color: #006400; font-style: italic;">"no", because (list) eval to a empty list, same as ()</span>
+<pre class="src src-emacs-lisp"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;; </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">all the following are false. They all evaluate to nil</span>
+<span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">if</span> nil <span style="color: #177CB0;">"yes"</span> <span style="color: #177CB0;">"no"</span><span style="color: #ff8c00; font-weight: bold;">)</span> <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;  </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">"no"</span>
+<span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">if</span> <span style="color: #ffd700; font-weight: bold;">()</span> <span style="color: #177CB0;">"yes"</span> <span style="color: #177CB0;">"no"</span><span style="color: #ff8c00; font-weight: bold;">)</span> <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;  </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">"no"</span>
+<span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">if</span> '<span style="color: #ffd700; font-weight: bold;">()</span> <span style="color: #177CB0;">"yes"</span> <span style="color: #177CB0;">"no"</span><span style="color: #ff8c00; font-weight: bold;">)</span> <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;  </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">"no"</span>
+<span style="color: #ff8c00; font-weight: bold;">(</span><span style="color: #50616D; font-weight: bold;">if</span> <span style="color: #ffd700; font-weight: bold;">(</span>list<span style="color: #ffd700; font-weight: bold;">)</span> <span style="color: #177CB0;">"yes"</span> <span style="color: #177CB0;">"no"</span><span style="color: #ff8c00; font-weight: bold;">)</span> <span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">;  </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">"no", because (list) eval to a empty list, same as ()</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org394c3c8" class="outline-2">
-<h2 id="org394c3c8">First Post End</h2>
-<div class="outline-text-2" id="text-org394c3c8">
+<div id="outline-container-org578fe21" class="outline-2">
+<h2 id="org578fe21">First Post End</h2>
+<div class="outline-text-2" id="text-org578fe21">
 <p>
 <a href="https://github.com/bastibe/org-static-blog">org-static-blog.el</a> is fantastic!
 </p>
