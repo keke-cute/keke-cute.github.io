@@ -4,18 +4,18 @@
 <title><![CDATA[Ethereal Horizon]]></title>
 <description><![CDATA[Ethereal Horizon]]></description>
 <link>https://keke-cute.github.io/</link>
-<lastBuildDate>Mon, 21 Jun 2021 23:18:32 +0800</lastBuildDate>
+<lastBuildDate>Mon, 21 Jun 2021 23:50:37 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Gnupg Usage]]></title>
   <description><![CDATA[
 
-<div id="outline-container-orga8a42e4" class="outline-2">
-<h2 id="orga8a42e4"><span class="todo TODO">TODO</span> Generate GPG Key</h2>
-<div class="outline-text-2" id="text-orga8a42e4">
+<div id="outline-container-org6eac61c" class="outline-2">
+<h2 id="org6eac61c"><span class="todo TODO">TODO</span> Generate GPG Key</h2>
+<div class="outline-text-2" id="text-org6eac61c">
 </div>
-<div id="outline-container-orgb56bf66" class="outline-3">
-<h3 id="orgb56bf66">Make WorkSpace</h3>
-<div class="outline-text-3" id="text-orgb56bf66">
+<div id="outline-container-org6fea68c" class="outline-3">
+<h3 id="org6fea68c">Make WorkSpace</h3>
+<div class="outline-text-3" id="text-org6fea68c">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">make temp dir</span>
 <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">export</span> <span style="color: #B35C44;">GNUPGHOME</span>=$<span style="color: #ff8c00; font-weight: bold;">(</span>mktemp -d<span style="color: #ff8c00; font-weight: bold;">)</span>
@@ -26,9 +26,9 @@ curl -O <span style="color: #177CB0;">"https://raw.githubusercontent.com/drduh/c
 </div>
 </div>
 </div>
-<div id="outline-container-org36c0147" class="outline-3">
-<h3 id="org36c0147">Generate-key</h3>
-<div class="outline-text-3" id="text-org36c0147">
+<div id="outline-container-orgd07809b" class="outline-3">
+<h3 id="orgd07809b">Generate-key</h3>
+<div class="outline-text-3" id="text-orgd07809b">
 <div class="org-src-container">
 <pre class="src src-shell">gpg --expert --full-generate-key
 </pre>
@@ -36,16 +36,16 @@ curl -O <span style="color: #177CB0;">"https://raw.githubusercontent.com/drduh/c
 </div>
 </div>
 </div>
-<div id="outline-container-orgd9cb5eb" class="outline-2">
-<h2 id="orgd9cb5eb">OpenGPG Smart Card</h2>
-<div class="outline-text-2" id="text-orgd9cb5eb">
+<div id="outline-container-org7280ab6" class="outline-2">
+<h2 id="org7280ab6">OpenGPG Smart Card</h2>
+<div class="outline-text-2" id="text-org7280ab6">
 </div>
-<div id="outline-container-org56b9b76" class="outline-3">
-<h3 id="org56b9b76"><span class="todo TODO">TODO</span> Yubikey</h3>
+<div id="outline-container-org5d4f022" class="outline-3">
+<h3 id="org5d4f022"><span class="todo TODO">TODO</span> Yubikey</h3>
 </div>
-<div id="outline-container-org1bf83d5" class="outline-3">
-<h3 id="org1bf83d5">Make Gnuk Card(only need 10¥)</h3>
-<div class="outline-text-3" id="text-org1bf83d5">
+<div id="outline-container-org258b9bd" class="outline-3">
+<h3 id="org258b9bd">Make Gnuk Card(only need 10¥)</h3>
+<div class="outline-text-3" id="text-org258b9bd">
 <p>
 Requirements
 </p>
@@ -57,13 +57,13 @@ Requirements
 <li>inetutils (telnet)</li>
 </ul>
 </div>
-<div id="outline-container-org23f2515" class="outline-4">
-<h4 id="org23f2515">Let me make</h4>
-<div class="outline-text-4" id="text-org23f2515">
+<div id="outline-container-org713e10d" class="outline-4">
+<h4 id="org713e10d">Let me make</h4>
+<div class="outline-text-4" id="text-org713e10d">
 </div>
 <ul class="org-ul">
-<li><a id="org40774d7"></a>Compile gnuk<br>
-<div class="outline-text-5" id="text-org40774d7">
+<li><a id="org3b991fb"></a>Compile gnuk<br>
+<div class="outline-text-5" id="text-org3b991fb">
 <div class="org-src-container">
 <pre class="src src-shell">git clone https://salsa.debian.org/gnuk-team/gnuk/gnuk.git
 <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">cd</span> gnuk/
@@ -75,8 +75,8 @@ make build/gnuk-vidpid.bin
 </div>
 </div>
 </li>
-<li><a id="org53d5ab7"></a>openocd.cfg<br>
-<div class="outline-text-5" id="text-org53d5ab7">
+<li><a id="org527ef26"></a>openocd.cfg<br>
+<div class="outline-text-5" id="text-org527ef26">
 <div class="org-src-container">
 <pre class="src src-conf"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">#</span><span style="color: #758A99; font-style: italic; text-decoration: underline;">daemon configuration</span>
 telnet_port 4444
@@ -96,8 +96,8 @@ gdb_breakpoint_override hard
 </div>
 </div>
 </li>
-<li><a id="orge52ad67"></a>Flash Gnuk<br>
-<div class="outline-text-5" id="text-orge52ad67">
+<li><a id="org0230357"></a>Flash Gnuk<br>
+<div class="outline-text-5" id="text-org0230357">
 <p>
 Connecting the ST-LINK
 </p>
@@ -141,22 +141,22 @@ Now you have 10¥ GPG Smart Card
 </div>
 </div>
 </div>
-<div id="outline-container-org1278a7f" class="outline-2">
-<h2 id="org1278a7f">Git verified signature(eg. github)</h2>
-<div class="outline-text-2" id="text-org1278a7f">
+<div id="outline-container-org34f7aa0" class="outline-2">
+<h2 id="org34f7aa0">Git verified signature(eg. github)</h2>
+<div class="outline-text-2" id="text-org34f7aa0">
 </div>
-<div id="outline-container-org7f8d85b" class="outline-3">
-<h3 id="org7f8d85b">Copy public key to github</h3>
-<div class="outline-text-3" id="text-org7f8d85b">
+<div id="outline-container-orgb86e527" class="outline-3">
+<h3 id="orgb86e527">Copy public key to github</h3>
+<div class="outline-text-3" id="text-orgb86e527">
 <div class="org-src-container">
 <pre class="src src-shell">gpg -a --export <span style="color: #ff8c00; font-weight: bold;">[</span>you key id<span style="color: #ff8c00; font-weight: bold;">]</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd98032d" class="outline-3">
-<h3 id="orgd98032d">Config git use the key</h3>
-<div class="outline-text-3" id="text-orgd98032d">
+<div id="outline-container-org7124abd" class="outline-3">
+<h3 id="org7124abd">Config git use the key</h3>
+<div class="outline-text-3" id="text-org7124abd">
 <div class="org-src-container">
 <pre class="src src-shell">git config --global user.signingkey <span style="color: #ff8c00; font-weight: bold;">[</span>you key id<span style="color: #ff8c00; font-weight: bold;">]</span>
 </pre>
@@ -170,9 +170,9 @@ if force gpg sign ?
 </div>
 </div>
 </div>
-<div id="outline-container-org1e7040c" class="outline-3">
-<h3 id="org1e7040c">Commit !</h3>
-<div class="outline-text-3" id="text-org1e7040c">
+<div id="outline-container-org751da0d" class="outline-3">
+<h3 id="org751da0d">Commit !</h3>
+<div class="outline-text-3" id="text-org751da0d">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">.gitconfig user.email need equal to gpg public key email</span>
 git add .
@@ -186,9 +186,9 @@ now your commit has verified(the green icon)
 </div>
 </div>
 </div>
-<div id="outline-container-org28eb76b" class="outline-2">
-<h2 id="org28eb76b">References</h2>
-<div class="outline-text-2" id="text-org28eb76b">
+<div id="outline-container-org6fa5d35" class="outline-2">
+<h2 id="org6fa5d35">References</h2>
+<div class="outline-text-2" id="text-org6fa5d35">
 <ul class="org-ul">
 <li><a href="https://www.yafa.moe/post/yubikey-guide/">Yubikey Guide</a></li>
 <li><a href="https://kgame.tw/gnupg/stm32-gnuk/">ST-LINK V2 刷 Gnuk </a></li>
@@ -204,21 +204,21 @@ now your commit has verified(the green icon)
   <title><![CDATA[Emacs Snippets]]></title>
   <description><![CDATA[
 
-<div id="outline-container-org734ada1" class="outline-2">
-<h2 id="org734ada1">Operating file</h2>
-<div class="outline-text-2" id="text-org734ada1">
+<div id="outline-container-orgb3b6e82" class="outline-2">
+<h2 id="orgb3b6e82">Operating file</h2>
+<div class="outline-text-2" id="text-orgb3b6e82">
 </div>
-<div id="outline-container-org993025b" class="outline-3">
-<h3 id="org993025b">Dired sort by Date</h3>
-<div class="outline-text-3" id="text-org993025b">
+<div id="outline-container-orgdda691f" class="outline-3">
+<h3 id="orgdda691f">Dired sort by Date</h3>
+<div class="outline-text-3" id="text-orgdda691f">
 <ul class="org-ul">
 <li>C-u-s tr RET</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org8eb76ec" class="outline-3">
-<h3 id="org8eb76ec">Dired Edit Mode</h3>
-<div class="outline-text-3" id="text-org8eb76ec">
+<div id="outline-container-orgbd4b406" class="outline-3">
+<h3 id="orgbd4b406">Dired Edit Mode</h3>
+<div class="outline-text-3" id="text-orgbd4b406">
 <ul class="org-ul">
 <li>C-x C-q to turn dired into editing mode</li>
 <li>M-% (if you want replace text in dired buffer)</li>
@@ -227,13 +227,13 @@ now your commit has verified(the green icon)
 </div>
 </div>
 </div>
-<div id="outline-container-org712356b" class="outline-2">
-<h2 id="org712356b">Edit text</h2>
-<div class="outline-text-2" id="text-org712356b">
+<div id="outline-container-orge64a23a" class="outline-2">
+<h2 id="orge64a23a">Edit text</h2>
+<div class="outline-text-2" id="text-orge64a23a">
 </div>
-<div id="outline-container-org8356470" class="outline-3">
-<h3 id="org8356470">Emacs Column edit</h3>
-<div class="outline-text-3" id="text-org8356470">
+<div id="outline-container-org483de4e" class="outline-3">
+<h3 id="org483de4e">Emacs Column edit</h3>
+<div class="outline-text-3" id="text-org483de4e">
 <ul class="org-ul">
 <li>C-x SPC (select region)</li>
 <li>C-x rt (replace select region) RET</li>
@@ -242,13 +242,13 @@ now your commit has verified(the green icon)
 </div>
 </div>
 </div>
-<div id="outline-container-orgaf5cb51" class="outline-2">
-<h2 id="orgaf5cb51">Remote</h2>
-<div class="outline-text-2" id="text-orgaf5cb51">
+<div id="outline-container-orgd136ec4" class="outline-2">
+<h2 id="orgd136ec4">Remote</h2>
+<div class="outline-text-2" id="text-orgd136ec4">
 </div>
-<div id="outline-container-org21601e9" class="outline-3">
-<h3 id="org21601e9">How to use tramp?</h3>
-<div class="outline-text-3" id="text-org21601e9">
+<div id="outline-container-org8890bd7" class="outline-3">
+<h3 id="org8890bd7">How to use tramp?</h3>
+<div class="outline-text-3" id="text-org8890bd7">
 <ul class="org-ul">
 <li>C-x C-f /sshx:192.168.1.1: RET username RET password RET (I don't know why ssh not work)</li>
 </ul>
@@ -264,25 +264,25 @@ now your commit has verified(the green icon)
   <title><![CDATA[Record My Gentoo Linux Install]]></title>
   <description><![CDATA[
 
-<div id="outline-container-org113b160" class="outline-2">
-<h2 id="org113b160"><span class="todo TODO">TODO</span> Incomplete</h2>
-<div class="outline-text-2" id="text-org113b160">
+<div id="outline-container-orgc4f2ec9" class="outline-2">
+<h2 id="orgc4f2ec9"><span class="todo TODO">TODO</span> Incomplete</h2>
+<div class="outline-text-2" id="text-orgc4f2ec9">
 <ul class="org-ul">
 <li>boot partition not in zpool and not encryption</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc2ae870" class="outline-2">
-<h2 id="orgc2ae870">LiveCD</h2>
-<div class="outline-text-2" id="text-orgc2ae870">
+<div id="outline-container-orgd19c19e" class="outline-2">
+<h2 id="orgd19c19e">LiveCD</h2>
+<div class="outline-text-2" id="text-orgd19c19e">
 <p>
 For zfs installation, I need <a href="https://github.com/nchevsky/systemrescue-zfs">systemrescue-zfs</a> or <a href="https://gitlab.com/m_zhou/archiso">archiso</a>.
 </p>
 </div>
 </div>
-<div id="outline-container-org53ba351" class="outline-2">
-<h2 id="org53ba351">Format and Partition</h2>
-<div class="outline-text-2" id="text-org53ba351">
+<div id="outline-container-org0ed2bd3" class="outline-2">
+<h2 id="org0ed2bd3">Format and Partition</h2>
+<div class="outline-text-2" id="text-org0ed2bd3">
 <p>
 My normal GPT partition plan:
 </p>
@@ -337,9 +337,9 @@ swapon /dev/nvme0n1p2
 </div>
 </div>
 </div>
-<div id="outline-container-org5805e2f" class="outline-2">
-<h2 id="org5805e2f">Create zpool</h2>
-<div class="outline-text-2" id="text-org5805e2f">
+<div id="outline-container-org87a1196" class="outline-2">
+<h2 id="org87a1196">Create zpool</h2>
+<div class="outline-text-2" id="text-org87a1196">
 <p>
 Use native encryption and zstd compression:
 </p>
@@ -349,9 +349,9 @@ Use native encryption and zstd compression:
 </div>
 </div>
 </div>
-<div id="outline-container-org23ecd11" class="outline-2">
-<h2 id="org23ecd11">Create zfs datasets</h2>
-<div class="outline-text-2" id="text-org23ecd11">
+<div id="outline-container-org4ace3d6" class="outline-2">
+<h2 id="org4ace3d6">Create zfs datasets</h2>
+<div class="outline-text-2" id="text-org4ace3d6">
 <p>
 Just create root and home datasets:
 </p>
@@ -363,9 +363,9 @@ zfs create -o <span style="color: #B35C44;">mountpoint</span>=/home kpool/gentoo
 </div>
 </div>
 </div>
-<div id="outline-container-org44accc8" class="outline-2">
-<h2 id="org44accc8">Install stage3</h2>
-<div class="outline-text-2" id="text-org44accc8">
+<div id="outline-container-orgf1c1e5f" class="outline-2">
+<h2 id="orgf1c1e5f">Install stage3</h2>
+<div class="outline-text-2" id="text-orgf1c1e5f">
 <p>
 Go gentoo website:<a href="https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/current-stage3-amd64/">Stage3</a>, Normal I use stage3-amd64-nomultilib:
 </p>
@@ -378,9 +378,9 @@ rm stage*
 </div>
 </div>
 </div>
-<div id="outline-container-org1fdb59a" class="outline-2">
-<h2 id="org1fdb59a">Mount partition</h2>
-<div class="outline-text-2" id="text-org1fdb59a">
+<div id="outline-container-org6d64c4f" class="outline-2">
+<h2 id="org6d64c4f">Mount partition</h2>
+<div class="outline-text-2" id="text-org6d64c4f">
 <p>
 For zfs, I only mount one partition:
 </p>
@@ -390,9 +390,9 @@ For zfs, I only mount one partition:
 </div>
 </div>
 </div>
-<div id="outline-container-orgcf6a69b" class="outline-2">
-<h2 id="orgcf6a69b">Generate fstab</h2>
-<div class="outline-text-2" id="text-orgcf6a69b">
+<div id="outline-container-orgafe7358" class="outline-2">
+<h2 id="orgafe7358">Generate fstab</h2>
+<div class="outline-text-2" id="text-orgafe7358">
 <p>
 Normal, I use archiso, the fstab file only one command:
 </p>
@@ -409,9 +409,9 @@ Delete no use mountpoint:
 </div>
 </div>
 </div>
-<div id="outline-container-org2d442dc" class="outline-2">
-<h2 id="org2d442dc">Edit /etc/portage/make.conf</h2>
-<div class="outline-text-2" id="text-org2d442dc">
+<div id="outline-container-org980d1cd" class="outline-2">
+<h2 id="org980d1cd">Edit /etc/portage/make.conf</h2>
+<div class="outline-text-2" id="text-org980d1cd">
 <div class="org-src-container">
 <pre class="src src-shell">nano /mnt/gentoo/etc/portage/make.conf
 </pre>
@@ -451,9 +451,9 @@ Delete no use mountpoint:
 </div>
 </div>
 </div>
-<div id="outline-container-org5922696" class="outline-2">
-<h2 id="org5922696">Configure portage repos</h2>
-<div class="outline-text-2" id="text-org5922696">
+<div id="outline-container-org41de8c6" class="outline-2">
+<h2 id="org41de8c6">Configure portage repos</h2>
+<div class="outline-text-2" id="text-org41de8c6">
 <p>
 I use git:
 </p>
@@ -482,9 +482,9 @@ Clone portage repo:
 </div>
 </div>
 </div>
-<div id="outline-container-org70446af" class="outline-2">
-<h2 id="org70446af">Copy zpool cachefile</h2>
-<div class="outline-text-2" id="text-org70446af">
+<div id="outline-container-org591740b" class="outline-2">
+<h2 id="org591740b">Copy zpool cachefile</h2>
+<div class="outline-text-2" id="text-org591740b">
 <div class="org-src-container">
 <pre class="src src-shell">mkdir /mnt/gentoo/etc/zfs
 cp /etc/zfs/zpool.cache /mnt/gentoo/etc/zfs
@@ -492,9 +492,9 @@ cp /etc/zfs/zpool.cache /mnt/gentoo/etc/zfs
 </div>
 </div>
 </div>
-<div id="outline-container-orgc758a38" class="outline-2">
-<h2 id="orgc758a38">Now chroot</h2>
-<div class="outline-text-2" id="text-orgc758a38">
+<div id="outline-container-orga1a5bf7" class="outline-2">
+<h2 id="orga1a5bf7">Now chroot</h2>
+<div class="outline-text-2" id="text-orga1a5bf7">
 <p>
 Let me chroot:
 </p>
@@ -513,9 +513,9 @@ chroot /mnt/gentoo /bin/bash
 </div>
 </div>
 </div>
-<div id="outline-container-orgf81d449" class="outline-2">
-<h2 id="orgf81d449">Configure current system</h2>
-<div class="outline-text-2" id="text-orgf81d449">
+<div id="outline-container-orgb60066d" class="outline-2">
+<h2 id="orgb60066d">Configure current system</h2>
+<div class="outline-text-2" id="text-orgb60066d">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">check profile is correct</span>
 eselect profile list
@@ -536,18 +536,18 @@ eselect locale set
 </div>
 </div>
 </div>
-<div id="outline-container-org7362014" class="outline-2">
-<h2 id="org7362014">Compile the world</h2>
-<div class="outline-text-2" id="text-org7362014">
+<div id="outline-container-orgcd4ee88" class="outline-2">
+<h2 id="orgcd4ee88">Compile the world</h2>
+<div class="outline-text-2" id="text-orgcd4ee88">
 <div class="org-src-container">
 <pre class="src src-shell">emerge -vDuUq @world
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org0389c34" class="outline-2">
-<h2 id="org0389c34">Compile kernel</h2>
-<div class="outline-text-2" id="text-org0389c34">
+<div id="outline-container-orgedd3a92" class="outline-2">
+<h2 id="orgedd3a92">Compile kernel</h2>
+<div class="outline-text-2" id="text-orgedd3a92">
 <p>
 I have .config file:
 </p>
@@ -572,18 +572,18 @@ make modules_install
 </div>
 </div>
 </div>
-<div id="outline-container-orga5bd1ea" class="outline-2">
-<h2 id="orga5bd1ea">Install zfs</h2>
-<div class="outline-text-2" id="text-orga5bd1ea">
+<div id="outline-container-orgfbd0dec" class="outline-2">
+<h2 id="orgfbd0dec">Install zfs</h2>
+<div class="outline-text-2" id="text-orgfbd0dec">
 <div class="org-src-container">
 <pre class="src src-shell">emerge zfs
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org335a0de" class="outline-2">
-<h2 id="org335a0de">Generate initramfs</h2>
-<div class="outline-text-2" id="text-org335a0de">
+<div id="outline-container-org25a7c0d" class="outline-2">
+<h2 id="org25a7c0d">Generate initramfs</h2>
+<div class="outline-text-2" id="text-org25a7c0d">
 <p>
 I use dracut:
 </p>
@@ -596,9 +596,9 @@ dracut -a <span style="color: #177CB0;">"resume"</span> -H --kver xx
 </div>
 </div>
 </div>
-<div id="outline-container-org6b235e1" class="outline-2">
-<h2 id="org6b235e1">Add OpenRC service to boot or default</h2>
-<div class="outline-text-2" id="text-org6b235e1">
+<div id="outline-container-orgef4909b" class="outline-2">
+<h2 id="orgef4909b">Add OpenRC service to boot or default</h2>
+<div class="outline-text-2" id="text-orgef4909b">
 <div class="org-src-container">
 <pre class="src src-shell">rc-update add zfs-import boot
 rc-update add zfs-mount boot
@@ -608,9 +608,9 @@ rc-update add sshd
 </div>
 </div>
 </div>
-<div id="outline-container-org9238d3d" class="outline-2">
-<h2 id="org9238d3d">User manager</h2>
-<div class="outline-text-2" id="text-org9238d3d">
+<div id="outline-container-org5f427e4" class="outline-2">
+<h2 id="org5f427e4">User manager</h2>
+<div class="outline-text-2" id="text-org5f427e4">
 <div class="org-src-container">
 <pre class="src src-shell">passwd
 useradd -m -G users,wheel,portage,usb,video xx
@@ -621,9 +621,9 @@ sed -i <span style="color: #177CB0;">'s/\# \%wheel ALL=(ALL) ALL/\%wheel ALL=(AL
 </div>
 </div>
 </div>
-<div id="outline-container-org6061949" class="outline-2">
-<h2 id="org6061949">Configure Bootloader</h2>
-<div class="outline-text-2" id="text-org6061949">
+<div id="outline-container-org08020cb" class="outline-2">
+<h2 id="org08020cb">Configure Bootloader</h2>
+<div class="outline-text-2" id="text-org08020cb">
 <p>
 I use systemd-boot:
 </p>
@@ -667,9 +667,9 @@ initrd  /initramfs-xx-gentoo.img
 </div>
 </div>
 </div>
-<div id="outline-container-orgc6ee7d2" class="outline-2">
-<h2 id="orgc6ee7d2">Umount and export zpool</h2>
-<div class="outline-text-2" id="text-orgc6ee7d2">
+<div id="outline-container-orgc642d5b" class="outline-2">
+<h2 id="orgc642d5b">Umount and export zpool</h2>
+<div class="outline-text-2" id="text-orgc642d5b">
 <p>
 The end step:
 </p>
@@ -699,12 +699,12 @@ Happy Enjoy The New System.
 <item>
   <title><![CDATA[Switch to Org-Static-Blog.el]]></title>
   <description><![CDATA[
-<div id="outline-container-orgfac4336" class="outline-2">
-<h2 id="orgfac4336">Hello,World~ Welcome to Ethereal Horizon.</h2>
+<div id="outline-container-org4da752c" class="outline-2">
+<h2 id="org4da752c">Hello,World~ Welcome to Ethereal Horizon.</h2>
 </div>
-<div id="outline-container-org9e685b7" class="outline-2">
-<h2 id="org9e685b7">Code Test</h2>
-<div class="outline-text-2" id="text-org9e685b7">
+<div id="outline-container-orge3dba3e" class="outline-2">
+<h2 id="orge3dba3e">Code Test</h2>
+<div class="outline-text-2" id="text-orge3dba3e">
 <p>
 code from <a href="http://ergoemacs.org/emacs/elisp.html">Practical Emacs Lisp</a>
 </p>
@@ -718,9 +718,9 @@ code from <a href="http://ergoemacs.org/emacs/elisp.html">Practical Emacs Lisp</
 </div>
 </div>
 </div>
-<div id="outline-container-org4975dbf" class="outline-2">
-<h2 id="org4975dbf">First Post End</h2>
-<div class="outline-text-2" id="text-org4975dbf">
+<div id="outline-container-orgcb7960a" class="outline-2">
+<h2 id="orgcb7960a">First Post End</h2>
+<div class="outline-text-2" id="text-orgcb7960a">
 <p>
 <a href="https://github.com/bastibe/org-static-blog">org-static-blog.el</a> is fantastic!
 </p>

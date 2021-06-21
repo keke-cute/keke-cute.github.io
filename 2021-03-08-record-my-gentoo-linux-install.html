@@ -13,30 +13,30 @@
 <link rel="icon" href="static/favicon.ico"></head>
 <body>
 <div id="preamble" class="status"><div class="header">
-  <a href="https://keke-cute.github.io">Ethereal Horizon</a> <A href="https://keke-cute.github.io/emacs.html">Emacs Configure</a>
+  <a href="https://keke-cute.github.io">Home</a>  <A href="https://keke-cute.github.io/emacs.html">Emacs</a>
 </div></div>
 <div id="content">
 <div class="post-date">08 Mar 2021</div><h1 class="post-title"><a href="https://keke-cute.github.io/2021-03-08-record-my-gentoo-linux-install.html">Record My Gentoo Linux Install</a></h1>
 
-<div id="outline-container-org113b160" class="outline-2">
-<h2 id="org113b160"><span class="todo TODO">TODO</span> Incomplete</h2>
-<div class="outline-text-2" id="text-org113b160">
+<div id="outline-container-orgc4f2ec9" class="outline-2">
+<h2 id="orgc4f2ec9"><span class="todo TODO">TODO</span> Incomplete</h2>
+<div class="outline-text-2" id="text-orgc4f2ec9">
 <ul class="org-ul">
 <li>boot partition not in zpool and not encryption</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc2ae870" class="outline-2">
-<h2 id="orgc2ae870">LiveCD</h2>
-<div class="outline-text-2" id="text-orgc2ae870">
+<div id="outline-container-orgd19c19e" class="outline-2">
+<h2 id="orgd19c19e">LiveCD</h2>
+<div class="outline-text-2" id="text-orgd19c19e">
 <p>
 For zfs installation, I need <a href="https://github.com/nchevsky/systemrescue-zfs">systemrescue-zfs</a> or <a href="https://gitlab.com/m_zhou/archiso">archiso</a>.
 </p>
 </div>
 </div>
-<div id="outline-container-org53ba351" class="outline-2">
-<h2 id="org53ba351">Format and Partition</h2>
-<div class="outline-text-2" id="text-org53ba351">
+<div id="outline-container-org0ed2bd3" class="outline-2">
+<h2 id="org0ed2bd3">Format and Partition</h2>
+<div class="outline-text-2" id="text-org0ed2bd3">
 <p>
 My normal GPT partition plan:
 </p>
@@ -91,9 +91,9 @@ swapon /dev/nvme0n1p2
 </div>
 </div>
 </div>
-<div id="outline-container-org5805e2f" class="outline-2">
-<h2 id="org5805e2f">Create zpool</h2>
-<div class="outline-text-2" id="text-org5805e2f">
+<div id="outline-container-org87a1196" class="outline-2">
+<h2 id="org87a1196">Create zpool</h2>
+<div class="outline-text-2" id="text-org87a1196">
 <p>
 Use native encryption and zstd compression:
 </p>
@@ -103,9 +103,9 @@ Use native encryption and zstd compression:
 </div>
 </div>
 </div>
-<div id="outline-container-org23ecd11" class="outline-2">
-<h2 id="org23ecd11">Create zfs datasets</h2>
-<div class="outline-text-2" id="text-org23ecd11">
+<div id="outline-container-org4ace3d6" class="outline-2">
+<h2 id="org4ace3d6">Create zfs datasets</h2>
+<div class="outline-text-2" id="text-org4ace3d6">
 <p>
 Just create root and home datasets:
 </p>
@@ -117,9 +117,9 @@ zfs create -o <span style="color: #B35C44;">mountpoint</span>=/home kpool/gentoo
 </div>
 </div>
 </div>
-<div id="outline-container-org44accc8" class="outline-2">
-<h2 id="org44accc8">Install stage3</h2>
-<div class="outline-text-2" id="text-org44accc8">
+<div id="outline-container-orgf1c1e5f" class="outline-2">
+<h2 id="orgf1c1e5f">Install stage3</h2>
+<div class="outline-text-2" id="text-orgf1c1e5f">
 <p>
 Go gentoo website:<a href="https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/current-stage3-amd64/">Stage3</a>, Normal I use stage3-amd64-nomultilib:
 </p>
@@ -132,9 +132,9 @@ rm stage*
 </div>
 </div>
 </div>
-<div id="outline-container-org1fdb59a" class="outline-2">
-<h2 id="org1fdb59a">Mount partition</h2>
-<div class="outline-text-2" id="text-org1fdb59a">
+<div id="outline-container-org6d64c4f" class="outline-2">
+<h2 id="org6d64c4f">Mount partition</h2>
+<div class="outline-text-2" id="text-org6d64c4f">
 <p>
 For zfs, I only mount one partition:
 </p>
@@ -144,9 +144,9 @@ For zfs, I only mount one partition:
 </div>
 </div>
 </div>
-<div id="outline-container-orgcf6a69b" class="outline-2">
-<h2 id="orgcf6a69b">Generate fstab</h2>
-<div class="outline-text-2" id="text-orgcf6a69b">
+<div id="outline-container-orgafe7358" class="outline-2">
+<h2 id="orgafe7358">Generate fstab</h2>
+<div class="outline-text-2" id="text-orgafe7358">
 <p>
 Normal, I use archiso, the fstab file only one command:
 </p>
@@ -163,9 +163,9 @@ Delete no use mountpoint:
 </div>
 </div>
 </div>
-<div id="outline-container-org2d442dc" class="outline-2">
-<h2 id="org2d442dc">Edit /etc/portage/make.conf</h2>
-<div class="outline-text-2" id="text-org2d442dc">
+<div id="outline-container-org980d1cd" class="outline-2">
+<h2 id="org980d1cd">Edit /etc/portage/make.conf</h2>
+<div class="outline-text-2" id="text-org980d1cd">
 <div class="org-src-container">
 <pre class="src src-shell">nano /mnt/gentoo/etc/portage/make.conf
 </pre>
@@ -205,9 +205,9 @@ Delete no use mountpoint:
 </div>
 </div>
 </div>
-<div id="outline-container-org5922696" class="outline-2">
-<h2 id="org5922696">Configure portage repos</h2>
-<div class="outline-text-2" id="text-org5922696">
+<div id="outline-container-org41de8c6" class="outline-2">
+<h2 id="org41de8c6">Configure portage repos</h2>
+<div class="outline-text-2" id="text-org41de8c6">
 <p>
 I use git:
 </p>
@@ -236,9 +236,9 @@ Clone portage repo:
 </div>
 </div>
 </div>
-<div id="outline-container-org70446af" class="outline-2">
-<h2 id="org70446af">Copy zpool cachefile</h2>
-<div class="outline-text-2" id="text-org70446af">
+<div id="outline-container-org591740b" class="outline-2">
+<h2 id="org591740b">Copy zpool cachefile</h2>
+<div class="outline-text-2" id="text-org591740b">
 <div class="org-src-container">
 <pre class="src src-shell">mkdir /mnt/gentoo/etc/zfs
 cp /etc/zfs/zpool.cache /mnt/gentoo/etc/zfs
@@ -246,9 +246,9 @@ cp /etc/zfs/zpool.cache /mnt/gentoo/etc/zfs
 </div>
 </div>
 </div>
-<div id="outline-container-orgc758a38" class="outline-2">
-<h2 id="orgc758a38">Now chroot</h2>
-<div class="outline-text-2" id="text-orgc758a38">
+<div id="outline-container-orga1a5bf7" class="outline-2">
+<h2 id="orga1a5bf7">Now chroot</h2>
+<div class="outline-text-2" id="text-orga1a5bf7">
 <p>
 Let me chroot:
 </p>
@@ -267,9 +267,9 @@ chroot /mnt/gentoo /bin/bash
 </div>
 </div>
 </div>
-<div id="outline-container-orgf81d449" class="outline-2">
-<h2 id="orgf81d449">Configure current system</h2>
-<div class="outline-text-2" id="text-orgf81d449">
+<div id="outline-container-orgb60066d" class="outline-2">
+<h2 id="orgb60066d">Configure current system</h2>
+<div class="outline-text-2" id="text-orgb60066d">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">check profile is correct</span>
 eselect profile list
@@ -290,18 +290,18 @@ eselect locale set
 </div>
 </div>
 </div>
-<div id="outline-container-org7362014" class="outline-2">
-<h2 id="org7362014">Compile the world</h2>
-<div class="outline-text-2" id="text-org7362014">
+<div id="outline-container-orgcd4ee88" class="outline-2">
+<h2 id="orgcd4ee88">Compile the world</h2>
+<div class="outline-text-2" id="text-orgcd4ee88">
 <div class="org-src-container">
 <pre class="src src-shell">emerge -vDuUq @world
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org0389c34" class="outline-2">
-<h2 id="org0389c34">Compile kernel</h2>
-<div class="outline-text-2" id="text-org0389c34">
+<div id="outline-container-orgedd3a92" class="outline-2">
+<h2 id="orgedd3a92">Compile kernel</h2>
+<div class="outline-text-2" id="text-orgedd3a92">
 <p>
 I have .config file:
 </p>
@@ -326,18 +326,18 @@ make modules_install
 </div>
 </div>
 </div>
-<div id="outline-container-orga5bd1ea" class="outline-2">
-<h2 id="orga5bd1ea">Install zfs</h2>
-<div class="outline-text-2" id="text-orga5bd1ea">
+<div id="outline-container-orgfbd0dec" class="outline-2">
+<h2 id="orgfbd0dec">Install zfs</h2>
+<div class="outline-text-2" id="text-orgfbd0dec">
 <div class="org-src-container">
 <pre class="src src-shell">emerge zfs
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org335a0de" class="outline-2">
-<h2 id="org335a0de">Generate initramfs</h2>
-<div class="outline-text-2" id="text-org335a0de">
+<div id="outline-container-org25a7c0d" class="outline-2">
+<h2 id="org25a7c0d">Generate initramfs</h2>
+<div class="outline-text-2" id="text-org25a7c0d">
 <p>
 I use dracut:
 </p>
@@ -350,9 +350,9 @@ dracut -a <span style="color: #177CB0;">"resume"</span> -H --kver xx
 </div>
 </div>
 </div>
-<div id="outline-container-org6b235e1" class="outline-2">
-<h2 id="org6b235e1">Add OpenRC service to boot or default</h2>
-<div class="outline-text-2" id="text-org6b235e1">
+<div id="outline-container-orgef4909b" class="outline-2">
+<h2 id="orgef4909b">Add OpenRC service to boot or default</h2>
+<div class="outline-text-2" id="text-orgef4909b">
 <div class="org-src-container">
 <pre class="src src-shell">rc-update add zfs-import boot
 rc-update add zfs-mount boot
@@ -362,9 +362,9 @@ rc-update add sshd
 </div>
 </div>
 </div>
-<div id="outline-container-org9238d3d" class="outline-2">
-<h2 id="org9238d3d">User manager</h2>
-<div class="outline-text-2" id="text-org9238d3d">
+<div id="outline-container-org5f427e4" class="outline-2">
+<h2 id="org5f427e4">User manager</h2>
+<div class="outline-text-2" id="text-org5f427e4">
 <div class="org-src-container">
 <pre class="src src-shell">passwd
 useradd -m -G users,wheel,portage,usb,video xx
@@ -375,9 +375,9 @@ sed -i <span style="color: #177CB0;">'s/\# \%wheel ALL=(ALL) ALL/\%wheel ALL=(AL
 </div>
 </div>
 </div>
-<div id="outline-container-org6061949" class="outline-2">
-<h2 id="org6061949">Configure Bootloader</h2>
-<div class="outline-text-2" id="text-org6061949">
+<div id="outline-container-org08020cb" class="outline-2">
+<h2 id="org08020cb">Configure Bootloader</h2>
+<div class="outline-text-2" id="text-org08020cb">
 <p>
 I use systemd-boot:
 </p>
@@ -421,9 +421,9 @@ initrd  /initramfs-xx-gentoo.img
 </div>
 </div>
 </div>
-<div id="outline-container-orgc6ee7d2" class="outline-2">
-<h2 id="orgc6ee7d2">Umount and export zpool</h2>
-<div class="outline-text-2" id="text-orgc6ee7d2">
+<div id="outline-container-orgc642d5b" class="outline-2">
+<h2 id="orgc642d5b">Umount and export zpool</h2>
+<div class="outline-text-2" id="text-orgc642d5b">
 <p>
 The end step:
 </p>

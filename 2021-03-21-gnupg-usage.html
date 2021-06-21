@@ -13,18 +13,18 @@
 <link rel="icon" href="static/favicon.ico"></head>
 <body>
 <div id="preamble" class="status"><div class="header">
-  <a href="https://keke-cute.github.io">Ethereal Horizon</a> <A href="https://keke-cute.github.io/emacs.html">Emacs Configure</a>
+  <a href="https://keke-cute.github.io">Home</a>  <A href="https://keke-cute.github.io/emacs.html">Emacs</a>
 </div></div>
 <div id="content">
 <div class="post-date">21 Mar 2021</div><h1 class="post-title"><a href="https://keke-cute.github.io/2021-03-21-gnupg-usage.html">Gnupg Usage</a></h1>
 
-<div id="outline-container-orga8a42e4" class="outline-2">
-<h2 id="orga8a42e4"><span class="todo TODO">TODO</span> Generate GPG Key</h2>
-<div class="outline-text-2" id="text-orga8a42e4">
+<div id="outline-container-org6eac61c" class="outline-2">
+<h2 id="org6eac61c"><span class="todo TODO">TODO</span> Generate GPG Key</h2>
+<div class="outline-text-2" id="text-org6eac61c">
 </div>
-<div id="outline-container-orgb56bf66" class="outline-3">
-<h3 id="orgb56bf66">Make WorkSpace</h3>
-<div class="outline-text-3" id="text-orgb56bf66">
+<div id="outline-container-org6fea68c" class="outline-3">
+<h3 id="org6fea68c">Make WorkSpace</h3>
+<div class="outline-text-3" id="text-org6fea68c">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">make temp dir</span>
 <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">export</span> <span style="color: #B35C44;">GNUPGHOME</span>=$<span style="color: #ff8c00; font-weight: bold;">(</span>mktemp -d<span style="color: #ff8c00; font-weight: bold;">)</span>
@@ -35,9 +35,9 @@ curl -O <span style="color: #177CB0;">"https://raw.githubusercontent.com/drduh/c
 </div>
 </div>
 </div>
-<div id="outline-container-org36c0147" class="outline-3">
-<h3 id="org36c0147">Generate-key</h3>
-<div class="outline-text-3" id="text-org36c0147">
+<div id="outline-container-orgd07809b" class="outline-3">
+<h3 id="orgd07809b">Generate-key</h3>
+<div class="outline-text-3" id="text-orgd07809b">
 <div class="org-src-container">
 <pre class="src src-shell">gpg --expert --full-generate-key
 </pre>
@@ -45,16 +45,16 @@ curl -O <span style="color: #177CB0;">"https://raw.githubusercontent.com/drduh/c
 </div>
 </div>
 </div>
-<div id="outline-container-orgd9cb5eb" class="outline-2">
-<h2 id="orgd9cb5eb">OpenGPG Smart Card</h2>
-<div class="outline-text-2" id="text-orgd9cb5eb">
+<div id="outline-container-org7280ab6" class="outline-2">
+<h2 id="org7280ab6">OpenGPG Smart Card</h2>
+<div class="outline-text-2" id="text-org7280ab6">
 </div>
-<div id="outline-container-org56b9b76" class="outline-3">
-<h3 id="org56b9b76"><span class="todo TODO">TODO</span> Yubikey</h3>
+<div id="outline-container-org5d4f022" class="outline-3">
+<h3 id="org5d4f022"><span class="todo TODO">TODO</span> Yubikey</h3>
 </div>
-<div id="outline-container-org1bf83d5" class="outline-3">
-<h3 id="org1bf83d5">Make Gnuk Card(only need 10¥)</h3>
-<div class="outline-text-3" id="text-org1bf83d5">
+<div id="outline-container-org258b9bd" class="outline-3">
+<h3 id="org258b9bd">Make Gnuk Card(only need 10¥)</h3>
+<div class="outline-text-3" id="text-org258b9bd">
 <p>
 Requirements
 </p>
@@ -66,13 +66,13 @@ Requirements
 <li>inetutils (telnet)</li>
 </ul>
 </div>
-<div id="outline-container-org23f2515" class="outline-4">
-<h4 id="org23f2515">Let me make</h4>
-<div class="outline-text-4" id="text-org23f2515">
+<div id="outline-container-org713e10d" class="outline-4">
+<h4 id="org713e10d">Let me make</h4>
+<div class="outline-text-4" id="text-org713e10d">
 </div>
 <ul class="org-ul">
-<li><a id="org40774d7"></a>Compile gnuk<br>
-<div class="outline-text-5" id="text-org40774d7">
+<li><a id="org3b991fb"></a>Compile gnuk<br>
+<div class="outline-text-5" id="text-org3b991fb">
 <div class="org-src-container">
 <pre class="src src-shell">git clone https://salsa.debian.org/gnuk-team/gnuk/gnuk.git
 <span style="color: #705438; background-color: #E3EFD1; font-style: italic;">cd</span> gnuk/
@@ -84,8 +84,8 @@ make build/gnuk-vidpid.bin
 </div>
 </div>
 </li>
-<li><a id="org53d5ab7"></a>openocd.cfg<br>
-<div class="outline-text-5" id="text-org53d5ab7">
+<li><a id="org527ef26"></a>openocd.cfg<br>
+<div class="outline-text-5" id="text-org527ef26">
 <div class="org-src-container">
 <pre class="src src-conf"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;">#</span><span style="color: #758A99; font-style: italic; text-decoration: underline;">daemon configuration</span>
 telnet_port 4444
@@ -105,8 +105,8 @@ gdb_breakpoint_override hard
 </div>
 </div>
 </li>
-<li><a id="orge52ad67"></a>Flash Gnuk<br>
-<div class="outline-text-5" id="text-orge52ad67">
+<li><a id="org0230357"></a>Flash Gnuk<br>
+<div class="outline-text-5" id="text-org0230357">
 <p>
 Connecting the ST-LINK
 </p>
@@ -150,22 +150,22 @@ Now you have 10¥ GPG Smart Card
 </div>
 </div>
 </div>
-<div id="outline-container-org1278a7f" class="outline-2">
-<h2 id="org1278a7f">Git verified signature(eg. github)</h2>
-<div class="outline-text-2" id="text-org1278a7f">
+<div id="outline-container-org34f7aa0" class="outline-2">
+<h2 id="org34f7aa0">Git verified signature(eg. github)</h2>
+<div class="outline-text-2" id="text-org34f7aa0">
 </div>
-<div id="outline-container-org7f8d85b" class="outline-3">
-<h3 id="org7f8d85b">Copy public key to github</h3>
-<div class="outline-text-3" id="text-org7f8d85b">
+<div id="outline-container-orgb86e527" class="outline-3">
+<h3 id="orgb86e527">Copy public key to github</h3>
+<div class="outline-text-3" id="text-orgb86e527">
 <div class="org-src-container">
 <pre class="src src-shell">gpg -a --export <span style="color: #ff8c00; font-weight: bold;">[</span>you key id<span style="color: #ff8c00; font-weight: bold;">]</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd98032d" class="outline-3">
-<h3 id="orgd98032d">Config git use the key</h3>
-<div class="outline-text-3" id="text-orgd98032d">
+<div id="outline-container-org7124abd" class="outline-3">
+<h3 id="org7124abd">Config git use the key</h3>
+<div class="outline-text-3" id="text-org7124abd">
 <div class="org-src-container">
 <pre class="src src-shell">git config --global user.signingkey <span style="color: #ff8c00; font-weight: bold;">[</span>you key id<span style="color: #ff8c00; font-weight: bold;">]</span>
 </pre>
@@ -179,9 +179,9 @@ if force gpg sign ?
 </div>
 </div>
 </div>
-<div id="outline-container-org1e7040c" class="outline-3">
-<h3 id="org1e7040c">Commit !</h3>
-<div class="outline-text-3" id="text-org1e7040c">
+<div id="outline-container-org751da0d" class="outline-3">
+<h3 id="org751da0d">Commit !</h3>
+<div class="outline-text-3" id="text-org751da0d">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #758A99; font-weight: bold; font-style: italic; text-decoration: underline;"># </span><span style="color: #758A99; font-style: italic; text-decoration: underline;">.gitconfig user.email need equal to gpg public key email</span>
 git add .
@@ -195,9 +195,9 @@ now your commit has verified(the green icon)
 </div>
 </div>
 </div>
-<div id="outline-container-org28eb76b" class="outline-2">
-<h2 id="org28eb76b">References</h2>
-<div class="outline-text-2" id="text-org28eb76b">
+<div id="outline-container-org6fa5d35" class="outline-2">
+<h2 id="org6fa5d35">References</h2>
+<div class="outline-text-2" id="text-org6fa5d35">
 <ul class="org-ul">
 <li><a href="https://www.yafa.moe/post/yubikey-guide/">Yubikey Guide</a></li>
 <li><a href="https://kgame.tw/gnupg/stm32-gnuk/">ST-LINK V2 刷 Gnuk </a></li>
